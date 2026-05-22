@@ -1,0 +1,74 @@
+import React from "react";
+import Confetti from "./Confetti";
+
+const shareMessage = "I just ran my first container using Docker";
+const shareLink = "https://docker.com/";
+
+const Dashboard = ({ onLogout }) => {
+  const handleLogout = () => {
+    localStorage.removeItem("isAuthenticated");
+    onLogout();
+  };
+
+  return (
+    <div className="App">
+      <Confetti />
+      
+      <div className="dashboard-nav">
+        <button className="logout-btn" onClick={handleLogout} aria-label="Log Out">
+          Log Out
+        </button>
+      </div>
+
+      <header className="App-header">
+        <h1 style={{ marginBottom: "0px" }}>Congratulations!!!</h1>
+        <p style={{ marginTop: "10px", marginBottom: "50px" }}>
+          You ran your first container.
+        </p>
+        <div className="social-links">
+          <a
+            target="_blank"
+            href={
+              "https://twitter.com/intent/tweet?text=" +
+              encodeURIComponent(shareMessage) +
+              "&url=" +
+              encodeURIComponent(shareLink)
+            }
+            className="fa-brands fa-x-twitter"
+            rel="noopener noreferrer"
+            aria-label="Share on X"
+          >
+            {" "}
+          </a>
+          <a
+            target="_blank"
+            href={
+              "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(shareLink)
+            }
+            className="fa-brands fa-linkedin"
+            rel="noopener noreferrer"
+            aria-label="Share on LinkedIn"
+          >
+            {" "}
+          </a>
+          <a
+            target="_blank"
+            href={
+              "https://reddit.com/submit?title=" +
+              encodeURIComponent(shareMessage) +
+              "&url=" +
+              encodeURIComponent(shareLink)
+            }
+            className="fa-brands fa-reddit"
+            rel="noopener noreferrer"
+            aria-label="Share on Reddit"
+          >
+            {" "}
+          </a>
+        </div>
+      </header>
+    </div>
+  );
+};
+
+export default Dashboard;
