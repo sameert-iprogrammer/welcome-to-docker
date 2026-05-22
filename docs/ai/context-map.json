@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "projectName": "welcome-to-docker",
+  "projectType": "single-page-react",
+  "agentEntryPoints": {
+    "sdlcRules": ".opencode/agents/_sdlc-rules.md",
+    "governance": ".opencode/agents/governance-agent.md",
+    "projectContext": "docs/ai/project-context.md",
+    "contextMap": "docs/ai/context-map.json"
+  },
+  "criticalFiles": [
+    "package.json",
+    "Dockerfile",
+    "src/App.js",
+    "src/Confetti.js",
+    "src/App.css",
+    ".github/workflows/merge-main-into-small-image.yml"
+  ],
+  "styleConvention": {
+    "framework": "vanilla-css",
+    "primaryFiles": [
+      "src/App.css",
+      "src/index.css"
+    ]
+  },
+  "verification": {
+    "build": "npm run build",
+    "test": "npm test",
+    "dockerBuild": "docker build -t welcome-to-docker .",
+    "dockerRun": "docker run -d -p 8088:3000 --name welcome-to-docker welcome-to-docker"
+  }
+}
