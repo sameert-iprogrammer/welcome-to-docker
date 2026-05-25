@@ -1,0 +1,4 @@
+{"id": "a1ad45af-0529-4729-8ed2-be7487902bc7", "timestamp": "2026-05-25T12:37:40Z", "level": "info", "message": "Step started: prepare_branch", "stepKey": "prepare_branch"}
+{"id": "05603a10-6848-4838-8dac-509720a9136f", "timestamp": "2026-05-25T12:37:40Z", "level": "info", "message": "Checking out existing git branch in the selected project…", "stepKey": "prepare_branch"}
+{"id": "333a9127-2f97-4b5b-bfdd-b6e835ca84dc", "timestamp": "2026-05-25T12:37:40Z", "level": "error", "message": "Git checkout failed: The selected project has uncommitted changes. Resolve them before checking out an existing execution branch.", "stepKey": "prepare_branch"}
+{"id": "80d14718-5cdc-47ac-ab4c-b3765d59f21b", "timestamp": "2026-05-25T12:37:40Z", "level": "info", "message": "Step failed: prepare_branch: The selected project has uncommitted changes. Resolve them before checking out an existing execution branch.", "stepKey": "prepare_branch"}

@@ -1,32 +1,39 @@
 {
   "schemaVersion": 1,
-  "projectName": "welcome-to-docker",
-  "projectType": "single-page-react",
+  "project": {
+    "name": "welcome-to-docker",
+    "type": "React SPA",
+    "stackSummary": "React 18, Create React App, plain CSS, Font Awesome CDN, localStorage auth"
+  },
   "agentEntryPoints": {
     "sdlcRules": ".opencode/agents/_sdlc-rules.md",
     "governance": ".opencode/agents/governance-agent.md",
     "projectContext": "docs/ai/project-context.md",
     "contextMap": "docs/ai/context-map.json"
   },
-  "criticalFiles": [
-    "package.json",
-    "Dockerfile",
-    "src/App.js",
-    "src/Confetti.js",
-    "src/App.css",
-    ".github/workflows/merge-main-into-small-image.yml"
-  ],
-  "styleConvention": {
-    "framework": "vanilla-css",
-    "primaryFiles": [
-      "src/App.css",
-      "src/index.css"
-    ]
+  "routing": {
+    "strategy": "pushState",
+    "knownPaths": ["/login", "/register", "/dashboard", "/settings"]
   },
-  "verification": {
-    "build": "npm run build",
-    "test": "npm test",
-    "dockerBuild": "docker build -t welcome-to-docker .",
-    "dockerRun": "docker run -d -p 8088:3000 --name welcome-to-docker welcome-to-docker"
-  }
+  "stateManagement": "localState",
+  "styling": "plainCSS",
+  "testing": {
+    "framework": "jest",
+    "command": "npm test"
+  },
+  "buildCommand": "npm run build",
+  "devCommand": "npm start",
+  "commonPaths": {
+    "source": "src/",
+    "components": "src/",
+    "styles": ["src/App.css", "src/index.css"],
+    "config": ["package.json"],
+    "deployment": ["Dockerfile"]
+  },
+  "keyFiles": {
+    "entry": "src/index.js",
+    "appRoot": "src/App.js",
+    "dockerfile": "Dockerfile"
+  },
+  "agentNotes": "Minimal educational React SPA. No react-router, no backend, no TypeScript, no CSS frameworks. localStorage mock auth. pushState routing. Preserve existing patterns. Reference governance before changes."
 }

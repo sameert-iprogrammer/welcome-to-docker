@@ -1,0 +1,153 @@
+{
+  "id": "exec-e22ee9fd-f9b1-4f41-ac28-67aecb11c14c",
+  "projectId": "project-e2d222e7-e8d1-4c73-b49a-caaa1e88b2e7",
+  "projectPath": "/Users/sameert/Documents/projects/learning/welcome-to-docker",
+  "storyKey": "DS-01",
+  "storyTitle": "Profile page",
+  "storyDescription": "When user logs in, then in the navbar, show a profile icon and on click of it, open a profile page with mock data. page should show information only. Forms are not required. also no backend. Only mock data.",
+  "branchSource": "existing_branch",
+  "baseBranch": "main",
+  "branchName": "feature/login",
+  "worktreePath": null,
+  "provider": "cursor",
+  "mode": "fast_story",
+  "inputType": "jira_story",
+  "inputs": {
+    "additionalContext": "Show profile details as per standard fields",
+    "storyDescription": "When user logs in, then in the navbar, show a profile icon and on click of it, open a profile page with mock data. page should show information only. Forms are not required. also no backend. Only mock data.",
+    "storyKey": "DS-01",
+    "storyTitle": "Profile page"
+  },
+  "context": {
+    "cursor": {
+      "auto": false,
+      "model": "auto",
+      "premium": false
+    },
+    "modeDependencies": {
+      "optionalMissingAgents": [],
+      "optionalMissingStageKeys": [],
+      "requiredMissingAgents": []
+    },
+    "models": {
+      "byStep": {
+        "ai_reviewer": "auto",
+        "code_implementer": "auto",
+        "commit_push": "auto",
+        "final_review": "auto",
+        "implementation_planner": "auto",
+        "prepare_branch": "auto",
+        "story_analyzer": "auto"
+      },
+      "defaultModel": "auto"
+    },
+    "testing": {
+      "runFullTestSuiteBeforeFinalReview": false
+    }
+  },
+  "status": "failed",
+  "currentStep": "prepare_branch",
+  "steps": [
+    {
+      "key": "prepare_branch",
+      "status": "failed",
+      "startedAt": "2026-05-25T12:37:40Z",
+      "completedAt": "2026-05-25T12:37:40Z",
+      "error": "The selected project has uncommitted changes. Resolve them before checking out an existing execution branch.",
+      "statusReason": null
+    },
+    {
+      "key": "story_analyzer",
+      "status": "pending",
+      "startedAt": null,
+      "completedAt": null,
+      "error": null,
+      "statusReason": null
+    },
+    {
+      "key": "implementation_planner",
+      "status": "pending",
+      "startedAt": null,
+      "completedAt": null,
+      "error": null,
+      "statusReason": null
+    },
+    {
+      "key": "code_implementer",
+      "status": "pending",
+      "startedAt": null,
+      "completedAt": null,
+      "error": null,
+      "statusReason": null
+    },
+    {
+      "key": "ai_reviewer",
+      "status": "pending",
+      "startedAt": null,
+      "completedAt": null,
+      "error": null,
+      "statusReason": null
+    },
+    {
+      "key": "final_review",
+      "status": "pending",
+      "startedAt": null,
+      "completedAt": null,
+      "error": null,
+      "statusReason": null
+    },
+    {
+      "key": "commit_push",
+      "status": "pending",
+      "startedAt": null,
+      "completedAt": null,
+      "error": null,
+      "statusReason": null
+    }
+  ],
+  "review": {
+    "enabled": false,
+    "autoFixEnabled": false,
+    "currentCycle": 0,
+    "maxCycles": 1
+  },
+  "files": {
+    "specFile": null,
+    "planFile": null,
+    "reviewFile": null,
+    "finalSummaryFile": null
+  },
+  "logs": [
+    {
+      "id": "a1ad45af-0529-4729-8ed2-be7487902bc7",
+      "timestamp": "2026-05-25T12:37:40Z",
+      "level": "info",
+      "message": "Step started: prepare_branch",
+      "stepKey": "prepare_branch"
+    },
+    {
+      "id": "05603a10-6848-4838-8dac-509720a9136f",
+      "timestamp": "2026-05-25T12:37:40Z",
+      "level": "info",
+      "message": "Checking out existing git branch in the selected project\u2026",
+      "stepKey": "prepare_branch"
+    },
+    {
+      "id": "333a9127-2f97-4b5b-bfdd-b6e835ca84dc",
+      "timestamp": "2026-05-25T12:37:40Z",
+      "level": "error",
+      "message": "Git checkout failed: The selected project has uncommitted changes. Resolve them before checking out an existing execution branch.",
+      "stepKey": "prepare_branch"
+    },
+    {
+      "id": "80d14718-5cdc-47ac-ab4c-b3765d59f21b",
+      "timestamp": "2026-05-25T12:37:40Z",
+      "level": "info",
+      "message": "Step failed: prepare_branch: The selected project has uncommitted changes. Resolve them before checking out an existing execution branch.",
+      "stepKey": "prepare_branch"
+    }
+  ],
+  "error": "The selected project has uncommitted changes. Resolve them before checking out an existing execution branch.",
+  "createdAt": "2026-05-25T12:37:39Z",
+  "updatedAt": "2026-05-25T12:37:40Z"
+}
