@@ -4,6 +4,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Dashboard from "./Dashboard";
 import Settings from "./Settings";
+import Profile from "./Profile";
 
 const App = () => {
   const [pathname, setPathname] = useState(window.location.pathname);
@@ -54,6 +55,9 @@ const App = () => {
     }
     if (pathname === "/settings") {
       return <Settings navigateTo={navigateTo} />;
+    }
+    if (pathname === "/profile") {
+      return <Profile navigateTo={navigateTo} />;
     }
     return <Dashboard onLogout={() => navigateTo("/login")} navigateTo={navigateTo} />;
   };

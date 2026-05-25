@@ -15,6 +15,13 @@ const Dashboard = ({ onLogout, navigateTo }) => {
       <Confetti />
       
       <div className="dashboard-nav">
+        <button
+          className="profile-btn"
+          onClick={() => navigateTo("/profile")}
+          aria-label="View profile"
+        >
+          <i className="fa-solid fa-circle-user"></i>
+        </button>
         <button className="settings-btn" onClick={() => navigateTo("/settings")} aria-label="Settings">
           <i className="fa-solid fa-gear"></i>
         </button>
