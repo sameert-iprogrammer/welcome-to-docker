@@ -1329,7 +1329,7 @@
   ],
   "error": null,
   "createdAt": "2026-05-25T08:45:31Z",
-  "updatedAt": "2026-05-25T10:07:18Z",
+  "updatedAt": "2026-05-25T10:28:41Z",
   "backendExecutionId": 359,
   "backendProjectId": 178,
   "syncStatus": "pending",
@@ -1344,8 +1344,8 @@
     "headBranch": "feature/login",
     "baseBranch": "main",
     "createdAt": "2026-05-22T17:15:53.000Z",
-    "updatedAt": "2026-05-25T09:53:39.000Z",
-    "lastSyncedAt": "2026-05-25T10:07:17.948Z"
+    "updatedAt": "2026-05-25T10:14:46.000Z",
+    "lastSyncedAt": "2026-05-25T10:28:41.259Z"
   },
   "pullRequestStatus": "draft_created"
 }
