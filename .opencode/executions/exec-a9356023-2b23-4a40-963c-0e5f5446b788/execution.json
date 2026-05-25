@@ -40,7 +40,7 @@
     },
     "reviewState": {}
   },
-  "status": "ready_for_commit",
+  "status": "completed",
   "currentStep": "commit_push",
   "steps": [
     {
@@ -121,9 +121,9 @@
     },
     {
       "key": "commit_push",
-      "status": "pending",
-      "startedAt": null,
-      "completedAt": null,
+      "status": "completed",
+      "startedAt": "2026-05-22T17:15:45Z",
+      "completedAt": "2026-05-22T17:15:45Z",
       "error": null,
       "statusReason": null
     }
@@ -2380,9 +2380,45 @@
       "level": "info",
       "message": "Execution ready for manual commit and push (automated git disabled).",
       "stepKey": "commit_push"
+    },
+    {
+      "id": "a6d24b2e-0ddc-4746-b73d-a7834942294c",
+      "timestamp": "2026-05-22T17:15:45Z",
+      "level": "info",
+      "message": "[GIT] Pushed 'feature/login' to origin.",
+      "stepKey": "commit_push"
+    },
+    {
+      "id": "2891df2e-bc40-4fb0-b342-4264fb44bacc",
+      "timestamp": "2026-05-22T17:15:45Z",
+      "level": "info",
+      "message": "[GIT] Step completed: commit_push",
+      "stepKey": "commit_push"
+    },
+    {
+      "id": "fa6a83ae-ad5c-49f8-85c8-0b9e40f85763",
+      "timestamp": "2026-05-22T17:15:45Z",
+      "level": "info",
+      "message": "Execution completed",
+      "stepKey": "commit_push"
     }
   ],
   "error": null,
   "createdAt": "2026-05-22T17:10:25Z",
-  "updatedAt": "2026-05-22T17:14:57Z"
+  "updatedAt": "2026-05-22T17:15:55Z",
+  "pullRequest": {
+    "repositoryId": 323,
+    "repositoryFullName": "sameert-iprogrammer/welcome-to-docker",
+    "number": 1,
+    "url": "https://github.com/sameert-iprogrammer/welcome-to-docker/pull/1",
+    "status": "draft_created",
+    "draft": true,
+    "state": "open",
+    "headBranch": "feature/login",
+    "baseBranch": "main",
+    "createdAt": "2026-05-22T17:15:53.000Z",
+    "updatedAt": "2026-05-22T17:15:53.000Z",
+    "lastSyncedAt": "2026-05-22T17:15:54.897Z"
+  },
+  "pullRequestStatus": "draft_created"
 }
