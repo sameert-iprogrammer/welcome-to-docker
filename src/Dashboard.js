@@ -4,7 +4,7 @@ import Confetti from "./Confetti";
 const shareMessage = "I just ran my first container using Docker";
 const shareLink = "https://docker.com/";
 
-const Dashboard = ({ onLogout }) => {
+const Dashboard = ({ onLogout, navigateTo }) => {
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
     onLogout();
@@ -15,6 +15,9 @@ const Dashboard = ({ onLogout }) => {
       <Confetti />
       
       <div className="dashboard-nav">
+        <button className="settings-btn" onClick={() => navigateTo("/settings")} aria-label="Settings">
+          <i className="fa-solid fa-gear"></i>
+        </button>
         <button className="logout-btn" onClick={handleLogout} aria-label="Log Out">
           Log Out
         </button>

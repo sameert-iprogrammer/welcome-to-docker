@@ -3,6 +3,7 @@ import "./App.css";
 import Login from "./Login";
 import Register from "./Register";
 import Dashboard from "./Dashboard";
+import Settings from "./Settings";
 
 const App = () => {
   const [pathname, setPathname] = useState(window.location.pathname);
@@ -51,7 +52,10 @@ const App = () => {
       }
       return <Login onLoginSuccess={() => navigateTo("/dashboard")} navigateTo={navigateTo} />;
     }
-    return <Dashboard onLogout={() => navigateTo("/login")} />;
+    if (pathname === "/settings") {
+      return <Settings navigateTo={navigateTo} />;
+    }
+    return <Dashboard onLogout={() => navigateTo("/login")} navigateTo={navigateTo} />;
   };
 
   return <div className="App">{renderView()}</div>;
