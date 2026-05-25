@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Login = ({ onLoginSuccess }) => {
+const Login = ({ onLoginSuccess, navigateTo }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -50,6 +50,22 @@ const Login = ({ onLoginSuccess }) => {
           <button type="submit" className="login-submit-btn" aria-label="Sign In">
             Sign In
           </button>
+          <div className="register-link">
+            Don't have an account?{" "}
+            <span
+              className="register-link-action"
+              onClick={() => navigateTo("/register")}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  navigateTo("/register");
+                }
+              }}
+            >
+              Register
+            </span>
+          </div>
         </form>
       </div>
     </div>

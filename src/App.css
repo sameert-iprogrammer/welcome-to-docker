@@ -225,6 +225,38 @@
   }
 }
 
+/* Validation & Hint Styles */
+.validation-error {
+  color: #ff6b6b;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.password-hint {
+  color: #8892b0;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Register Link on Login Page */
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #8892b0;
+  font-size: 14px;
+}
+
+.register-link-action {
+  color: #1d63b8;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.register-link-action:hover {
+  color: #61dafb;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 480px) {
   .login-card {

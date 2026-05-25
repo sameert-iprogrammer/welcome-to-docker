@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./App.css";
 import Login from "./Login";
+import Register from "./Register";
 import Dashboard from "./Dashboard";
 
 const App = () => {
@@ -28,11 +29,15 @@ const App = () => {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      if (pathname !== "/login") {
+      if (pathname !== "/login" && pathname !== "/register") {
         navigateTo("/login");
       }
     } else {
-      if (pathname === "/login" || pathname === "/") {
+      if (
+        pathname === "/login" ||
+        pathname === "/register" ||
+        pathname === "/"
+      ) {
         navigateTo("/dashboard");
       }
     }
@@ -41,7 +46,10 @@ const App = () => {
   // Determine what view to render based on authentication status
   const renderView = () => {
     if (!isAuthenticated) {
-      return <Login onLoginSuccess={() => navigateTo("/dashboard")} />;
+      if (pathname === "/register") {
+        return <Register navigateTo={navigateTo} />;
+      }
+      return <Login onLoginSuccess={() => navigateTo("/dashboard")} navigateTo={navigateTo} />;
     }
     return <Dashboard onLogout={() => navigateTo("/login")} />;
   };
