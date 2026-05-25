@@ -1329,8 +1329,23 @@
   ],
   "error": null,
   "createdAt": "2026-05-25T08:45:31Z",
-  "updatedAt": "2026-05-25T09:53:36Z",
+  "updatedAt": "2026-05-25T10:07:18Z",
   "backendExecutionId": 359,
   "backendProjectId": 178,
-  "syncStatus": "pending"
+  "syncStatus": "pending",
+  "pullRequest": {
+    "repositoryId": 323,
+    "repositoryFullName": "sameert-iprogrammer/welcome-to-docker",
+    "number": 1,
+    "url": "https://github.com/sameert-iprogrammer/welcome-to-docker/pull/1",
+    "status": "draft_created",
+    "draft": true,
+    "state": "open",
+    "headBranch": "feature/login",
+    "baseBranch": "main",
+    "createdAt": "2026-05-22T17:15:53.000Z",
+    "updatedAt": "2026-05-25T09:53:39.000Z",
+    "lastSyncedAt": "2026-05-25T10:07:17.948Z"
+  },
+  "pullRequestStatus": "draft_created"
 }
