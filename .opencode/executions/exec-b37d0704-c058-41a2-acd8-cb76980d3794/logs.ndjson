@@ -158,3 +158,6 @@
 {"id": "64e34cfe-6f06-4fcb-8d03-7921d55296b2", "timestamp": "2026-05-25T08:54:26Z", "level": "info", "message": "Step started: commit_push", "stepKey": "commit_push"}
 {"id": "5345e929-f152-4db5-b09f-eca1e060fd2e", "timestamp": "2026-05-25T08:54:26Z", "level": "info", "message": "Automated commit and push are not performed here; use the manual commit action in the app.", "stepKey": "commit_push"}
 {"id": "44889c02-f22a-4b63-8df3-b42a53c9ea6a", "timestamp": "2026-05-25T08:54:26Z", "level": "info", "message": "Execution ready for manual commit and push (automated git disabled).", "stepKey": "commit_push"}
+{"id": "e0fd6add-4e07-4ad6-b46d-21ba2fb27502", "timestamp": "2026-05-25T09:16:28Z", "level": "info", "message": "[GIT] Pushed 'feature/login' to origin.", "stepKey": "commit_push"}
+{"id": "22668c4f-4165-4f6d-9a68-a1d0e2901217", "timestamp": "2026-05-25T09:16:28Z", "level": "info", "message": "[GIT] Step completed: commit_push", "stepKey": "commit_push"}
+{"id": "a8a06c64-325d-4fab-9f35-65bddd7b0d5b", "timestamp": "2026-05-25T09:16:28Z", "level": "info", "message": "Execution completed", "stepKey": "commit_push"}
