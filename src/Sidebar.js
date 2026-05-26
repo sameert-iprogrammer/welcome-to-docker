@@ -10,6 +10,7 @@ const Sidebar = () => {
     { label: "Dashboard", path: "/dashboard", icon: "fa-solid fa-gauge-high" },
     { label: "Orders", path: "/orders", icon: "fa-solid fa-truck" },
     { label: "Customers", path: "/customers", icon: "fa-solid fa-users" },
+    { label: "Products", path: "/products", icon: "fa-solid fa-box" },
   ];
 
   return (
