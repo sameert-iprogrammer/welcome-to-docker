@@ -9,7 +9,7 @@ const mockOrders = [
   { id: "ORD-005", customer: "Eve Davis", product: "Docker Swarm", status: "Shipped", date: "2026-05-12" },
 ];
 
-const Orders = ({ navigateTo }) => {
+const Orders = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredOrders = mockOrders.filter((order) => {
@@ -25,7 +25,7 @@ const Orders = ({ navigateTo }) => {
 
   return (
     <div className="App App--sidebar">
-      <Sidebar navigateTo={navigateTo} currentPath="/orders" />
+      <Sidebar />
       <div className="orders-container">
         <h2 className="orders-title">Orders</h2>
         <input

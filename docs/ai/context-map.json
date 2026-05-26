@@ -12,7 +12,7 @@
     "contextMap": "docs/ai/context-map.json"
   },
   "routing": {
-    "strategy": "pushState",
+    "strategy": "react-router",
     "knownPaths": ["/login", "/register", "/dashboard", "/settings", "/orders"]
   },
   "stateManagement": "localState",

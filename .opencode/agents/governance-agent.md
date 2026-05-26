@@ -4,7 +4,7 @@
 
 - **Type**: Educational/demo React SPA for Docker new-user onboarding
 - **Stack**: React 18, Create React App (react-scripts 5.0.1), plain CSS, JavaScript (no TypeScript)
-- **Routing**: Client-side via `window.history.pushState` (no react-router)
+- **Routing**: Client-side via `react-router-dom` (v6, BrowserRouter)
 - **Auth Simulation**: localStorage mock (no real backend, no API calls)
 - **Testing**: Jest via `react-scripts test`
 - **Build**: `react-scripts build` → served via `serve` in Docker
@@ -22,9 +22,9 @@
 
 ## Architecture Rules
 
-- **No react-router**: The app uses `window.history.pushState` + `popstate` listener in App.js. Do not introduce a routing library.
+- **Routing**: react-router-dom v6 (BrowserRouter, Routes, Route, Navigate). Do not revert to pushState.
 - **No backend**: All state is localStorage-based. Do not add server code, API calls, database, or backend dependencies.
-- **Component pattern**: Components receive `navigateTo` and callbacks as props. Do not introduce context, Redux, or state management libraries.
+- **Component pattern**: Components use `useNavigate()` and `useLocation()` hooks from react-router-dom. Do not introduce context, Redux, or state management libraries.
 - **DO NOT** change the Dockerfile build strategy (multi-stage, `serve`, Alpine) or the deploy workflow (GitHub Actions → Docker Hub).
 - **DO NOT** add new pages/routes not required by the task.
 - Preserve the existing CSS class naming scheme and file organization (single App.css for component styles).
@@ -58,7 +58,7 @@
 
 ## Dependency Usage Rules
 
-- **DO NOT** add: `react-router`, `axios`, `express`, `redux`, `typescript`, `tailwindcss`, `next.js`, `gatsby`, `webpack` (already via CRA), `babel` configs.
+- **DO NOT** add: `axios`, `express`, `redux`, `typescript`, `tailwindcss`, `next.js`, `gatsby`, `webpack` (already via CRA), `babel` configs.
 - **Allowed** additions: small utility libs (`lodash`-like, `date-fns`) if justified; testing helpers only if essential.
 - Prefer existing dependencies: `react-particles`, `tsparticles` are for the confetti feature only.
 - Before adding any npm dependency, justify in writing and prefer a no-dependency solution.
@@ -69,7 +69,7 @@
 Before completing any work, verify:
 - [ ] Only files explicitly required were created/modified
 - [ ] No new dependencies were added (or justified)
-- [ ] No TypeScript, react-router, backend, or state management introduced
+- [ ] No TypeScript, backend, or state management introduced
 - [ ] ESLint passes (`npx react-scripts build` and/or direct lint check)
 - [ ] Existing tests pass (`npm test -- --watchAll=false`)
 - [ ] No real credentials or secrets in code
@@ -92,7 +92,7 @@ Before completing any work, verify:
 
 - **No server code** — no Express, no API routes, no server-side rendering.
 - **No TypeScript migration** — keep `.js` and plain JS.
-- **No routing library** — keep `pushState`-based SPA routing.
+- **No revert to pushState** — react-router-dom is the routing mechanism.
 - **No new styling frameworks** — plain CSS only.
 - **No real authentication/authorization** — localStorage mock is intentional.
 - **No Dockerfile refactors** — the build process is designed for the `small-image` walkthrough UX.

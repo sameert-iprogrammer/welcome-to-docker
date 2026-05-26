@@ -1,31 +1,34 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Confetti from "./Confetti";
 import Sidebar from "./Sidebar";
 
 const shareMessage = "I just ran my first container using Docker";
 const shareLink = "https://docker.com/";
 
-const Dashboard = ({ onLogout, navigateTo }) => {
+const Dashboard = () => {
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
-    onLogout();
+    navigate("/login");
   };
 
   return (
     <div className="App App--sidebar">
-      <Sidebar navigateTo={navigateTo} currentPath="/dashboard" />
+      <Sidebar />
       <div className="dashboard-content">
         <Confetti />
         
         <div className="dashboard-nav">
           <button
             className="profile-btn"
-            onClick={() => navigateTo("/profile")}
+            onClick={() => navigate("/profile")}
             aria-label="View profile"
           >
             <i className="fa-solid fa-circle-user"></i>
           </button>
-          <button className="settings-btn" onClick={() => navigateTo("/settings")} aria-label="Settings">
+          <button className="settings-btn" onClick={() => navigate("/settings")} aria-label="Settings">
             <i className="fa-solid fa-gear"></i>
           </button>
           <button className="logout-btn" onClick={handleLogout} aria-label="Log Out">

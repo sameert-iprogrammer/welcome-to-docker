@@ -31,7 +31,7 @@
 │   ├── index.html
 │   └── robots.txt
 ├── src/
-│   ├── App.js              # pushState routing, auth guard
+│   ├── App.js              # react-router (Routes, Route, Navigate), auth guard
 │   ├── App.css             # all component styles (272 lines)
 │   ├── Confetti.js         # particle confetti via react-particles + tsparticles
 │   ├── Dashboard.js        # post-login view, social sharing, logout
@@ -47,9 +47,9 @@
 ```
 
 ## Architecture Rules
-- **Routing**: `window.history.pushState` + `popstate` listener in `src/App.js:12-26`. No react-router. Routes: `/login` (default unauthenticated), `/register`, `/dashboard` (default authenticated), `/settings`.
+- **Routing**: react-router-dom v6 (`BrowserRouter`, `Routes`, `Route`, `Navigate`) in `src/App.js`. Routes: `/login`, `/register`, `/dashboard`, `/settings`, `/orders`, `/profile`.
 - **Auth**: localStorage mock only. Key `isAuthenticated` = `"true"` / absent + `registeredUsers` JSON array. No real auth.
-- **State**: Component-local `useState`. Callbacks passed as props (`navigateTo`, `onLoginSuccess`, `onLogout`). No context, no Redux.
+- **State**: Component-local `useState`. Navigation via `useNavigate()` hook from react-router-dom. No context, no Redux.
 - **Components**: Functional components, default exports, hooks only (`useState`, `useEffect`, `useCallback`). Props destructuring.
 - **Validation**: Inline regex in `Register.js:9-31` — email regex, composite password rules. Rendered as `.validation-error` divs.
 - **No server code, no TypeScript, no styling frameworks**. See `.opencode/agents/governance-agent.md` for full constraints.
@@ -84,5 +84,5 @@
 
 ## Agent Notes
 - **Do**: Make minimal focused changes. Preserve pushState routing, localStorage auth, plain CSS. Follow governance constraints.
-- **Do not**: Add react-router, TypeScript, backend, state management libs, CSS frameworks, or new pages. Never modify Dockerfile build strategy or GitHub Actions workflows. No speculative refactors.
+- **Do not**: Add TypeScript, backend, state management libs, CSS frameworks, or new pages. Never modify Dockerfile build strategy or GitHub Actions workflows. No speculative refactors.
 - Reference `.opencode/agents/governance-agent.md` before any change. Reference `.opencode/agents/_sdlc-rules.md` for change discipline.
