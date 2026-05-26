@@ -5,6 +5,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Dashboard from "./Dashboard";
 import Orders from "./Orders";
+import Customers from "./Customers";
 import Settings from "./Settings";
 import Profile from "./Profile";
 
@@ -44,6 +45,12 @@ const App = () => {
           path="/orders"
           element={
             isAuthenticated ? <Orders /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/customers"
+          element={
+            isAuthenticated ? <Customers /> : <Navigate to="/login" />
           }
         />
         <Route
