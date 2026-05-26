@@ -13,7 +13,7 @@
   },
   "routing": {
     "strategy": "pushState",
-    "knownPaths": ["/login", "/register", "/dashboard", "/settings"]
+    "knownPaths": ["/login", "/register", "/dashboard", "/settings", "/orders"]
   },
   "stateManagement": "localState",
   "styling": "plainCSS",

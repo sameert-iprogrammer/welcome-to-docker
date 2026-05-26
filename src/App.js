@@ -3,6 +3,7 @@ import "./App.css";
 import Login from "./Login";
 import Register from "./Register";
 import Dashboard from "./Dashboard";
+import Orders from "./Orders";
 import Settings from "./Settings";
 import Profile from "./Profile";
 
@@ -58,6 +59,9 @@ const App = () => {
     }
     if (pathname === "/profile") {
       return <Profile navigateTo={navigateTo} />;
+    }
+    if (pathname === "/orders") {
+      return <Orders navigateTo={navigateTo} />;
     }
     return <Dashboard onLogout={() => navigateTo("/login")} navigateTo={navigateTo} />;
   };
