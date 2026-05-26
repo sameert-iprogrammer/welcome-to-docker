@@ -50,7 +50,7 @@
       }
     ]
   },
-  "status": "ready_for_commit",
+  "status": "completed",
   "currentStep": "commit_push",
   "steps": [
     {
@@ -173,9 +173,9 @@
     },
     {
       "key": "commit_push",
-      "status": "pending",
-      "startedAt": null,
-      "completedAt": null,
+      "status": "completed",
+      "startedAt": "2026-05-26T05:49:03Z",
+      "completedAt": "2026-05-26T05:49:03Z",
       "error": null,
       "statusReason": null
     }
@@ -2089,9 +2089,30 @@
       "level": "info",
       "message": "Execution ready for manual commit and push (automated git disabled).",
       "stepKey": "commit_push"
+    },
+    {
+      "id": "c64d305c-a3e5-464c-855a-d35481c2bd08",
+      "timestamp": "2026-05-26T05:49:03Z",
+      "level": "info",
+      "message": "[GIT] Pushed 'feature/login' to origin.",
+      "stepKey": "commit_push"
+    },
+    {
+      "id": "5e6eaa1b-6a23-4f0b-a118-7ad249d665c4",
+      "timestamp": "2026-05-26T05:49:03Z",
+      "level": "info",
+      "message": "[GIT] Step completed: commit_push",
+      "stepKey": "commit_push"
+    },
+    {
+      "id": "f0c7801f-c585-4757-bae1-35e55af7f0fa",
+      "timestamp": "2026-05-26T05:49:03Z",
+      "level": "info",
+      "message": "Execution completed",
+      "stepKey": "commit_push"
     }
   ],
   "error": null,
   "createdAt": "2026-05-26T05:30:13Z",
-  "updatedAt": "2026-05-26T05:48:19Z"
+  "updatedAt": "2026-05-26T05:49:03Z"
 }
