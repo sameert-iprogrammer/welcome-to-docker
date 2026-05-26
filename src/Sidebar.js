@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const Sidebar = ({ navigateTo, currentPath }) => {
+const Sidebar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
 
   const navItems = [
     { label: "Dashboard", path: "/dashboard", icon: "fa-solid fa-gauge-high" },
     { label: "Orders", path: "/orders", icon: "fa-solid fa-truck" },
+    { label: "Customers", path: "/customers", icon: "fa-solid fa-users" },
+    { label: "Products", path: "/products", icon: "fa-solid fa-box" },
   ];
 
   return (
@@ -22,9 +27,9 @@ const Sidebar = ({ navigateTo, currentPath }) => {
           <button
             key={item.path}
             className={`sidebar-nav-item${
-              currentPath === item.path ? " sidebar-nav-item--active" : ""
+              location.pathname === item.path ? " sidebar-nav-item--active" : ""
             }`}
-            onClick={() => navigateTo(item.path)}
+            onClick={() => navigate(item.path)}
             aria-label={item.label}
           >
             <i className={item.icon}></i>

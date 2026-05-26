@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import mockProfile from "./mockProfile";
 
-const Profile = ({ navigateTo }) => {
+const Profile = () => {
+  const navigate = useNavigate();
   const { displayName, email, username, avatarUrl, role, memberSince, bio } =
     mockProfile;
 
@@ -59,7 +61,7 @@ const Profile = ({ navigateTo }) => {
           <button
             type="button"
             className="settings-back-btn"
-            onClick={() => navigateTo("/dashboard")}
+            onClick={() => navigate("/dashboard")}
             aria-label="Back to Dashboard"
           >
             ← Back to Dashboard

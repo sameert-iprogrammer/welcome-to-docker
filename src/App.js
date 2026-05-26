@@ -1,73 +1,86 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import "./App.css";
 import Login from "./Login";
 import Register from "./Register";
 import Dashboard from "./Dashboard";
 import Orders from "./Orders";
+import Customers from "./Customers";
+import Products from "./Products";
 import Settings from "./Settings";
 import Profile from "./Profile";
 
 const App = () => {
-  const [pathname, setPathname] = useState(window.location.pathname);
-
-  // Expose action to update route path on client side
-  const navigateTo = useCallback((path) => {
-    window.history.pushState({}, "", path);
-    setPathname(path);
-  }, []);
-
-  // Listen to standard browser back/forward (history navigation)
-  useEffect(() => {
-    const handlePopState = () => {
-      setPathname(window.location.pathname);
-    };
-    window.addEventListener("popstate", handlePopState);
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-    };
-  }, []);
-
-  // Enforce route guard logic
+  // Subscribe to location changes so isAuthenticated is re-evaluated on navigation
+  useLocation();
   const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      if (pathname !== "/login" && pathname !== "/register") {
-        navigateTo("/login");
-      }
-    } else {
-      if (
-        pathname === "/login" ||
-        pathname === "/register" ||
-        pathname === "/"
-      ) {
-        navigateTo("/dashboard");
-      }
-    }
-  }, [pathname, isAuthenticated, navigateTo]);
-
-  // Determine what view to render based on authentication status
-  const renderView = () => {
-    if (!isAuthenticated) {
-      if (pathname === "/register") {
-        return <Register navigateTo={navigateTo} />;
-      }
-      return <Login onLoginSuccess={() => navigateTo("/dashboard")} navigateTo={navigateTo} />;
-    }
-    if (pathname === "/settings") {
-      return <Settings navigateTo={navigateTo} />;
-    }
-    if (pathname === "/profile") {
-      return <Profile navigateTo={navigateTo} />;
-    }
-    if (pathname === "/orders") {
-      return <Orders navigateTo={navigateTo} />;
-    }
-    return <Dashboard onLogout={() => navigateTo("/login")} navigateTo={navigateTo} />;
-  };
-
-  return <div className="App">{renderView()}</div>;
+  return (
+    <div className="App">
+      <Routes>
+        <Route
+          path="/login"
+          element={
+            isAuthenticated ? <Navigate to="/dashboard" /> : <Login />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            isAuthenticated ? <Navigate to="/dashboard" /> : <Register />
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            isAuthenticated ? <Dashboard /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            isAuthenticated ? <Settings /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            isAuthenticated ? <Orders /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/customers"
+          element={
+            isAuthenticated ? <Customers /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/products"
+          element={
+            isAuthenticated ? <Products /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            isAuthenticated ? <Profile /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="*"
+          element={
+            isAuthenticated ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
+          }
+        />
+      </Routes>
+    </div>
+  );
 };
 
 export default App;
-

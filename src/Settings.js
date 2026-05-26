@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Settings = ({ navigateTo }) => {
+const Settings = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("Jane Doe");
   const [email, setEmail] = useState("jane@example.com");
   const [bio, setBio] = useState("Docker enthusiast and full-stack developer.");
@@ -52,7 +54,7 @@ const Settings = ({ navigateTo }) => {
           <button
             type="button"
             className="settings-back-btn"
-            onClick={() => navigateTo("/dashboard")}
+            onClick={() => navigate("/dashboard")}
             aria-label="Back to Dashboard"
           >
             ← Back to Dashboard

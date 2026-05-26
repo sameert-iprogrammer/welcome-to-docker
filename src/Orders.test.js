@@ -1,16 +1,23 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import Orders from "./Orders";
 
 describe("Orders", () => {
-  const mockNavigateTo = jest.fn();
-
   it("renders without crashing", () => {
-    render(<Orders navigateTo={mockNavigateTo} />);
+    render(
+      <MemoryRouter>
+        <Orders />
+      </MemoryRouter>
+    );
   });
 
   it("renders all 5 mock order rows in the table", () => {
-    const { getByText } = render(<Orders navigateTo={mockNavigateTo} />);
+    const { getByText } = render(
+      <MemoryRouter>
+        <Orders />
+      </MemoryRouter>
+    );
     expect(getByText("ORD-001")).toBeInTheDocument();
     expect(getByText("ORD-002")).toBeInTheDocument();
     expect(getByText("ORD-003")).toBeInTheDocument();
@@ -23,7 +30,9 @@ describe("Orders", () => {
 
   it("filters rows by search term (case-insensitive)", () => {
     const { getByLabelText, queryByText, getByText } = render(
-      <Orders navigateTo={mockNavigateTo} />
+      <MemoryRouter>
+        <Orders />
+      </MemoryRouter>
     );
 
     const searchInput = getByLabelText("Search orders");
@@ -48,7 +57,9 @@ describe("Orders", () => {
 
   it("shows no results message when search matches nothing", () => {
     const { getByLabelText, getByText } = render(
-      <Orders navigateTo={mockNavigateTo} />
+      <MemoryRouter>
+        <Orders />
+      </MemoryRouter>
     );
     const searchInput = getByLabelText("Search orders");
     fireEvent.change(searchInput, { target: { value: "zzzzz" } });

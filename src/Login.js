@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = ({ onLoginSuccess, navigateTo }) => {
+const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -8,7 +10,7 @@ const Login = ({ onLoginSuccess, navigateTo }) => {
     e.preventDefault();
     if (email && password) {
       localStorage.setItem("isAuthenticated", "true");
-      onLoginSuccess();
+      navigate("/dashboard");
     }
   };
 
@@ -54,12 +56,12 @@ const Login = ({ onLoginSuccess, navigateTo }) => {
             Don't have an account?{" "}
             <span
               className="register-link-action"
-              onClick={() => navigateTo("/register")}
+              onClick={() => navigate("/register")}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
-                  navigateTo("/register");
+                  navigate("/register");
                 }
               }}
             >
