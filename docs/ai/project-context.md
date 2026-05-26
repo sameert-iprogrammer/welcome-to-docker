@@ -1,61 +1,88 @@
 # Project Context
 
 ## Stack
-- **Frontend Framework**: React v18.2.0 (Single Page Application via Create React App / `react-scripts` v5.0.1)
-- **Rendering & DOM**: `react-dom` v18.2.0
-- **Animations**: Particle confetti effect powered by `react-particles` and `tsparticles` v2.9.3
-- **CSS Icons**: FontAwesome Free v6.4.2 loaded via CDN in `public/index.html`
-- **Hosting Platform**: Served via `serve` NPM package in production
-- **Containerization**: alpine-based runtime container using `node:22-alpine` as standard base image
+- React 18 with `createRoot` API
+- Create React App (react-scripts 5.0.1), plain JS (no TypeScript)
+- Plain CSS (App.css + index.css), no CSS-in-JS/Tailwind/CSS Modules
+- Font Awesome 6.4.2 from CDN (`public/index.html`)
+- `react-particles` + `tsparticles` — confetti only, not a project-wide pattern
+- No backend, no API calls, no database — all state is localStorage
 
 ## Commands
-- `npm start`: Start the local React development server via `react-scripts`
-- `npm run build`: Build the production-ready optimized static React assets into `build/`
-- `npm test`: Run automated unit tests using Jest
-- `docker build -t welcome-to-docker .`: Build the production multi-platform target Docker image locally
-- `docker run -d -p 8088:3000 --name welcome-to-docker welcome-to-docker`: Run the container mapping host port `8088` to container port `3000` (`serve -s build`)
+| Command | Action |
+|---|---|
+| `npm start` | Dev server (react-scripts) |
+| `npm run build` | Production build to `build/` |
+| `npm test` | Jest + RTL via react-scripts |
+| `npm test -- --watchAll=false` | CI-style single run |
+| `docker build -t welcome-to-docker .` | Build image |
+| `docker run -d -p 8088:3000 --name welcome-to-docker welcome-to-docker` | Run container |
 
 ## Folder Map
-- `.github/workflows/`: Automation pipelines, including branch synchronization (`merge-main-into-small-image.yml`)
-- `.opencode/agents/`: Definitive rulebooks and SDLC guidelines for AI workflows
-- `docs/ai/`: Indexing and context artifacts for AI agents
-- `public/`: Public static web assets (`index.html`, `favicon.ico`, `robots.txt`)
-- `src/`: Mutable frontend React application components and Vanilla CSS styling
+```
+./
+├── .github/workflows/merge-main-into-small-image.yml
+├── .opencode/agents/
+│   ├── _sdlc-rules.md
+│   ├── codebase-analyzer.md
+│   ├── governance-agent.md
+├── public/
+│   ├── favicon.ico
+│   ├── index.html
+│   └── robots.txt
+├── src/
+│   ├── App.js              # pushState routing, auth guard
+│   ├── App.css             # all component styles (272 lines)
+│   ├── Confetti.js         # particle confetti via react-particles + tsparticles
+│   ├── Dashboard.js        # post-login view, social sharing, logout
+│   ├── index.js            # root render entry point
+│   ├── index.css           # body reset (13 lines)
+│   ├── Login.js            # localStorage auth form
+│   ├── Register.js         # multi-field registration form
+│   └── Settings.js         # profile settings (no persistence)
+├── Dockerfile              # multi-stage node:22-alpine + serve
+├── MAINTAINERS.md          # manual Docker build/push instructions
+├── package.json
+└── README.md
+```
 
 ## Architecture Rules
-- **No Complex Global State**: External state management engines (Redux, MobX, Context API) are forbidden. React Hooks (`useCallback`, `useState`, `useEffect`) manage minimal state.
-- **No Client-Side Routing**: The application is a single static screen with a confetti trigger and social share buttons.
-- **Production Asset Delivery**: Static production bundle is served via lightweight standard npm `serve` command on port `3000`.
-- **Target Image Size Optimization**: Strip development dependencies and compile React assets; ensure minimal alpine node image base footprint.
-- **Branch Synchronization Pipeline**: Development is done on `main`. Pull requests merged into `main` trigger a GitHub action merging changes to the production build branch `small-image` automatically.
+- **Routing**: `window.history.pushState` + `popstate` listener in `src/App.js:12-26`. No react-router. Routes: `/login` (default unauthenticated), `/register`, `/dashboard` (default authenticated), `/settings`.
+- **Auth**: localStorage mock only. Key `isAuthenticated` = `"true"` / absent + `registeredUsers` JSON array. No real auth.
+- **State**: Component-local `useState`. Callbacks passed as props (`navigateTo`, `onLoginSuccess`, `onLogout`). No context, no Redux.
+- **Components**: Functional components, default exports, hooks only (`useState`, `useEffect`, `useCallback`). Props destructuring.
+- **Validation**: Inline regex in `Register.js:9-31` — email regex, composite password rules. Rendered as `.validation-error` divs.
+- **No server code, no TypeScript, no styling frameworks**. See `.opencode/agents/governance-agent.md` for full constraints.
 
 ## Testing Rules
-- Jest unit tests are configured through `react-scripts test`. Run `npm test` to verify.
-- AI agents are heavily responsible for manual container verification locally before submitting PRs.
-- Local container lifecycle validation must run using:
-  1. `docker build -t welcome-to-docker .`
-  2. `docker run -d -p 8088:3000 --name welcome-to-docker welcome-to-docker`
-  3. Validate UI loads at `http://localhost:8088` and inspect console for errors.
+- Jest + React Testing Library via `react-scripts test`. ESLint preset `react-app/jest`.
+- Test suffix: `.test.js` alongside source component file.
+- **No test files currently exist** in the repo.
+- At minimum smoke-test new components (render without crashing).
 
 ## Styling and Component Rules
-- **Styling Architecture**: Vanilla CSS is used exclusively (`src/App.css` and `src/index.css`). Utility frameworks (TailwindCSS) or CSS-in-JS (Styled Components) are not permitted.
-- **Component Anatomy**: Code must be modular. Keep components clean, small, and distinct (e.g., separate animation in `src/Confetti.js` from structural markup in `src/App.js`). Avoid inline styles in React JSX files.
-- **Accessibility & Semantics**: Use HTML5 semantic elements (`<header>`, `<main>`, `<h1>`, `<p>`, `<a>`) with precise `aria-label` or description texts.
+- Plain CSS only: `src/App.css` (all component styles) + `src/index.css` (body reset).
+- BEM-ish class naming: `.login-container`, `.login-card`, `.login-form`, `.login-input`, `.login-submit-btn`, `.dashboard-nav`, `.logout-btn`.
+- Single CSS file for components; no new `.css` files to be created.
+- Font Awesome icons via CDN (`<link>` in `public/index.html`).
+- File naming: PascalCase for components, camelCase for utilities.
 
 ## Common Paths
-- [.opencode/agents/_sdlc-rules.md](file:///.opencode/agents/_sdlc-rules.md): Shared SDLC core constraints and execution guidelines.
-- [.opencode/agents/governance-agent.md](file:///.opencode/agents/governance-agent.md): Strict security, performance budgets, and file modification constraints.
-- [package.json](file:///package.json): Package metadata, npm scripts, and dependencies configuration.
-- [Dockerfile](file:///Dockerfile): Container image compilation sequence.
-- [src/App.js](file:///src/App.js): Core application page framework.
-- [src/Confetti.js](file:///src/Confetti.js): Confetti particles rendering component.
+- Entry point: `src/index.js`
+- App root + routing: `src/App.js`
+- Components: `src/` (flat, no subdirectories)
+- Styles: `src/App.css`, `src/index.css`
+- Docker: `Dockerfile` (multi-stage `node:22-alpine`, `serve -s build` on port 3000)
+- CI: `.github/workflows/merge-main-into-small-image.yml` (auto-merge `main` → `small-image`)
+- Governance: `.opencode/agents/governance-agent.md`
+- SDLC rules: `.opencode/agents/_sdlc-rules.md`
 
 ## Deeper Docs
-- [MAINTAINERS.md](file:///MAINTAINERS.md): Maintainer guidelines and release structure notes.
+- `MAINTAINERS.md` — manual Docker buildx multi-arch push instructions.
+- `README.md` — basic build/run instructions.
+- No other documentation artifacts found.
 
 ## Agent Notes
-- **DO NOT** perform speculative enhancements, cleanups, or styling refactors on unrelated parts of the codebase.
-- **DO NOT** introduce any external packages or libraries without explicit approval.
-- **ALWAYS** check that external `target="_blank"` anchor tags include `rel="noopener noreferrer"` to avoid reverse tab-nabbing.
-- **ALWAYS** run local production build checks (`npm run build`) and Docker container validation to ensure clean builds.
-- **REFER** to [.opencode/agents/governance-agent.md](file:///.opencode/agents/governance-agent.md) for full quality budgets, strict security controls, and read-only protected configuration files.
+- **Do**: Make minimal focused changes. Preserve pushState routing, localStorage auth, plain CSS. Follow governance constraints.
+- **Do not**: Add react-router, TypeScript, backend, state management libs, CSS frameworks, or new pages. Never modify Dockerfile build strategy or GitHub Actions workflows. No speculative refactors.
+- Reference `.opencode/agents/governance-agent.md` before any change. Reference `.opencode/agents/_sdlc-rules.md` for change discipline.

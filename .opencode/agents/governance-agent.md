@@ -1,142 +1,100 @@
-# Governance AI Agent Rulebook
+# Governance Agent — welcome-to-docker
 
-This document defines the strict governance rules, security controls, architectural constraints, and operational guidelines for all AI agents and automated workflows operating within the `welcome-to-docker` repository.
+## Project Identity
 
-All AI agents MUST first read and strictly adhere to the shared SDLC rules defined in [.opencode/agents/_sdlc-rules.md](file:///.opencode/agents/_sdlc-rules.md) in addition to this document.
+- **Type**: Educational/demo React SPA for Docker new-user onboarding
+- **Stack**: React 18, Create React App (react-scripts 5.0.1), plain CSS, JavaScript (no TypeScript)
+- **Routing**: Client-side via `window.history.pushState` (no react-router)
+- **Auth Simulation**: localStorage mock (no real backend, no API calls)
+- **Testing**: Jest via `react-scripts test`
+- **Build**: `react-scripts build` → served via `serve` in Docker
+- **Deployment**: Multi-arch Docker images published to `docker/welcome-to-docker` on Docker Hub
+- **Branch Strategy**: `main` → auto-merged to `small-image` via GitHub Actions; manual Docker push by maintainers
 
----
+## Code Quality Rules
 
-## 1. Project Type and Technology Assumptions
+- Fix all ESLint errors (`react-app`/`react-app/jest` presets). Do not suppress warnings without explicit approval.
+- Preserve JSX patterns: functional components, hooks (`useState`, `useEffect`, `useCallback`), default exports.
+- Do not introduce TypeScript, CSS-in-JS, Tailwind, or any styling framework — plain CSS only (App.css, index.css).
+- Keep existing file naming: PascalCase for components (`Dashboard.js`), camelCase for utilities.
+- Tests live alongside source. Add/modify tests when changing logic, not presentation-only code.
+- No speculative refactors, renames, or style cleanups. Change only what the task requires.
 
-### 1.1 Project Context & Purpose
-The `welcome-to-docker` repository contains a minimal, extremely lightweight React web application. Its sole purpose is to serve as the default "first-run container" for new Docker users. It displays a "Congratulations" heading, triggers a confetti/particle animation, and provides social sharing links.
+## Architecture Rules
 
-> [!IMPORTANT]
-> The primary operational goal of this repository is to maintain an extremely small Docker image footprint and a simple, lightning-fast load time. Any changes that inflate the image size, introduce heavy external libraries, or add latency violate the core purpose of this project.
+- **No react-router**: The app uses `window.history.pushState` + `popstate` listener in App.js. Do not introduce a routing library.
+- **No backend**: All state is localStorage-based. Do not add server code, API calls, database, or backend dependencies.
+- **Component pattern**: Components receive `navigateTo` and callbacks as props. Do not introduce context, Redux, or state management libraries.
+- **DO NOT** change the Dockerfile build strategy (multi-stage, `serve`, Alpine) or the deploy workflow (GitHub Actions → Docker Hub).
+- **DO NOT** add new pages/routes not required by the task.
+- Preserve the existing CSS class naming scheme and file organization (single App.css for component styles).
 
-### 1.2 Technology Stack
-*   **Frontend Library**: React 18.2.0 (Single Page Application created via Create React App / `react-scripts` 5.0.1).
-*   **Styling**: Vanilla CSS (`src/App.css` and `src/index.css`). Utility-first or CSS-in-JS frameworks (such as TailwindCSS or Styled Components) are not permitted.
-*   **Animations**: `react-particles` and `tsparticles` (v2.9.3) for the confetti particle effect.
-*   **Infrastructure / Containerization**:
-    *   **Base Image**: `node:22-alpine` (providing a tiny and secure Node runtime environment).
-    *   **Production Hosting**: Served via the lightweight `serve` NPM package (`serve -s build`).
-    *   **Exposed Port**: Port `3000` inside the Docker container, mapped locally during execution.
-    *   **Multi-Platform Target**: `linux/amd64` and `linux/arm64` via Docker Buildx.
-*   **Branching & CI/CD Workflow**:
-    *   `main`: Active development branch for testing and adding changes.
-    *   `small-image`: The production branch used for building the final Docker Hub image `docker/welcome-to-docker:latest`.
-    *   **Sync Automation**: A GitHub Action (`.github/workflows/merge-main-into-small-image.yml`) automatically merges changes from `main` into `small-image` whenever a pull request targeting `main` is merged.
+## Security Rules
 
----
+- This is a **demo app**. No real authentication, encryption, or secrets management is needed.
+- Never commit real credentials, tokens, or secrets.
+- Never introduce authentication libraries (Auth0, Firebase Auth, Passport, etc.).
+- Do not add `helmet`, `cors`, rate-limiting, or production security middleware — this app has no server.
+- Warning: localStorage auth is insecure. If a task implies real security, flag it.
 
-## 2. Core Constraints: Preventing Unsafe & Unrelated Code Changes
+## Testing Expectations
 
-*   **Zero-Unrelated-Edits**: Agents MUST NOT perform speculative enhancements, cleanups, formatting modifications (unless directly requested), or refactors on untouched parts of the codebase.
-*   **Simplicity Preservation**: The application is meant for beginners. Do not add complex state management, routing, telemetry, tracking scripts, or excessive animations.
-*   **Footprint Budget**:
-    *   Node dependencies must not be added. The `node_modules` are stripped from the final Docker build, but installing large dev or prod dependencies increases build time.
-    *   The production bundle should be kept within a strict size limit.
-*   **No Unapproved Public Assets**: Do not add large images, videos, or binary files to `/public` or `/src` without explicit approval. Currently, only `favicon.ico` is allowed.
+- Use `react-scripts test` (Jest + React Testing Library).
+- At minimum, smoke-test new components (render without crashing).
+- Use `.test.js` suffix alongside the component file.
+- Do not add testing libraries beyond what CRA provides.
+- Run `npm test -- --watchAll=false` before completing any change that touches logic.
 
----
+## File/Folder Modification Rules
 
-## 3. Code Quality & Linting Rules
+| Allowed | Forbidden |
+|---|---|
+| Edit existing components in `src/` | Create files outside `src/`, `.opencode/`, or root config |
+| Add new `.js` component files in `src/` | Add `.ts`, `.tsx`, `.vue`, or non-JS source files |
+| Edit `App.css` or `index.css` | Create new `.css` files (use existing ones) |
+| Add `.test.js` alongside source | Modify `Dockerfile` unless task is deployment-related |
+| Edit `.opencode/agents/*.md` | Modify GitHub Actions workflows |
+| Add root config (`.eslintrc`, `.prettierrc`) if aligned with existing | Add `Dockerfile` variants (dev, prod, multi-stage changes) |
 
-*   **No Dead or Unused Code**: Every import, function, variable, or constant must be actively used. Unused imports, redundant console logs, or orphaned variables are strictly forbidden.
-*   **Linting Standards**:
-    *   Adhere to the `eslintConfig` rules inherited from `react-app` and `react-app/jest` defined in `package.json`.
-    *   Ensure all code compiles clean of warning or lint alerts before handoff.
-*   **Styling Consistency**:
-    *   Maintain the existing class-based CSS architecture. Avoid adding inline styles unless dynamically calculated. Keep components clean of inline JSX styles.
+## Dependency Usage Rules
 
----
+- **DO NOT** add: `react-router`, `axios`, `express`, `redux`, `typescript`, `tailwindcss`, `next.js`, `gatsby`, `webpack` (already via CRA), `babel` configs.
+- **Allowed** additions: small utility libs (`lodash`-like, `date-fns`) if justified; testing helpers only if essential.
+- Prefer existing dependencies: `react-particles`, `tsparticles` are for the confetti feature only.
+- Before adding any npm dependency, justify in writing and prefer a no-dependency solution.
+- Run `npm install --no-fund --no-audit` if adding packages.
 
-## 4. Architecture & Design Rules
+## Review Checklist
 
-*   **Component Anatomy**:
-    *   Keep components fully modular and small. Currently, the app comprises `src/App.js` and `src/Confetti.js`.
-    *   If a new UI feature is requested, encapsulate it within its own file under `src/` (e.g., `src/ShareButton.js` or similar) rather than dumping huge JSX blocks into `src/App.js`.
-*   **Minimal/Stateless Flow**:
-    *   Use React Hooks (`useCallback`, `useState`, `useEffect`) exclusively for minimal reactive state.
-    *   Do not introduce Redux, Context API, MobX, or other external state machines.
-*   **Semantic HTML & Accessibility**:
-    *   Use semantic elements (`<header>`, `<main>`, `<h1>`, `<p>`, `<a>`).
-    *   Follow proper accessibility conventions: all images must have an `alt` attribute, and buttons/links must have clear text or `aria-label` tags.
+Before completing any work, verify:
+- [ ] Only files explicitly required were created/modified
+- [ ] No new dependencies were added (or justified)
+- [ ] No TypeScript, react-router, backend, or state management introduced
+- [ ] ESLint passes (`npx react-scripts build` and/or direct lint check)
+- [ ] Existing tests pass (`npm test -- --watchAll=false`)
+- [ ] No real credentials or secrets in code
+- [ ] Dockerfile untouched unless deployment change was required
+- [ ] No changes to GitHub Actions workflows or branch strategy
+- [ ] No speculative/off-topic refactors or cleanups
+- [ ] No new CSS files created
 
----
+## Instructions for Future AI Agents
 
-## 5. Security Rules
+1. Read this governance agent first before making any changes.
+2. Check `package.json` scripts to validate: `npm test`, `npm run build`.
+3. Understand this is a **learning demo** — it intentionally simulates auth and has no backend.
+4. Do not "productionize" the app. No real auth, no API integration, no database, no TypeScript migration.
+5. When in doubt, do less. Minimal change is the default.
+6. If the task conflicts with these rules, flag it before acting.
+7. Keep `_sdlc-rules.md` conventions in parallel with this file.
 
-*   **Zero Secrets**: Under no circumstances should any API keys, tokens, developer credentials, or environment-specific values be committed to the repository.
-*   **Safe External Links**:
-    *   All external anchor tags (`<a>`) targeting `_blank` must strictly include `rel="noopener noreferrer"` to prevent reverse tab-nabbing vulnerabilities. (See current implementation in `src/App.js` lines 17-53).
-*   **Secure Base Images**:
-    *   The `Dockerfile` must continue utilizing official alpine-based slim images (e.g., `node:22-alpine`) to minimize vulnerability exposure.
-*   **No Unsanitized Inputs**:
-    *   Since the application handles social sharing URLs, ensure that any URL generation is fully sanitized and escaped. No direct `dangerouslySetInnerHTML` injections.
+## Prohibited Changes (Hard Blocks)
 
----
-
-## 6. Testing & Verification Expectations
-
-Because the repository does not run intensive CI-based automated tests on every push, the AI agent is heavily responsible for local validation before submitting pull requests:
-
-### 6.1 Local Build Verification
-Before finishing work, the agent must run the production build process to ensure the React bundle compiles without errors, warnings, or chunk size issues:
-```bash
-npm run build
-```
-
-### 6.2 Local Docker Container Verification
-Every change affecting code or packaging must be verified using the local Docker pipeline:
-1. Build the Docker image locally:
-   ```bash
-   docker build -t welcome-to-docker .
-   ```
-2. Run the container mapping host port 8088 to container port 3000:
-   ```bash
-   docker run -d -p 8088:3000 --name welcome-to-docker welcome-to-docker
-   ```
-3. Verify that the app loads properly on `http://localhost:8088` and check the browser console for any warnings or runtime errors.
-
-### 6.3 Test Automation
-If components are modified or added, ensure Jest tests under `react-scripts test` are run and verify that all test suites pass.
-
----
-
-## 7. File & Folder Modification Constraints
-
-### 7.1 Protected Configs (Strictly Read-Only)
-*   `.github/workflows/merge-main-into-small-image.yml`: Must not be modified or deleted, as it controls critical branch synchronization.
-*   `package.json` / `package-lock.json`: Do not modify unless adding an explicitly requested package or adjusting configuration scripts.
-*   `.gitignore` & `.dockerignore`: Must not be modified or bypassed.
-
-### 7.2 Safe Application Code (Mutable)
-*   `src/App.js`, `src/Confetti.js`, `src/App.css`, `src/index.css`: Allowed to modify when implementing verified UI enhancements, social link updates, or bug fixes.
-*   `public/index.html` & `public/robots.txt`: Allowed to modify if meta tags, search engine rules, or core markup require authorized edits.
-
----
-
-## 8. Dependency Usage Rules
-
-*   **Anti-Dependency Bloat**:
-    *   To maintain the optimal first-run experience, do not install packages for utilities that can easily be written natively (e.g., custom hooks, simple styles, standard network fetch, social sharing buttons).
-    *   External JS libraries are strictly forbidden unless explicitly requested in the story definition.
-*   **Development Tooling**:
-    *   Maintain the clean, lightweight environment of CRA without introducing complex bundler overrides (e.g., `craco`, `react-app-rewired`) unless specifically instructed.
-
----
-
-## 9. AI Development & Handoff Checklist
-
-Before completing a task, the AI agent MUST verify:
-
-- [ ] **Traceability**: Every change is traceable to the task/issue description.
-- [ ] **Scope Minimization**: No unrelated lines of code were modified, reformatted, or removed.
-- [ ] **Security**: No secrets, credentials, or unencrypted variables are checked in.
-- [ ] **Best Practices**: All external `target="_blank"` anchor tags include `rel="noopener noreferrer"`.
-- [ ] **Build Validation**: The production build (`npm run build`) runs and completes without errors or warnings.
-- [ ] **Docker Validation**: The local Docker build succeeds (`docker build -t welcome-to-docker .`) and runs successfully on port 8088 with no runtime console errors.
-- [ ] **Dependency Check**: No new dependencies have been added to `package.json` without explicit approval.
-- [ ] **Handoff Summary**: A concise, token-efficient handoff summary of all modifications and validations is generated.
+- **No server code** — no Express, no API routes, no server-side rendering.
+- **No TypeScript migration** — keep `.js` and plain JS.
+- **No routing library** — keep `pushState`-based SPA routing.
+- **No new styling frameworks** — plain CSS only.
+- **No real authentication/authorization** — localStorage mock is intentional.
+- **No Dockerfile refactors** — the build process is designed for the `small-image` walkthrough UX.
+- **No CI/CD modifications** — GitHub Actions workflows are managed separately.
+- **No production security hardening** — this is not a production app.

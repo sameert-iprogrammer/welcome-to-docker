@@ -1,59 +1,73 @@
+import React, { useState, useEffect, useCallback } from "react";
 import "./App.css";
-import Confetti from "./Confetti";
-
-const shareMessage = "I just ran my first container using Docker";
-const shareLink = "https://docker.com/";
+import Login from "./Login";
+import Register from "./Register";
+import Dashboard from "./Dashboard";
+import Orders from "./Orders";
+import Settings from "./Settings";
+import Profile from "./Profile";
 
 const App = () => {
-  return (
-    <div className="App">
-      <Confetti />
-      <header className="App-header">
-        <h1 style={{ marginBottom: "0px" }}>Congratulations!!!</h1>
-        <p style={{ marginTop: "10px", marginBottom: "50px" }}>
-          You ran your first container.
-        </p>
-        <div>
-          <a
-            target="_blank"
-            href={
-              "https://twitter.com/intent/tweet?text=" +
-              shareMessage +
-              "&url=" +
-              shareLink
-            }
-            class="fa-brands fa-x-twitter"
-            rel="noopener noreferrer"
-          >
-            {" "}
-          </a>
-          <a
-            target="_blank"
-            href={
-              "https://www.linkedin.com/sharing/share-offsite/?url=" + shareLink
-            }
-            class="fa-brands fa-linkedin"
-            rel="noopener noreferrer"
-          >
-            {" "}
-          </a>
-          <a
-            target="_blank"
-            href={
-              "https://reddit.com/submit?title=" +
-              shareMessage +
-              "&url=" +
-              shareLink
-            }
-            class="fa-brands fa-reddit"
-            rel="noopener noreferrer"
-          >
-            {" "}
-          </a>
-        </div>
-      </header>
-    </div>
-  );
+  const [pathname, setPathname] = useState(window.location.pathname);
+
+  // Expose action to update route path on client side
+  const navigateTo = useCallback((path) => {
+    window.history.pushState({}, "", path);
+    setPathname(path);
+  }, []);
+
+  // Listen to standard browser back/forward (history navigation)
+  useEffect(() => {
+    const handlePopState = () => {
+      setPathname(window.location.pathname);
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
+
+  // Enforce route guard logic
+  const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      if (pathname !== "/login" && pathname !== "/register") {
+        navigateTo("/login");
+      }
+    } else {
+      if (
+        pathname === "/login" ||
+        pathname === "/register" ||
+        pathname === "/"
+      ) {
+        navigateTo("/dashboard");
+      }
+    }
+  }, [pathname, isAuthenticated, navigateTo]);
+
+  // Determine what view to render based on authentication status
+  const renderView = () => {
+    if (!isAuthenticated) {
+      if (pathname === "/register") {
+        return <Register navigateTo={navigateTo} />;
+      }
+      return <Login onLoginSuccess={() => navigateTo("/dashboard")} navigateTo={navigateTo} />;
+    }
+    if (pathname === "/settings") {
+      return <Settings navigateTo={navigateTo} />;
+    }
+    if (pathname === "/profile") {
+      return <Profile navigateTo={navigateTo} />;
+    }
+    if (pathname === "/orders") {
+      return <Orders navigateTo={navigateTo} />;
+    }
+    return <Dashboard onLogout={() => navigateTo("/login")} navigateTo={navigateTo} />;
+  };
+
+  return <div className="App">{renderView()}</div>;
 };
 
 export default App;
+
