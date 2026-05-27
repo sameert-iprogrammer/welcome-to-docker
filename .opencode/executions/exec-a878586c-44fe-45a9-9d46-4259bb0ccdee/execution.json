@@ -40,7 +40,7 @@
       "runFullTestSuiteBeforeFinalReview": false
     }
   },
-  "status": "ready_for_commit",
+  "status": "completed",
   "currentStep": "commit_push",
   "steps": [
     {
@@ -93,9 +93,9 @@
     },
     {
       "key": "commit_push",
-      "status": "pending",
-      "startedAt": null,
-      "completedAt": null,
+      "status": "completed",
+      "startedAt": "2026-05-27T09:28:31Z",
+      "completedAt": "2026-05-27T09:28:31Z",
       "error": null,
       "statusReason": null
     }
@@ -609,9 +609,59 @@
       "level": "info",
       "message": "Execution ready for manual commit and push (automated git disabled).",
       "stepKey": "commit_push"
+    },
+    {
+      "id": "4ea1f01b-b05b-4825-879a-9694752fb047",
+      "timestamp": "2026-05-27T09:28:31Z",
+      "level": "info",
+      "message": "[GIT] Commit message: warn: CPU lacks AVX support, strange crashes may occur. Reinstall Bun or",
+      "stepKey": "commit_push"
+    },
+    {
+      "id": "ce0ebd5e-764f-44cf-87b4-905722cc8c97",
+      "timestamp": "2026-05-27T09:28:31Z",
+      "level": "info",
+      "message": "[GIT] Pushed 'feature/login' to origin.",
+      "stepKey": "commit_push"
+    },
+    {
+      "id": "a56bec06-bfe8-4ace-abc3-e932a04d096a",
+      "timestamp": "2026-05-27T09:28:31Z",
+      "level": "info",
+      "message": "[GIT] Step completed: commit_push",
+      "stepKey": "commit_push"
+    },
+    {
+      "id": "3e00ed19-399f-4159-a04f-4aaf41527346",
+      "timestamp": "2026-05-27T09:28:31Z",
+      "level": "info",
+      "message": "Execution completed",
+      "stepKey": "commit_push"
+    },
+    {
+      "id": "a999f2b2-956c-4f31-a928-25ee679b622f",
+      "timestamp": "2026-05-27T09:28:31Z",
+      "level": "info",
+      "message": "Cleaned execution runtime scratch artifacts.",
+      "stepKey": "commit_push"
     }
   ],
   "error": null,
   "createdAt": "2026-05-27T09:25:18Z",
-  "updatedAt": "2026-05-27T09:28:04Z"
+  "updatedAt": "2026-05-27T09:28:36Z",
+  "pullRequest": {
+    "repositoryId": 323,
+    "repositoryFullName": "sameert-iprogrammer/welcome-to-docker",
+    "number": 4,
+    "url": "https://github.com/sameert-iprogrammer/welcome-to-docker/pull/4",
+    "status": "draft_created",
+    "draft": true,
+    "state": "open",
+    "headBranch": "feature/login",
+    "baseBranch": "main",
+    "createdAt": "2026-05-27T09:28:35.000Z",
+    "updatedAt": "2026-05-27T09:28:35.000Z",
+    "lastSyncedAt": "2026-05-27T09:28:36.630Z"
+  },
+  "pullRequestStatus": "draft_created"
 }
