@@ -309,6 +309,13 @@
   line-height: 1.5;
 }
 
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
 /* Micro-animations */
 @keyframes cardFadeIn {
   from {
