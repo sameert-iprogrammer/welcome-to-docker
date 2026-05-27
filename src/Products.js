@@ -1,17 +1,23 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { toast } from "react-toastify";
 import Sidebar from "./Sidebar";
 import { mockProducts } from "./productsMock";
 
 const PAGE_SIZE = 10;
 
+const emptyForm = { sku: "", name: "", category: "", price: "" };
+
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [products, setProducts] = useState(mockProducts);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [form, setForm] = useState(emptyForm);
 
   const filteredProducts = useMemo(() => {
     const term = searchTerm.toLowerCase();
-    if (!term) return mockProducts;
-    return mockProducts.filter((p) => {
+    if (!term) return products;
+    return products.filter((p) => {
       const str =
         String(p.id) +
         p.sku +
@@ -20,7 +26,30 @@ const Products = () => {
         String(p.price);
       return str.toLowerCase().includes(term);
     });
-  }, [searchTerm]);
+  }, [searchTerm, products]);
+
+  const handleOpenModal = () => {
+    setForm(emptyForm);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleFormChange = (field) => (e) =>
+    setForm((prev) => ({ ...prev, [field]: e.target.value }));
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    const nextId = products.length
+      ? Math.max(...products.map((p) => p.id)) + 1
+      : 1;
+    const newProduct = { id: nextId, ...form, price: Number(form.price) };
+    setProducts((prev) => [...prev, newProduct]);
+    setIsModalOpen(false);
+    toast.success("Product added successfully");
+  };
 
   useEffect(() => {
     setCurrentPage(1);
@@ -37,7 +66,12 @@ const Products = () => {
     <div className="App App--sidebar">
       <Sidebar />
       <div className="customers-container">
-        <h2 className="customers-title">Products</h2>
+        <div className="customers-header">
+          <h2 className="customers-title">Products</h2>
+          <button type="button" className="customers-add-btn" onClick={handleOpenModal} aria-label="Add product">
+            Add Product
+          </button>
+        </div>
         <input
           type="text"
           className="orders-search login-input"
@@ -100,6 +134,43 @@ const Products = () => {
             >
               Next
             </button>
+          </div>
+        )}
+        {isModalOpen && (
+          <div className="product-modal-overlay" role="dialog" aria-modal="true" aria-label="Add Product">
+            <div className="product-modal">
+              <h3 className="product-modal-title">Add Product</h3>
+              <form className="product-modal-form" onSubmit={handleSave}>
+                <div className="form-group">
+                  <label htmlFor="product-sku">SKU</label>
+                  <input id="product-sku" type="text" className="login-input" value={form.sku} onChange={handleFormChange("sku")} aria-label="SKU" required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="product-name">Name</label>
+                  <input id="product-name" type="text" className="login-input" value={form.name} onChange={handleFormChange("name")} aria-label="Name" required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="product-category">Category</label>
+                  <select id="product-category" className="login-input" value={form.category} onChange={handleFormChange("category")} aria-label="Category" required>
+                    <option value="">Select category</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Office">Office</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Storage">Storage</option>
+                    <option value="Wearables">Wearables</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="product-price">Price</label>
+                  <input id="product-price" type="number" step="0.01" min="0" className="login-input" value={form.price} onChange={handleFormChange("price")} aria-label="Price" required />
+                </div>
+                <div className="product-modal-actions">
+                  <button type="button" className="product-modal-cancel-btn" onClick={handleCloseModal} aria-label="Cancel add product">Cancel</button>
+                  <button type="submit" className="login-submit-btn product-modal-save-btn" aria-label="Save product">Save</button>
+                </div>
+              </form>
+            </div>
           </div>
         )}
       </div>
