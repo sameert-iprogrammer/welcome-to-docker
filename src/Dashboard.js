@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Confetti from "./Confetti";
 import Sidebar from "./Sidebar";
 
@@ -11,6 +12,7 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
+    toast.success("Logged out successfully");
     navigate("/login");
   };
 
