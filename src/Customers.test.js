@@ -1,9 +1,18 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import { toast } from "react-toastify";
 import Customers from "./Customers";
 
+jest.mock("react-toastify", () => ({
+  toast: { success: jest.fn() },
+}));
+
 describe("Customers", () => {
+  beforeEach(() => {
+    toast.success.mockClear();
+  });
+
   it("renders without crashing", () => {
     render(
       <MemoryRouter>
@@ -104,5 +113,80 @@ describe("Customers", () => {
     expect(getByText(/page 1 of 1/i)).toBeInTheDocument();
     expect(getByText("Alice Johnson")).toBeInTheDocument();
     expect(queryByText("Frank Miller")).not.toBeInTheDocument();
+  });
+
+  it("renders an Add Customer button", () => {
+    const { getByLabelText } = render(
+      <MemoryRouter>
+        <Customers />
+      </MemoryRouter>
+    );
+    expect(getByLabelText("Add customer")).toBeInTheDocument();
+  });
+
+  it("opens the modal with empty form fields on Add Customer click", () => {
+    const { getByLabelText } = render(
+      <MemoryRouter>
+        <Customers />
+      </MemoryRouter>
+    );
+
+    fireEvent.click(getByLabelText("Add customer"));
+
+    expect(getByLabelText("Add Customer")).toBeInTheDocument();
+    expect(getByLabelText("Name").value).toBe("");
+    expect(getByLabelText("Email").value).toBe("");
+    expect(getByLabelText("Company").value).toBe("");
+    expect(getByLabelText("Phone").value).toBe("");
+    expect(getByLabelText("Status").value).toBe("Active");
+    expect(getByLabelText("Save customer")).toBeInTheDocument();
+    expect(getByLabelText("Cancel add customer")).toBeInTheDocument();
+  });
+
+  it("closes the modal without saving when Cancel is clicked", () => {
+    const { getByLabelText, queryByLabelText, queryByText } = render(
+      <MemoryRouter>
+        <Customers />
+      </MemoryRouter>
+    );
+
+    fireEvent.click(getByLabelText("Add customer"));
+    expect(getByLabelText("Add Customer")).toBeInTheDocument();
+
+    fireEvent.click(getByLabelText("Cancel add customer"));
+
+    expect(queryByLabelText("Add Customer")).toBeNull();
+    expect(toast.success).not.toHaveBeenCalled();
+    expect(queryByText("Zara Test")).toBeNull();
+  });
+
+  it("saves a new customer, fires toast, closes modal, and shows the row", () => {
+    const { getByLabelText, queryByLabelText, getByText } = render(
+      <MemoryRouter>
+        <Customers />
+      </MemoryRouter>
+    );
+
+    fireEvent.click(getByLabelText("Add customer"));
+    fireEvent.change(getByLabelText("Name"), { target: { value: "Zara Test" } });
+    fireEvent.change(getByLabelText("Email"), {
+      target: { value: "zara@example.com" },
+    });
+    fireEvent.change(getByLabelText("Company"), { target: { value: "TestCo" } });
+    fireEvent.change(getByLabelText("Phone"), { target: { value: "555-9999" } });
+
+    fireEvent.click(getByLabelText("Save customer"));
+
+    expect(queryByLabelText("Add Customer")).toBeNull();
+    expect(toast.success).toHaveBeenCalledWith("Customer added successfully");
+
+    // Filter to surface the newly-added row regardless of pagination position.
+    fireEvent.change(getByLabelText("Search customers"), {
+      target: { value: "Zara" },
+    });
+    expect(getByText("Zara Test")).toBeInTheDocument();
+    expect(getByText("zara@example.com")).toBeInTheDocument();
+    expect(getByText("TestCo")).toBeInTheDocument();
+    expect(getByText("555-9999")).toBeInTheDocument();
   });
 });

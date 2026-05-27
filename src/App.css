@@ -603,3 +603,123 @@
   font-size: 14px;
 }
 
+.customers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.customers-header .customers-title {
+  margin-bottom: 0;
+}
+
+.customers-add-btn {
+  padding: 10px 20px;
+  background: #1d63b8;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.customers-add-btn:hover {
+  background: #154c8c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(29, 99, 184, 0.3);
+}
+
+.customers-add-btn:active {
+  transform: translateY(1px);
+}
+
+.customer-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.customer-modal {
+  background: #112240;
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  padding: 28px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  min-width: 360px;
+  max-width: 480px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.customer-modal-title {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+}
+
+.customer-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.customer-modal-form .form-group {
+  margin-bottom: 0;
+}
+
+.customer-modal-form label {
+  display: block;
+  color: #a8b2d1;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.customer-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.customer-modal-save-btn {
+  width: auto;
+  margin-top: 0;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.customer-modal-cancel-btn {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.customer-modal-cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
