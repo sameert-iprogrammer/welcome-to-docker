@@ -1,11 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Confetti from "./Confetti";
 import Sidebar from "./Sidebar";
 
-const shareMessage = "I just ran my first container using Docker";
-const shareLink = "https://docker.com/";
+const metrics = [
+  { id: 1, icon: "fa-cubes", value: "12", label: "Total Containers" },
+  { id: 2, icon: "fa-play-circle", value: "8", label: "Running" },
+  { id: 3, icon: "fa-layer-group", value: "24", label: "Images" },
+  { id: 4, icon: "fa-database", value: "6", label: "Volumes" },
+];
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -20,8 +23,6 @@ const Dashboard = () => {
     <div className="App App--sidebar">
       <Sidebar />
       <div className="dashboard-content">
-        <Confetti />
-        
         <div className="dashboard-nav">
           <button
             className="profile-btn"
@@ -38,53 +39,15 @@ const Dashboard = () => {
           </button>
         </div>
 
-        <header className="App-header">
-          <h1 style={{ marginBottom: "0px" }}>Congratulations!!!</h1>
-          <p style={{ marginTop: "10px", marginBottom: "50px" }}>
-            You ran your first container.
-          </p>
-          <div className="social-links">
-            <a
-              target="_blank"
-              href={
-                "https://twitter.com/intent/tweet?text=" +
-                encodeURIComponent(shareMessage) +
-                "&url=" +
-                encodeURIComponent(shareLink)
-              }
-              className="fa-brands fa-x-twitter"
-              rel="noopener noreferrer"
-              aria-label="Share on X"
-            >
-              {" "}
-            </a>
-            <a
-              target="_blank"
-              href={
-                "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(shareLink)
-              }
-              className="fa-brands fa-linkedin"
-              rel="noopener noreferrer"
-              aria-label="Share on LinkedIn"
-            >
-              {" "}
-            </a>
-            <a
-              target="_blank"
-              href={
-                "https://reddit.com/submit?title=" +
-                encodeURIComponent(shareMessage) +
-                "&url=" +
-                encodeURIComponent(shareLink)
-              }
-              className="fa-brands fa-reddit"
-              rel="noopener noreferrer"
-              aria-label="Share on Reddit"
-            >
-              {" "}
-            </a>
-          </div>
-        </header>
+        <div className="metrics-grid">
+          {metrics.map((m) => (
+            <div className="metric-card" key={m.id}>
+              <i className={`fa-solid ${m.icon} metric-icon`}></i>
+              <span className="metric-value">{m.value}</span>
+              <span className="metric-label">{m.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
