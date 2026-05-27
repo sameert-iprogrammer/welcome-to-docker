@@ -1,5 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Login from "./Login";
 import Register from "./Register";
@@ -17,6 +19,12 @@ const App = () => {
 
   return (
     <div className="App">
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        theme="light"
+      />
       <Routes>
         <Route
           path="/login"

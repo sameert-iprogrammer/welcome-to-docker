@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const Login = () => {
     e.preventDefault();
     if (email && password) {
       localStorage.setItem("isAuthenticated", "true");
+      toast.success("Signed in successfully");
       navigate("/dashboard");
     }
   };
