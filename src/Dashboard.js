@@ -1,6 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import Sidebar from "./Sidebar";
 
 const metrics = [
@@ -11,34 +9,10 @@ const metrics = [
 ];
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem("isAuthenticated");
-    toast.success("Logged out successfully");
-    navigate("/login");
-  };
-
   return (
     <div className="App App--sidebar">
       <Sidebar />
       <div className="dashboard-content">
-        <div className="dashboard-nav">
-          <button
-            className="profile-btn"
-            onClick={() => navigate("/profile")}
-            aria-label="View profile"
-          >
-            <i className="fa-solid fa-circle-user"></i>
-          </button>
-          <button className="settings-btn" onClick={() => navigate("/settings")} aria-label="Settings">
-            <i className="fa-solid fa-gear"></i>
-          </button>
-          <button className="logout-btn" onClick={handleLogout} aria-label="Log Out">
-            Log Out
-          </button>
-        </div>
-
         <div className="metrics-grid">
           {metrics.map((m) => (
             <div className="metric-card" key={m.id}>

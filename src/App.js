@@ -11,6 +11,7 @@ import Customers from "./Customers";
 import Products from "./Products";
 import Settings from "./Settings";
 import Profile from "./Profile";
+import Navbar from "./Navbar";
 
 const App = () => {
   // Subscribe to location changes so isAuthenticated is re-evaluated on navigation
@@ -25,6 +26,7 @@ const App = () => {
         hideProgressBar={false}
         theme="light"
       />
+      {isAuthenticated && <Navbar />}
       <Routes>
         <Route
           path="/login"
