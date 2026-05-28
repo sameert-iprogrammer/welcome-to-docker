@@ -11,6 +11,7 @@ import Customers from "./Customers";
 import Products from "./Products";
 import Settings from "./Settings";
 import Profile from "./Profile";
+import FAQ from "./FAQ";
 import Navbar from "./Navbar";
 
 const App = () => {
@@ -74,6 +75,12 @@ const App = () => {
           path="/profile"
           element={
             isAuthenticated ? <Profile /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/faq"
+          element={
+            isAuthenticated ? <FAQ /> : <Navigate to="/login" />
           }
         />
         <Route

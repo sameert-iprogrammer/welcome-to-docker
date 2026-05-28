@@ -20,6 +20,7 @@ describe("Sidebar", () => {
     );
     expect(getByText("Dashboard")).toBeInTheDocument();
     expect(getByText("Orders")).toBeInTheDocument();
+    expect(getByText("FAQ")).toBeInTheDocument();
   });
 
   it("collapses and expands on toggle button click", () => {
@@ -41,13 +42,23 @@ describe("Sidebar", () => {
   });
 
   it("applies active class to the current path nav item", () => {
-    const { container } = render(
+    const { getByLabelText } = render(
       <MemoryRouter initialEntries={["/orders"]}>
         <Sidebar />
       </MemoryRouter>
     );
-    const navItems = container.querySelectorAll(".sidebar-nav-item");
-    expect(navItems[1]).toHaveClass("sidebar-nav-item--active");
-    expect(navItems[0]).not.toHaveClass("sidebar-nav-item--active");
+    expect(getByLabelText("Orders")).toHaveClass("sidebar-nav-item--active");
+    expect(getByLabelText("Dashboard")).not.toHaveClass(
+      "sidebar-nav-item--active"
+    );
+  });
+
+  it("applies active class to FAQ when on /faq", () => {
+    const { getByLabelText } = render(
+      <MemoryRouter initialEntries={["/faq"]}>
+        <Sidebar />
+      </MemoryRouter>
+    );
+    expect(getByLabelText("FAQ")).toHaveClass("sidebar-nav-item--active");
   });
 });
