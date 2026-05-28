@@ -868,3 +868,62 @@
   letter-spacing: 0.5px;
 }
 
+/* Leaderboard Section */
+.leaderboard-title {
+  color: #ffffff;
+  font-size: 24px;
+  margin: 40px 0 24px;
+  font-weight: 700;
+  max-width: 700px;
+  width: 100%;
+  text-align: left;
+}
+
+.leaderboard-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 700px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #112240;
+  min-width: 600px;
+}
+
+.leaderboard-table-th {
+  color: #8892b0;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0a192f;
+}
+
+.leaderboard-table-td {
+  color: #e6f1ff;
+  font-size: 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.leaderboard-table tbody tr:hover {
+  background: rgba(29, 99, 184, 0.08);
+}
+
+.leaderboard-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.badge-icon {
+  font-size: 20px;
+  display: inline-block;
+}
+

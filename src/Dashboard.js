@@ -10,6 +10,15 @@ const metrics = [
   { id: 4, icon: "fa-database", value: "6", label: "Volumes" },
 ];
 
+const leaderboard = [
+  { rank: 1, name: "Captain Whale", containers: 42, points: 9850, badge: "🐳" },
+  { rank: 2, name: "Docker Dynamo", containers: 38, points: 9200, badge: "🐋" },
+  { rank: 3, name: "Container King", containers: 35, points: 8750, badge: "🐬" },
+  { rank: 4, name: "Stack Surfer", containers: 29, points: 7400, badge: "🦈" },
+  { rank: 5, name: "Image Artist", containers: 24, points: 6200, badge: "🐠" },
+  { rank: 6, name: "Volume Voyager", containers: 18, points: 4800, badge: "🐙" },
+];
+
 const Dashboard = () => {
   const navigate = useNavigate();
 
@@ -47,6 +56,35 @@ const Dashboard = () => {
               <span className="metric-label">{m.label}</span>
             </div>
           ))}
+        </div>
+
+        <h2 className="leaderboard-title">Leaderboard</h2>
+        <div className="leaderboard-wrapper">
+          <table className="leaderboard-table">
+            <thead>
+              <tr>
+                <th className="leaderboard-table-th">Rank</th>
+                <th className="leaderboard-table-th">User</th>
+                <th className="leaderboard-table-th">Containers</th>
+                <th className="leaderboard-table-th">Points</th>
+                <th className="leaderboard-table-th">Badge</th>
+              </tr>
+            </thead>
+            <tbody>
+              {leaderboard.map((entry) => (
+                <tr key={entry.rank}>
+                  <td className="leaderboard-table-td">
+                    {entry.rank === 1 && <i className="fa-solid fa-trophy" style={{ color: "#ffd700", marginRight: 6 }}></i>}
+                    {entry.rank}
+                  </td>
+                  <td className="leaderboard-table-td">{entry.name}</td>
+                  <td className="leaderboard-table-td">{entry.containers}</td>
+                  <td className="leaderboard-table-td">{entry.points.toLocaleString()}</td>
+                  <td className="leaderboard-table-td"><span className="badge-icon">{entry.badge}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
