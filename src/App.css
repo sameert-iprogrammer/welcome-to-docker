@@ -458,12 +458,74 @@
   color: #61dafb;
 }
 
+/* Privacy Policy Page */
+.privacy-card {
+  background: #112240;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  padding: 40px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 85vh;
+  overflow-y: auto;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-sizing: border-box;
+  animation: cardFadeIn 0.5s ease-out;
+}
+
+.privacy-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.privacy-title {
+  color: #ccd6f6;
+  font-size: 26px;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+}
+
+.privacy-updated {
+  color: #8892b0;
+  font-size: 14px;
+  margin: 0;
+}
+
+.privacy-body {
+  margin-bottom: 24px;
+}
+
+.privacy-section {
+  margin-bottom: 20px;
+}
+
+.privacy-section h3 {
+  color: #ccd6f6;
+  font-size: 16px;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.privacy-section p {
+  color: #8892b0;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 480px) {
   .login-card {
     padding: 30px 20px;
   }
+  .privacy-card {
+    padding: 30px 20px;
+  }
   .login-header h2 {
+    font-size: 22px;
+  }
+  .privacy-title {
     font-size: 22px;
   }
 }

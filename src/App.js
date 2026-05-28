@@ -9,9 +9,12 @@ import Dashboard from "./Dashboard";
 import Orders from "./Orders";
 import Customers from "./Customers";
 import Products from "./Products";
+import Masters from "./Masters";
 import Settings from "./Settings";
 import Profile from "./Profile";
 import FAQ from "./FAQ";
+import PrivacyPolicy from "./PrivacyPolicy";
+import TermsAndConditions from "./TermsAndConditions";
 import Navbar from "./Navbar";
 
 const App = () => {
@@ -41,6 +44,8 @@ const App = () => {
             isAuthenticated ? <Navigate to="/dashboard" /> : <Register />
           }
         />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
         <Route
           path="/dashboard"
           element={
@@ -69,6 +74,12 @@ const App = () => {
           path="/products"
           element={
             isAuthenticated ? <Products /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/masters"
+          element={
+            isAuthenticated ? <Masters /> : <Navigate to="/login" />
           }
         />
         <Route

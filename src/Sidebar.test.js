@@ -3,7 +3,17 @@ import { render, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
+const mockNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockNavigate,
+}));
+
 describe("Sidebar", () => {
+  beforeEach(() => {
+    mockNavigate.mockClear();
+  });
+
   it("renders without crashing", () => {
     render(
       <MemoryRouter initialEntries={["/dashboard"]}>
@@ -60,5 +70,16 @@ describe("Sidebar", () => {
       </MemoryRouter>
     );
     expect(getByLabelText("FAQ")).toHaveClass("sidebar-nav-item--active");
+  });
+
+  it("renders Masters nav item and navigates to /masters on click", () => {
+    const { getByText, getByLabelText } = render(
+      <MemoryRouter initialEntries={["/dashboard"]}>
+        <Sidebar />
+      </MemoryRouter>
+    );
+    expect(getByText("Masters")).toBeInTheDocument();
+    fireEvent.click(getByLabelText("Masters"));
+    expect(mockNavigate).toHaveBeenCalledWith("/masters");
   });
 });
