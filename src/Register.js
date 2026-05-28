@@ -139,6 +139,38 @@ const Register = () => {
           >
             Create Account
           </button>
+          <div className="register-link">
+            <span
+              className="register-link-action"
+              onClick={() => navigate("/privacy")}
+              role="button"
+              tabIndex={0}
+              aria-label="View Privacy Policy"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  navigate("/privacy");
+                }
+              }}
+            >
+              Privacy Policy
+            </span>
+          </div>
+          <div className="register-link">
+            <span
+              className="register-link-action"
+              onClick={() => navigate("/terms")}
+              role="button"
+              tabIndex={0}
+              aria-label="View Terms and Conditions"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  navigate("/terms");
+                }
+              }}
+            >
+              Terms and Conditions
+            </span>
+          </div>
         </form>
       </div>
     </div>

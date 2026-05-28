@@ -13,7 +13,7 @@
   },
   "routing": {
     "strategy": "react-router",
-    "knownPaths": ["/login", "/register", "/dashboard", "/settings", "/orders", "/customers"]
+    "knownPaths": ["/login", "/register", "/privacy", "/terms", "/dashboard", "/settings", "/orders", "/customers", "/masters"]
   },
   "stateManagement": "localState",
   "styling": "plainCSS",
