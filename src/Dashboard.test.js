@@ -37,7 +37,7 @@ describe("Dashboard", () => {
       </MemoryRouter>
     );
     const svgs = container.querySelectorAll("svg");
-    expect(svgs.length).toBeGreaterThanOrEqual(1);
+    expect(svgs.length).toBeGreaterThanOrEqual(3);
   });
 
   it("renders pie legend label", () => {
@@ -56,5 +56,23 @@ describe("Dashboard", () => {
       </MemoryRouter>
     );
     expect(getByText("Jan")).toBeInTheDocument();
+  });
+
+  it("contains CPU Usage heading", () => {
+    const { getByText } = render(
+      <MemoryRouter initialEntries={["/dashboard"]}>
+        <Dashboard />
+      </MemoryRouter>
+    );
+    expect(getByText("CPU Usage")).toBeInTheDocument();
+  });
+
+  it("contains Network Traffic heading", () => {
+    const { getByText } = render(
+      <MemoryRouter initialEntries={["/dashboard"]}>
+        <Dashboard />
+      </MemoryRouter>
+    );
+    expect(getByText("Network Traffic")).toBeInTheDocument();
   });
 });

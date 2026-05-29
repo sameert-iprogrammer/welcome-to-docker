@@ -24,6 +24,26 @@ const barData = [
   { label: "Jun", value: 70, color: "#1d63b8" },
 ];
 
+const cpuData = [
+  { label: "08:00", value: 30 },
+  { label: "09:00", value: 55 },
+  { label: "10:00", value: 80 },
+  { label: "11:00", value: 95 },
+  { label: "12:00", value: 65 },
+  { label: "13:00", value: 45 },
+  { label: "14:00", value: 70 },
+];
+
+const networkData = [
+  { label: "Mon", value: 20 },
+  { label: "Tue", value: 45 },
+  { label: "Wed", value: 70 },
+  { label: "Thu", value: 85 },
+  { label: "Fri", value: 60 },
+  { label: "Sat", value: 40 },
+  { label: "Sun", value: 55 },
+];
+
 const PieChart = () => {
   const cx = 120, cy = 120, r = 100;
   const total = pieData.reduce((sum, d) => sum + d.value, 0);
@@ -115,6 +135,68 @@ const BarChart = () => {
   );
 };
 
+const LineChart = ({ data, color }) => {
+  const width = 400, height = 220;
+  const margin = { top: 20, bottom: 36, left: 44, right: 20 };
+  const chartW = width - margin.left - margin.right;
+  const chartH = height - margin.top - margin.bottom;
+  const maxValue = Math.max(...data.map((d) => d.value));
+  const gridValues = [0, 25, 50, 75];
+
+  const xScale = (i) => margin.left + (i / (data.length - 1)) * chartW;
+  const yScale = (v) => margin.top + chartH - (v / maxValue) * chartH;
+
+  const points = data
+    .map((d, i) => {
+      const x = xScale(i);
+      const y = yScale(d.value);
+      return `${x},${y}`;
+    })
+    .join(" ");
+
+  return (
+    <div className="line-chart-container">
+      <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
+        {gridValues.map((v, i) => {
+          const y = yScale(v);
+          return (
+            <g key={i}>
+              <line
+                x1={margin.left} y1={y}
+                x2={width - margin.right} y2={y}
+                stroke="rgba(255,255,255,0.1)" strokeWidth="1"
+              />
+              <text x={margin.left - 8} y={y + 4} textAnchor="end" fill="#8892b0" fontSize="11">
+                {v}
+              </text>
+            </g>
+          );
+        })}
+        <polyline
+          points={points}
+          fill="none" stroke={color} strokeWidth="2.5"
+          strokeLinecap="round" strokeLinejoin="round"
+        />
+        {data.map((d, i) => {
+          const x = xScale(i);
+          const y = yScale(d.value);
+          return (
+            <g key={i}>
+              <circle cx={x} cy={y} r="4" fill={color} />
+              <text x={x} y={y - 10} textAnchor="middle" fill="#8892b0" fontSize="11">
+                {d.value}
+              </text>
+              <text x={x} y={height - 8} textAnchor="middle" fill="#8892b0" fontSize="11">
+                {d.label}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+};
+
 const Dashboard = () => {
   return (
     <div className="App App--sidebar">
@@ -137,6 +219,14 @@ const Dashboard = () => {
           <div className="chart-section bar-chart-wrapper">
             <h2>Monthly Activity</h2>
             <BarChart />
+          </div>
+          <div className="chart-section line-chart-wrapper">
+            <h2>CPU Usage</h2>
+            <LineChart data={cpuData} color="#61dafb" />
+          </div>
+          <div className="chart-section line-chart-wrapper">
+            <h2>Network Traffic</h2>
+            <LineChart data={networkData} color="#27ae60" />
           </div>
         </div>
       </div>

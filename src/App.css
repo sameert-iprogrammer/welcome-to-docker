@@ -1417,3 +1417,15 @@
   display: block;
 }
 
+.line-chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.line-chart-container svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
