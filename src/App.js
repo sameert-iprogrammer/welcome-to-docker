@@ -16,6 +16,7 @@ import FAQ from "./FAQ";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsAndConditions from "./TermsAndConditions";
 import Approvals from "./Approvals";
+import Logs from "./Logs";
 import Navbar from "./Navbar";
 
 const App = () => {
@@ -93,6 +94,12 @@ const App = () => {
           path="/approvals"
           element={
             isAuthenticated ? <Approvals /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/logs"
+          element={
+            isAuthenticated ? <Logs /> : <Navigate to="/login" />
           }
         />
         <Route
