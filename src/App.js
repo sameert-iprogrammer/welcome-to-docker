@@ -15,6 +15,7 @@ import Profile from "./Profile";
 import FAQ from "./FAQ";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsAndConditions from "./TermsAndConditions";
+import Approvals from "./Approvals";
 import Navbar from "./Navbar";
 
 const App = () => {
@@ -86,6 +87,12 @@ const App = () => {
           path="/profile"
           element={
             isAuthenticated ? <Profile /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/approvals"
+          element={
+            isAuthenticated ? <Approvals /> : <Navigate to="/login" />
           }
         />
         <Route

@@ -12,6 +12,7 @@ const Sidebar = () => {
     { label: "Customers", path: "/customers", icon: "fa-solid fa-users" },
     { label: "Products", path: "/products", icon: "fa-solid fa-box" },
     { label: "Masters", path: "/masters", icon: "fa-solid fa-database" },
+    { label: "Approvals", path: "/approvals", icon: "fa-solid fa-check-circle" },
     { label: "FAQ", path: "/faq", icon: "fa-solid fa-circle-question" },
   ];
 
