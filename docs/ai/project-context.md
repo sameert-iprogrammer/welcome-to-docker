@@ -86,3 +86,5 @@
 - **Do**: Make minimal focused changes. Preserve pushState routing, localStorage auth, plain CSS. Follow governance constraints.
 - **Do not**: Add TypeScript, backend, state management libs, CSS frameworks, or new pages. Never modify Dockerfile build strategy or GitHub Actions workflows. No speculative refactors.
 - Reference `.opencode/agents/governance-agent.md` before any change. Reference `.opencode/agents/_sdlc-rules.md` for change discipline.
+
+
