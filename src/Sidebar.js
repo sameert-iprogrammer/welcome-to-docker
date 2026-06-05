@@ -14,6 +14,7 @@ const Sidebar = () => {
     { label: "Masters", path: "/masters", icon: "fa-solid fa-database" },
     { label: "Approvals", path: "/approvals", icon: "fa-solid fa-check-circle" },
     { label: "FAQ", path: "/faq", icon: "fa-solid fa-circle-question" },
+    { label: "Add Loyalty Points", path: "/loyalty-points", icon: "fa-solid fa-star" },
   ];
 
   return (

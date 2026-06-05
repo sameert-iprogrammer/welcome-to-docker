@@ -1,0 +1,3470 @@
+{
+  "source": {
+    "fileKey": "UwUhO7dqEx5kytLPuVQPkj",
+    "nodeId": "1:1583",
+    "url": "https://www.figma.com/design/UwUhO7dqEx5kytLPuVQPkj/Sam-Sample?node-id=1-1583&t=6M97C5s2y9gY5hhG-4",
+    "fetchedAt": "2026-06-05T06:45:07.099Z"
+  },
+  "metadata": {
+    "fileName": "Sam Sample",
+    "nodeName": "Instructions",
+    "nodeType": "INSTANCE",
+    "width": 800,
+    "height": 1906.6666259765625
+  },
+  "tree": {
+    "id": "1:1583",
+    "type": "INSTANCE",
+    "name": "Instructions",
+    "width": 800,
+    "height": 1906.6666259765625,
+    "layoutMode": "VERTICAL",
+    "fills": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "color": {
+          "r": 0.8544732332229614,
+          "g": 0.614550769329071,
+          "b": 1,
+          "a": 1
+        }
+      }
+    ],
+    "strokes": [
+      {
+        "type": "SOLID",
+        "visible": false,
+        "color": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        }
+      }
+    ],
+    "children": [
+      {
+        "id": "I1:1583;1:1507",
+        "type": "FRAME",
+        "name": "Title and description",
+        "width": 640,
+        "height": 288,
+        "layoutMode": "VERTICAL",
+        "fills": [],
+        "strokes": [],
+        "children": [
+          {
+            "id": "I1:1583;1:1508",
+            "type": "TEXT",
+            "name": "Option eyebrow",
+            "width": 640,
+            "height": 48,
+            "characters": "Template 1 of 5",
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "color": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 1
+                }
+              }
+            ],
+            "strokes": [],
+            "style": {
+              "fontFamily": "Inter",
+              "fontPostScriptName": "Inter-Bold",
+              "fontStyle": "Bold",
+              "fontWeight": 700,
+              "textCase": "UPPER",
+              "textAutoResize": "HEIGHT",
+              "fontSize": 32,
+              "textAlignHorizontal": "LEFT",
+              "textAlignVertical": "TOP",
+              "letterSpacing": 0,
+              "lineHeightPx": 48,
+              "lineHeightPercent": 123.94366455078125,
+              "lineHeightPercentFontSize": 150,
+              "lineHeightUnit": "FONT_SIZE_%"
+            }
+          },
+          {
+            "id": "I1:1583;1:1509",
+            "type": "TEXT",
+            "name": "Title",
+            "width": 640,
+            "height": 192,
+            "characters": "Figjam Quarterly Planning Collection",
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "color": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 1
+                }
+              }
+            ],
+            "strokes": [],
+            "style": {
+              "fontFamily": "Inter",
+              "fontPostScriptName": "Inter-Bold",
+              "fontStyle": "Bold",
+              "fontWeight": 700,
+              "textAutoResize": "HEIGHT",
+              "fontSize": 64,
+              "textAlignHorizontal": "LEFT",
+              "textAlignVertical": "TOP",
+              "letterSpacing": -1.4080000305175782,
+              "lineHeightPx": 96,
+              "lineHeightPercent": 123.94366455078125,
+              "lineHeightPercentFontSize": 150,
+              "lineHeightUnit": "FONT_SIZE_%"
+            }
+          },
+          {
+            "id": "I1:1583;1:1510",
+            "type": "TEXT",
+            "name": "Description",
+            "width": 640,
+            "height": 96,
+            "characters": "This template is part of a series of lorem ipsum dolore sit amet. See them all.",
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "color": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 1
+                }
+              }
+            ],
+            "strokes": [],
+            "style": {
+              "fontFamily": "Inter",
+              "fontPostScriptName": "Inter-Medium",
+              "fontStyle": "Medium",
+              "fontWeight": 500,
+              "textAutoResize": "HEIGHT",
+              "fontSize": 32,
+              "textAlignHorizontal": "LEFT",
+              "textAlignVertical": "TOP",
+              "letterSpacing": -0.64,
+              "lineHeightPx": 48,
+              "lineHeightPercent": 123.94366455078125,
+              "lineHeightPercentFontSize": 150,
+              "lineHeightUnit": "FONT_SIZE_%"
+            }
+          }
+        ]
+      },
+      {
+        "id": "I1:1583;1:1511",
+        "type": "FRAME",
+        "name": "Template",
+        "width": 640,
+        "height": 482.6666564941406,
+        "layoutMode": "VERTICAL",
+        "fills": [],
+        "strokes": [],
+        "children": [
+          {
+            "id": "I1:1583;171:7470",
+            "type": "INSTANCE",
+            "name": "Template Thumbnails",
+            "width": 640,
+            "height": 378.6666564941406,
+            "fills": [],
+            "strokes": [],
+            "children": [
+              {
+                "id": "I1:1583;171:7470;171:7427",
+                "type": "FRAME",
+                "name": "Wayfinding artwork",
+                "width": 640,
+                "height": 378.6666564941406,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "color": {
+                      "r": 0.9411764740943909,
+                      "g": 0.8901960849761963,
+                      "b": 1,
+                      "a": 1
+                    }
+                  }
+                ],
+                "strokes": [],
+                "children": [
+                  {
+                    "id": "I1:1583;171:7470;171:7428",
+                    "type": "TEXT",
+                    "name": "YOU ARE HERE",
+                    "width": 640,
+                    "height": 378,
+                    "characters": "YOU ARE\nHERE",
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": true,
+                        "color": {
+                          "r": 0,
+                          "g": 0,
+                          "b": 0,
+                          "a": 1
+                        }
+                      }
+                    ],
+                    "strokes": [],
+                    "style": {
+                      "fontFamily": "Figma Hand HA",
+                      "fontPostScriptName": "FigmaHandGH-Bold",
+                      "fontStyle": "Bold",
+                      "fontWeight": 700,
+                      "paragraphSpacing": 22.599042892456055,
+                      "listSpacing": 3.766507387161255,
+                      "fontSize": 52.73110580444336,
+                      "textAlignHorizontal": "CENTER",
+                      "textAlignVertical": "CENTER",
+                      "letterSpacing": 0,
+                      "lineHeightPx": 76.4601058959961,
+                      "lineHeightPercent": 105.1486587524414,
+                      "lineHeightPercentFontSize": 145,
+                      "lineHeightUnit": "FONT_SIZE_%"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "I1:1583;1:1548",
+            "type": "FRAME",
+            "name": "Numbered list",
+            "width": 640,
+            "height": 72,
+            "layoutMode": "VERTICAL",
+            "fills": [],
+            "strokes": [],
+            "children": [
+              {
+                "id": "I1:1583;1:1549",
+                "type": "FRAME",
+                "name": "Icon with text",
+                "width": 640,
+                "height": 72,
+                "layoutMode": "HORIZONTAL",
+                "counterAxisAlignItems": "CENTER",
+                "fills": [],
+                "strokes": [],
+                "children": [
+                  {
+                    "id": "I1:1583;1:1550",
+                    "type": "INSTANCE",
+                    "name": "Numbers",
+                    "width": 72,
+                    "height": 70.69091033935547,
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": false,
+                        "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        }
+                      }
+                    ],
+                    "strokes": [],
+                    "children": [
+                      {
+                        "id": "I1:1583;1:1550;705:1218",
+                        "type": "VECTOR",
+                        "name": "Vector",
+                        "width": 72,
+                        "height": 70.69091033935547,
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "color": {
+                              "r": 0,
+                              "g": 0,
+                              "b": 0,
+                              "a": 1
+                            }
+                          }
+                        ],
+                        "strokes": []
+                      },
+                      {
+                        "id": "I1:1583;1:1550;705:1219",
+                        "type": "TEXT",
+                        "name": "1",
+                        "width": 16,
+                        "height": 38,
+                        "characters": "1",
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "color": {
+                              "r": 0,
+                              "g": 0,
+                              "b": 0,
+                              "a": 1
+                            }
+                          }
+                        ],
+                        "strokes": [],
+                        "style": {
+                          "fontFamily": "Figma Hand",
+                          "fontPostScriptName": "FigmaHand-Bold",
+                          "fontStyle": "Bold",
+                          "fontWeight": 700,
+                          "paragraphSpacing": 15.709091186523438,
+                          "listSpacing": 2.6181819438934326,
+                          "textAutoResize": "WIDTH_AND_HEIGHT",
+                          "fontSize": 26.181819915771484,
+                          "textAlignHorizontal": "CENTER",
+                          "textAlignVertical": "TOP",
+                          "letterSpacing": 0,
+                          "lineHeightPx": 37.96363830566406,
+                          "lineHeightPercent": 105.1486587524414,
+                          "lineHeightPercentFontSize": 145,
+                          "lineHeightUnit": "FONT_SIZE_%"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I1:1583;1:1551",
+                    "type": "TEXT",
+                    "name": "Description",
+                    "width": 536,
+                    "height": 72,
+                    "characters": "Compile plans and align with leadership through a product roadmap review.",
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": true,
+                        "color": {
+                          "r": 0,
+                          "g": 0,
+                          "b": 0,
+                          "a": 1
+                        }
+                      }
+                    ],
+                    "strokes": [],
+                    "style": {
+                      "fontFamily": "Inter",
+                      "fontPostScriptName": "Inter-Medium",
+                      "fontStyle": "Medium",
+                      "fontWeight": 500,
+                      "textAutoResize": "HEIGHT",
+                      "fontSize": 24,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP",
+                      "letterSpacing": 0,
+                      "lineHeightPx": 36,
+                      "lineHeightPercent": 123.94366455078125,
+                      "lineHeightPercentFontSize": 150,
+                      "lineHeightUnit": "FONT_SIZE_%"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "I1:1583;1:1552",
+        "type": "VECTOR",
+        "name": "Divider",
+        "width": 640,
+        "height": 0,
+        "fills": [],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "color": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "I1:1583;1:1553",
+        "type": "FRAME",
+        "name": "Template",
+        "width": 640,
+        "height": 108,
+        "layoutMode": "VERTICAL",
+        "fills": [],
+        "strokes": [],
+        "children": [
+          {
+            "id": "I1:1583;171:7564",
+            "type": "INSTANCE",
+            "name": "Template Thumbnails",
+            "width": 640,
+            "height": 378.6666564941406,
+            "fills": [],
+            "strokes": [],
+            "children": [
+              {
+                "id": "I1:1583;171:7564;171:7434",
+                "type": "FRAME",
+                "name": "Artwork",
+                "width": 640,
+                "height": 378.6666564941406,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": false,
+                    "color": {
+                      "r": 0.8549019694328308,
+                      "g": 0.615686297416687,
+                      "b": 1,
+                      "a": 1
+                    }
+                  }
+                ],
+                "strokes": [],
+                "children": [
+                  {
+                    "id": "I1:1583;171:7564;171:7435",
+                    "type": "GROUP",
+                    "name": "Group 632463",
+                    "width": 452.8841247558594,
+                    "height": 378.6671142578125,
+                    "fills": [],
+                    "strokes": [],
+                    "children": [
+                      {
+                        "id": "I1:1583;171:7564;171:7436",
+                        "type": "GROUP",
+                        "name": "Group 632326",
+                        "width": 423.2928161621094,
+                        "height": 370.7022705078125,
+                        "fills": [],
+                        "strokes": [],
+                        "children": [
+                          {
+                            "id": "I1:1583;171:7564;171:7437",
+                            "type": "GROUP",
+                            "name": "Group 632308",
+                            "width": 423.2904357910156,
+                            "height": 369.6626281738281,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7564;171:7438",
+                                "type": "BOOLEAN_OPERATION",
+                                "name": "Union",
+                                "width": 399.3232421875,
+                                "height": 338.1845703125,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0.9145833253860474,
+                                      "g": 0.9793497920036316,
+                                      "b": 1,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": [],
+                                "children": [
+                                  {
+                                    "id": "I1:1583;171:7564;171:7439",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 6693",
+                                    "width": 223.70362917054686,
+                                    "height": 231.33354246053804,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 1,
+                                          "g": 1,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7564;171:7440",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 6694",
+                                    "width": 223.70362916526136,
+                                    "height": 231.33354246552943,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 1,
+                                          "g": 1,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7564;171:7441",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 6692",
+                                    "width": 223.70362916526136,
+                                    "height": 231.33354246552943,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 1,
+                                          "g": 1,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "I1:1583;171:7564;171:7442",
+                                "type": "GROUP",
+                                "name": "Group 632296",
+                                "width": 274.0720787176624,
+                                "height": 343.52676169918925,
+                                "fills": [],
+                                "strokes": [],
+                                "children": [
+                                  {
+                                    "id": "I1:1583;171:7564;171:7443",
+                                    "type": "GROUP",
+                                    "name": "Group 632306",
+                                    "width": 0,
+                                    "height": 0,
+                                    "fills": [],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7564;171:7446",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 246.0260236880913,
+                                    "height": 255.6136628446434,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7564;171:7447",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 32.81780681323704,
+                                    "height": 18.173863479814543,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7564;171:7448",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 12.732672870286137,
+                                    "height": 13.291226856543176,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7564;171:7449",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 10.807373794351577,
+                                    "height": 12.497006812387838,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7564;171:7450",
+                            "type": "GROUP",
+                            "name": "Group",
+                            "width": 98.26233673095703,
+                            "height": 97.61770629882812,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7564;171:7451",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 98.26233673095703,
+                                "height": 97.61770629882812,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7564;171:7452",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 52.73051452636719,
+                                "height": 45.15547561645508,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7564;171:7453",
+                            "type": "GROUP",
+                            "name": "Group 632309",
+                            "width": 143.21214294433594,
+                            "height": 139.2373809814453,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7564;171:7454",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 143.21214294433594,
+                                "height": 139.2373809814453,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7564;171:7455",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 63.10481643676758,
+                                "height": 63.52315139770508,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7564;171:7456",
+                            "type": "GROUP",
+                            "name": "Group",
+                            "width": 135.2073974609375,
+                            "height": 128.63389587402344,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7564;171:7457",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 135.2073974609375,
+                                "height": 128.63389587402344,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7564;171:7458",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 44.36886978149414,
+                                "height": 72.19478607177734,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7564;171:7459",
+                            "type": "GROUP",
+                            "name": "Group",
+                            "width": 110.80648040771484,
+                            "height": 136.70193481445312,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7564;171:7460",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 110.80648040771484,
+                                "height": 136.70193481445312,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "I1:1583;171:7564;171:7461",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 13.963250160217285,
+                                "height": 7.519927501678467,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7564;171:7462",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 7.502491474151611,
+                                "height": 7.456363201141357,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7564;171:7463",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 6.424183368682861,
+                                "height": 6.066558361053467,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "I1:1583;171:7564;171:7464",
+                        "type": "GROUP",
+                        "name": "Group 632327",
+                        "width": 117.9778823852539,
+                        "height": 118.35050201416016,
+                        "fills": [],
+                        "strokes": [],
+                        "children": [
+                          {
+                            "id": "I1:1583;171:7564;171:7465",
+                            "type": "GROUP",
+                            "name": "Group 632314",
+                            "width": 117.9778823852539,
+                            "height": 118.35050201416016,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7564;171:7466",
+                                "type": "RECTANGLE",
+                                "name": "Rectangle 3241",
+                                "width": 117.9778823852539,
+                                "height": 118.35050201416016,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0.8549019694328308,
+                                      "g": 0.615686297416687,
+                                      "b": 1,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7564;171:7467",
+                                "type": "GROUP",
+                                "name": "Group 51074",
+                                "width": 117.9778823852539,
+                                "height": 118.35050201416016,
+                                "fills": [],
+                                "strokes": [],
+                                "children": [
+                                  {
+                                    "id": "I1:1583;171:7564;171:7468",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 3245",
+                                    "width": 117.9778823852539,
+                                    "height": 118.35050201416016,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0.7176470756530762,
+                                          "g": 0.8705882430076599,
+                                          "b": 0.9450980424880981,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7564;171:7469",
+                                    "type": "VECTOR",
+                                    "name": "Vector 2298",
+                                    "width": 253.59027099609375,
+                                    "height": 167.98191833496094,
+                                    "fills": [],
+                                    "strokes": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0.3333333432674408,
+                                          "g": 0.3176470696926117,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "I1:1583;1:1556",
+            "type": "FRAME",
+            "name": "Numbered list",
+            "width": 640,
+            "height": 108,
+            "layoutMode": "VERTICAL",
+            "fills": [],
+            "strokes": [],
+            "children": [
+              {
+                "id": "I1:1583;1:1557",
+                "type": "FRAME",
+                "name": "Icon with text",
+                "width": 640,
+                "height": 108,
+                "layoutMode": "HORIZONTAL",
+                "counterAxisAlignItems": "CENTER",
+                "fills": [],
+                "strokes": [],
+                "children": [
+                  {
+                    "id": "I1:1583;1:1558",
+                    "type": "INSTANCE",
+                    "name": "Numbers",
+                    "width": 72,
+                    "height": 70.69091033935547,
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": false,
+                        "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        }
+                      }
+                    ],
+                    "strokes": [],
+                    "children": [
+                      {
+                        "id": "I1:1583;1:1558;705:1230",
+                        "type": "VECTOR",
+                        "name": "Vector",
+                        "width": 100.61802403736124,
+                        "height": 99.66399042458988,
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "color": {
+                              "r": 0,
+                              "g": 0,
+                              "b": 0,
+                              "a": 1
+                            }
+                          }
+                        ],
+                        "strokes": []
+                      },
+                      {
+                        "id": "I1:1583;1:1558;705:1227",
+                        "type": "TEXT",
+                        "name": "1",
+                        "width": 19,
+                        "height": 38,
+                        "characters": "2",
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "color": {
+                              "r": 0,
+                              "g": 0,
+                              "b": 0,
+                              "a": 1
+                            }
+                          }
+                        ],
+                        "strokes": [],
+                        "style": {
+                          "fontFamily": "Figma Hand",
+                          "fontPostScriptName": "FigmaHand-Bold",
+                          "fontStyle": "Bold",
+                          "fontWeight": 700,
+                          "paragraphSpacing": 15.709091186523438,
+                          "listSpacing": 2.6181819438934326,
+                          "textAutoResize": "WIDTH_AND_HEIGHT",
+                          "fontSize": 26.181819915771484,
+                          "textAlignHorizontal": "CENTER",
+                          "textAlignVertical": "TOP",
+                          "letterSpacing": 0,
+                          "lineHeightPx": 37.96363830566406,
+                          "lineHeightPercent": 105.1486587524414,
+                          "lineHeightPercentFontSize": 145,
+                          "lineHeightUnit": "FONT_SIZE_%"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I1:1583;67:1186",
+                    "type": "TEXT",
+                    "name": "Description",
+                    "width": 536,
+                    "height": 108,
+                    "characters": "Reflect on the previous quarter and what you want to change with a product team retrospective.",
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": true,
+                        "color": {
+                          "r": 0,
+                          "g": 0,
+                          "b": 0,
+                          "a": 1
+                        }
+                      }
+                    ],
+                    "strokes": [],
+                    "style": {
+                      "fontFamily": "Inter",
+                      "fontPostScriptName": "Inter-Medium",
+                      "fontStyle": "Medium",
+                      "fontWeight": 500,
+                      "textAutoResize": "HEIGHT",
+                      "fontSize": 24,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP",
+                      "letterSpacing": 0,
+                      "lineHeightPx": 36,
+                      "lineHeightPercent": 123.94366455078125,
+                      "lineHeightPercentFontSize": 150,
+                      "lineHeightUnit": "FONT_SIZE_%"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "I1:1583;1:1560",
+        "type": "VECTOR",
+        "name": "Divider",
+        "width": 640,
+        "height": 0,
+        "fills": [],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "color": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "I1:1583;1:1561",
+        "type": "FRAME",
+        "name": "Template",
+        "width": 640,
+        "height": 108,
+        "layoutMode": "VERTICAL",
+        "fills": [],
+        "strokes": [],
+        "children": [
+          {
+            "id": "I1:1583;171:7688",
+            "type": "INSTANCE",
+            "name": "Template Thumbnails",
+            "width": 640,
+            "height": 378.6666564941406,
+            "fills": [],
+            "strokes": [],
+            "children": [
+              {
+                "id": "I1:1583;171:7688;171:7434",
+                "type": "FRAME",
+                "name": "Artwork",
+                "width": 640,
+                "height": 378.6666564941406,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": false,
+                    "color": {
+                      "r": 0.8549019694328308,
+                      "g": 0.615686297416687,
+                      "b": 1,
+                      "a": 1
+                    }
+                  }
+                ],
+                "strokes": [],
+                "children": [
+                  {
+                    "id": "I1:1583;171:7688;171:7435",
+                    "type": "GROUP",
+                    "name": "Group 632463",
+                    "width": 452.8841247558594,
+                    "height": 378.6671142578125,
+                    "fills": [],
+                    "strokes": [],
+                    "children": [
+                      {
+                        "id": "I1:1583;171:7688;171:7436",
+                        "type": "GROUP",
+                        "name": "Group 632326",
+                        "width": 423.2928161621094,
+                        "height": 370.7022705078125,
+                        "fills": [],
+                        "strokes": [],
+                        "children": [
+                          {
+                            "id": "I1:1583;171:7688;171:7437",
+                            "type": "GROUP",
+                            "name": "Group 632308",
+                            "width": 423.2904357910156,
+                            "height": 369.6626281738281,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7688;171:7438",
+                                "type": "BOOLEAN_OPERATION",
+                                "name": "Union",
+                                "width": 399.3232421875,
+                                "height": 338.1845703125,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0.9145833253860474,
+                                      "g": 0.9793497920036316,
+                                      "b": 1,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": [],
+                                "children": [
+                                  {
+                                    "id": "I1:1583;171:7688;171:7439",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 6693",
+                                    "width": 223.70362917054686,
+                                    "height": 231.33354246053807,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 1,
+                                          "g": 1,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7688;171:7440",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 6694",
+                                    "width": 223.70362916526136,
+                                    "height": 231.33354246552938,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 1,
+                                          "g": 1,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7688;171:7441",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 6692",
+                                    "width": 223.70362916526136,
+                                    "height": 231.33354246552943,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 1,
+                                          "g": 1,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "I1:1583;171:7688;171:7442",
+                                "type": "GROUP",
+                                "name": "Group 632296",
+                                "width": 274.0720787176624,
+                                "height": 343.52676169918925,
+                                "fills": [],
+                                "strokes": [],
+                                "children": [
+                                  {
+                                    "id": "I1:1583;171:7688;171:7443",
+                                    "type": "GROUP",
+                                    "name": "Group 632306",
+                                    "width": 0,
+                                    "height": 0,
+                                    "fills": [],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7688;171:7446",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 246.0260236880913,
+                                    "height": 255.6136628446434,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7688;171:7447",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 32.81780681323704,
+                                    "height": 18.1738634798146,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7688;171:7448",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 12.732672870286137,
+                                    "height": 13.291226856543176,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7688;171:7449",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 10.807373794351577,
+                                    "height": 12.49700681238778,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7688;171:7450",
+                            "type": "GROUP",
+                            "name": "Group",
+                            "width": 98.26233673095703,
+                            "height": 97.61770629882812,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7688;171:7451",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 98.26233673095703,
+                                "height": 97.61770629882812,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7688;171:7452",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 52.73051452636719,
+                                "height": 45.15547561645508,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7688;171:7453",
+                            "type": "GROUP",
+                            "name": "Group 632309",
+                            "width": 143.21214294433594,
+                            "height": 139.2373809814453,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7688;171:7454",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 143.21214294433594,
+                                "height": 139.2373809814453,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7688;171:7455",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 63.10481643676758,
+                                "height": 63.52315139770508,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7688;171:7456",
+                            "type": "GROUP",
+                            "name": "Group",
+                            "width": 135.2073974609375,
+                            "height": 128.63389587402344,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7688;171:7457",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 135.2073974609375,
+                                "height": 128.63389587402344,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7688;171:7458",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 44.36886978149414,
+                                "height": 72.19478607177734,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7688;171:7459",
+                            "type": "GROUP",
+                            "name": "Group",
+                            "width": 110.80648040771484,
+                            "height": 136.70193481445312,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7688;171:7460",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 110.80648040771484,
+                                "height": 136.70193481445312,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "I1:1583;171:7688;171:7461",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 13.963250160217285,
+                                "height": 7.519927501678467,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7688;171:7462",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 7.502491474151611,
+                                "height": 7.456363201141357,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7688;171:7463",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 6.424183368682861,
+                                "height": 6.066558361053467,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "I1:1583;171:7688;171:7464",
+                        "type": "GROUP",
+                        "name": "Group 632327",
+                        "width": 117.9778823852539,
+                        "height": 118.35050201416016,
+                        "fills": [],
+                        "strokes": [],
+                        "children": [
+                          {
+                            "id": "I1:1583;171:7688;171:7465",
+                            "type": "GROUP",
+                            "name": "Group 632314",
+                            "width": 117.9778823852539,
+                            "height": 118.35050201416016,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7688;171:7466",
+                                "type": "RECTANGLE",
+                                "name": "Rectangle 3241",
+                                "width": 117.9778823852539,
+                                "height": 118.35050201416016,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0.8549019694328308,
+                                      "g": 0.615686297416687,
+                                      "b": 1,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7688;171:7467",
+                                "type": "GROUP",
+                                "name": "Group 51074",
+                                "width": 117.9778823852539,
+                                "height": 118.35050201416016,
+                                "fills": [],
+                                "strokes": [],
+                                "children": [
+                                  {
+                                    "id": "I1:1583;171:7688;171:7468",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 3245",
+                                    "width": 117.9778823852539,
+                                    "height": 118.35050201416016,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0.7176470756530762,
+                                          "g": 0.8705882430076599,
+                                          "b": 0.9450980424880981,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7688;171:7469",
+                                    "type": "VECTOR",
+                                    "name": "Vector 2298",
+                                    "width": 253.59027099609375,
+                                    "height": 167.98191833496094,
+                                    "fills": [],
+                                    "strokes": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0.3333333432674408,
+                                          "g": 0.3176470696926117,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "I1:1583;1:1598",
+            "type": "FRAME",
+            "name": "Numbered list",
+            "width": 640,
+            "height": 108,
+            "layoutMode": "VERTICAL",
+            "fills": [],
+            "strokes": [],
+            "children": [
+              {
+                "id": "I1:1583;1:1599",
+                "type": "FRAME",
+                "name": "Icon with text",
+                "width": 640,
+                "height": 108,
+                "layoutMode": "HORIZONTAL",
+                "counterAxisAlignItems": "CENTER",
+                "fills": [],
+                "strokes": [],
+                "children": [
+                  {
+                    "id": "I1:1583;1:1600",
+                    "type": "INSTANCE",
+                    "name": "Numbers",
+                    "width": 72,
+                    "height": 70.69091033935547,
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": false,
+                        "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        }
+                      }
+                    ],
+                    "strokes": [],
+                    "children": [
+                      {
+                        "id": "I1:1583;1:1600;705:1236",
+                        "type": "TEXT",
+                        "name": "1",
+                        "width": 19,
+                        "height": 38,
+                        "characters": "3",
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "color": {
+                              "r": 0,
+                              "g": 0,
+                              "b": 0,
+                              "a": 1
+                            }
+                          }
+                        ],
+                        "strokes": [],
+                        "style": {
+                          "fontFamily": "Figma Hand",
+                          "fontPostScriptName": "FigmaHand-Bold",
+                          "fontStyle": "Bold",
+                          "fontWeight": 700,
+                          "paragraphSpacing": 15.709091186523438,
+                          "listSpacing": 2.6181819438934326,
+                          "textAutoResize": "WIDTH_AND_HEIGHT",
+                          "fontSize": 26.181819915771484,
+                          "textAlignHorizontal": "CENTER",
+                          "textAlignVertical": "TOP",
+                          "letterSpacing": 0,
+                          "lineHeightPx": 37.96363830566406,
+                          "lineHeightPercent": 105.1486587524414,
+                          "lineHeightPercentFontSize": 145,
+                          "lineHeightUnit": "FONT_SIZE_%"
+                        }
+                      },
+                      {
+                        "id": "I1:1583;1:1600;705:1242",
+                        "type": "VECTOR",
+                        "name": "Vector",
+                        "width": 69.38182067871094,
+                        "height": 70.69091033935547,
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "color": {
+                              "r": 0,
+                              "g": 0,
+                              "b": 0,
+                              "a": 1
+                            }
+                          }
+                        ],
+                        "strokes": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I1:1583;67:1187",
+                    "type": "TEXT",
+                    "name": "Description",
+                    "width": 536,
+                    "height": 108,
+                    "characters": "Align on your vision, ideate problems, and generate solutions with a roadmap planning brainstorm.",
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": true,
+                        "color": {
+                          "r": 0,
+                          "g": 0,
+                          "b": 0,
+                          "a": 1
+                        }
+                      }
+                    ],
+                    "strokes": [],
+                    "style": {
+                      "fontFamily": "Inter",
+                      "fontPostScriptName": "Inter-Medium",
+                      "fontStyle": "Medium",
+                      "fontWeight": 500,
+                      "textAutoResize": "HEIGHT",
+                      "fontSize": 24,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP",
+                      "letterSpacing": 0,
+                      "lineHeightPx": 36,
+                      "lineHeightPercent": 123.94366455078125,
+                      "lineHeightPercentFontSize": 150,
+                      "lineHeightUnit": "FONT_SIZE_%"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "I1:1583;1:1602",
+        "type": "VECTOR",
+        "name": "Divider",
+        "width": 640,
+        "height": 0,
+        "fills": [],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "color": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "I1:1583;1:1603",
+        "type": "FRAME",
+        "name": "Template",
+        "width": 640,
+        "height": 72,
+        "layoutMode": "VERTICAL",
+        "fills": [],
+        "strokes": [],
+        "children": [
+          {
+            "id": "I1:1583;171:7812",
+            "type": "INSTANCE",
+            "name": "Template Thumbnails",
+            "width": 640,
+            "height": 378.6666564941406,
+            "fills": [],
+            "strokes": [],
+            "children": [
+              {
+                "id": "I1:1583;171:7812;171:7434",
+                "type": "FRAME",
+                "name": "Artwork",
+                "width": 640,
+                "height": 378.6666564941406,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": false,
+                    "color": {
+                      "r": 0.8549019694328308,
+                      "g": 0.615686297416687,
+                      "b": 1,
+                      "a": 1
+                    }
+                  }
+                ],
+                "strokes": [],
+                "children": [
+                  {
+                    "id": "I1:1583;171:7812;171:7435",
+                    "type": "GROUP",
+                    "name": "Group 632463",
+                    "width": 452.8841247558594,
+                    "height": 378.6671142578125,
+                    "fills": [],
+                    "strokes": [],
+                    "children": [
+                      {
+                        "id": "I1:1583;171:7812;171:7436",
+                        "type": "GROUP",
+                        "name": "Group 632326",
+                        "width": 423.2928161621094,
+                        "height": 370.7022705078125,
+                        "fills": [],
+                        "strokes": [],
+                        "children": [
+                          {
+                            "id": "I1:1583;171:7812;171:7437",
+                            "type": "GROUP",
+                            "name": "Group 632308",
+                            "width": 423.2904357910156,
+                            "height": 369.6626281738281,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7812;171:7438",
+                                "type": "BOOLEAN_OPERATION",
+                                "name": "Union",
+                                "width": 399.3232421875,
+                                "height": 338.1845703125,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0.9145833253860474,
+                                      "g": 0.9793497920036316,
+                                      "b": 1,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": [],
+                                "children": [
+                                  {
+                                    "id": "I1:1583;171:7812;171:7439",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 6693",
+                                    "width": 223.70362917054686,
+                                    "height": 231.33354246053807,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 1,
+                                          "g": 1,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7812;171:7440",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 6694",
+                                    "width": 223.70362916526136,
+                                    "height": 231.33354246552938,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 1,
+                                          "g": 1,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7812;171:7441",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 6692",
+                                    "width": 223.70362916526136,
+                                    "height": 231.33354246552938,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 1,
+                                          "g": 1,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "I1:1583;171:7812;171:7442",
+                                "type": "GROUP",
+                                "name": "Group 632296",
+                                "width": 274.0720787176624,
+                                "height": 343.52676169918925,
+                                "fills": [],
+                                "strokes": [],
+                                "children": [
+                                  {
+                                    "id": "I1:1583;171:7812;171:7443",
+                                    "type": "GROUP",
+                                    "name": "Group 632306",
+                                    "width": 0,
+                                    "height": 0,
+                                    "fills": [],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7812;171:7446",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 246.0260236880913,
+                                    "height": 255.6136628446434,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7812;171:7447",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 32.81780681323704,
+                                    "height": 18.1738634798146,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7812;171:7448",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 12.732672870286137,
+                                    "height": 13.291226856543176,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7812;171:7449",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 10.807373794351577,
+                                    "height": 12.49700681238778,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7812;171:7450",
+                            "type": "GROUP",
+                            "name": "Group",
+                            "width": 98.26233673095703,
+                            "height": 97.61770629882812,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7812;171:7451",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 98.26233673095703,
+                                "height": 97.61770629882812,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7812;171:7452",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 52.73051452636719,
+                                "height": 45.15547561645508,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7812;171:7453",
+                            "type": "GROUP",
+                            "name": "Group 632309",
+                            "width": 143.21214294433594,
+                            "height": 139.2373809814453,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7812;171:7454",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 143.21214294433594,
+                                "height": 139.2373809814453,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7812;171:7455",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 63.10481643676758,
+                                "height": 63.52315139770508,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7812;171:7456",
+                            "type": "GROUP",
+                            "name": "Group",
+                            "width": 135.2073974609375,
+                            "height": 128.63389587402344,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7812;171:7457",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 135.2073974609375,
+                                "height": 128.63389587402344,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7812;171:7458",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 44.36886978149414,
+                                "height": 72.19478607177734,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7812;171:7459",
+                            "type": "GROUP",
+                            "name": "Group",
+                            "width": 110.80648040771484,
+                            "height": 136.70193481445312,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7812;171:7460",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 110.80648040771484,
+                                "height": 136.70193481445312,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "I1:1583;171:7812;171:7461",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 13.963250160217285,
+                                "height": 7.519927501678467,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7812;171:7462",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 7.502491474151611,
+                                "height": 7.456363201141357,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7812;171:7463",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 6.424183368682861,
+                                "height": 6.066558361053467,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "I1:1583;171:7812;171:7464",
+                        "type": "GROUP",
+                        "name": "Group 632327",
+                        "width": 117.9778823852539,
+                        "height": 118.35050201416016,
+                        "fills": [],
+                        "strokes": [],
+                        "children": [
+                          {
+                            "id": "I1:1583;171:7812;171:7465",
+                            "type": "GROUP",
+                            "name": "Group 632314",
+                            "width": 117.9778823852539,
+                            "height": 118.35050201416016,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7812;171:7466",
+                                "type": "RECTANGLE",
+                                "name": "Rectangle 3241",
+                                "width": 117.9778823852539,
+                                "height": 118.35050201416016,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0.8549019694328308,
+                                      "g": 0.615686297416687,
+                                      "b": 1,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7812;171:7467",
+                                "type": "GROUP",
+                                "name": "Group 51074",
+                                "width": 117.9778823852539,
+                                "height": 118.35050201416016,
+                                "fills": [],
+                                "strokes": [],
+                                "children": [
+                                  {
+                                    "id": "I1:1583;171:7812;171:7468",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 3245",
+                                    "width": 117.9778823852539,
+                                    "height": 118.35050201416016,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0.7176470756530762,
+                                          "g": 0.8705882430076599,
+                                          "b": 0.9450980424880981,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7812;171:7469",
+                                    "type": "VECTOR",
+                                    "name": "Vector 2298",
+                                    "width": 253.59027099609375,
+                                    "height": 167.98191833496094,
+                                    "fills": [],
+                                    "strokes": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0.3333333432674408,
+                                          "g": 0.3176470696926117,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "I1:1583;1:1640",
+            "type": "FRAME",
+            "name": "Numbered list",
+            "width": 640,
+            "height": 72,
+            "layoutMode": "VERTICAL",
+            "fills": [],
+            "strokes": [],
+            "children": [
+              {
+                "id": "I1:1583;1:1641",
+                "type": "FRAME",
+                "name": "Icon with text",
+                "width": 640,
+                "height": 72,
+                "layoutMode": "HORIZONTAL",
+                "counterAxisAlignItems": "CENTER",
+                "fills": [],
+                "strokes": [],
+                "children": [
+                  {
+                    "id": "I1:1583;1:1642",
+                    "type": "INSTANCE",
+                    "name": "Numbers",
+                    "width": 72,
+                    "height": 70.69091033935547,
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": false,
+                        "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        }
+                      }
+                    ],
+                    "strokes": [],
+                    "children": [
+                      {
+                        "id": "I1:1583;1:1642;705:1247",
+                        "type": "TEXT",
+                        "name": "1",
+                        "width": 21,
+                        "height": 38,
+                        "characters": "4",
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "color": {
+                              "r": 0,
+                              "g": 0,
+                              "b": 0,
+                              "a": 1
+                            }
+                          }
+                        ],
+                        "strokes": [],
+                        "style": {
+                          "fontFamily": "Figma Hand",
+                          "fontPostScriptName": "FigmaHand-Bold",
+                          "fontStyle": "Bold",
+                          "fontWeight": 700,
+                          "paragraphSpacing": 15.709091186523438,
+                          "listSpacing": 2.6181819438934326,
+                          "textAutoResize": "WIDTH_AND_HEIGHT",
+                          "fontSize": 26.181819915771484,
+                          "textAlignHorizontal": "CENTER",
+                          "textAlignVertical": "TOP",
+                          "letterSpacing": 0,
+                          "lineHeightPx": 37.96363830566406,
+                          "lineHeightPercent": 105.1486587524414,
+                          "lineHeightPercentFontSize": 145,
+                          "lineHeightUnit": "FONT_SIZE_%"
+                        }
+                      },
+                      {
+                        "id": "I1:1583;1:1642;705:1251",
+                        "type": "VECTOR",
+                        "name": "Vector",
+                        "width": 68.0727310180664,
+                        "height": 70.69091033935547,
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "color": {
+                              "r": 0,
+                              "g": 0,
+                              "b": 0,
+                              "a": 1
+                            }
+                          }
+                        ],
+                        "strokes": []
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I1:1583;67:1188",
+                    "type": "TEXT",
+                    "name": "Description",
+                    "width": 536,
+                    "height": 72,
+                    "characters": "Map out your projects and track progress as you go with a product roadmap timeline.",
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": true,
+                        "color": {
+                          "r": 0,
+                          "g": 0,
+                          "b": 0,
+                          "a": 1
+                        }
+                      }
+                    ],
+                    "strokes": [],
+                    "style": {
+                      "fontFamily": "Inter",
+                      "fontPostScriptName": "Inter-Medium",
+                      "fontStyle": "Medium",
+                      "fontWeight": 500,
+                      "textAutoResize": "HEIGHT",
+                      "fontSize": 24,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP",
+                      "letterSpacing": 0,
+                      "lineHeightPx": 36,
+                      "lineHeightPercent": 123.94366455078125,
+                      "lineHeightPercentFontSize": 150,
+                      "lineHeightUnit": "FONT_SIZE_%"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "I1:1583;1:1644",
+        "type": "VECTOR",
+        "name": "Divider",
+        "width": 640,
+        "height": 0,
+        "fills": [],
+        "strokes": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "color": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "I1:1583;1:1645",
+        "type": "FRAME",
+        "name": "Template",
+        "width": 640,
+        "height": 72,
+        "layoutMode": "VERTICAL",
+        "fills": [],
+        "strokes": [],
+        "children": [
+          {
+            "id": "I1:1583;171:7971",
+            "type": "INSTANCE",
+            "name": "Template Thumbnails",
+            "width": 640,
+            "height": 378.6666564941406,
+            "fills": [],
+            "strokes": [],
+            "children": [
+              {
+                "id": "I1:1583;171:7971;171:7434",
+                "type": "FRAME",
+                "name": "Artwork",
+                "width": 640,
+                "height": 378.6666564941406,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": false,
+                    "color": {
+                      "r": 0.8549019694328308,
+                      "g": 0.615686297416687,
+                      "b": 1,
+                      "a": 1
+                    }
+                  }
+                ],
+                "strokes": [],
+                "children": [
+                  {
+                    "id": "I1:1583;171:7971;171:7435",
+                    "type": "GROUP",
+                    "name": "Group 632463",
+                    "width": 452.8841247558594,
+                    "height": 378.6671142578125,
+                    "fills": [],
+                    "strokes": [],
+                    "children": [
+                      {
+                        "id": "I1:1583;171:7971;171:7436",
+                        "type": "GROUP",
+                        "name": "Group 632326",
+                        "width": 423.2928161621094,
+                        "height": 370.7022705078125,
+                        "fills": [],
+                        "strokes": [],
+                        "children": [
+                          {
+                            "id": "I1:1583;171:7971;171:7437",
+                            "type": "GROUP",
+                            "name": "Group 632308",
+                            "width": 423.2904357910156,
+                            "height": 369.6626281738281,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7971;171:7438",
+                                "type": "BOOLEAN_OPERATION",
+                                "name": "Union",
+                                "width": 399.3232421875,
+                                "height": 338.1845703125,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0.9145833253860474,
+                                      "g": 0.9793497920036316,
+                                      "b": 1,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": [],
+                                "children": [
+                                  {
+                                    "id": "I1:1583;171:7971;171:7439",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 6693",
+                                    "width": 223.70362917054686,
+                                    "height": 231.33354246053807,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 1,
+                                          "g": 1,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7971;171:7440",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 6694",
+                                    "width": 223.70362916526136,
+                                    "height": 231.33354246552938,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 1,
+                                          "g": 1,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7971;171:7441",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 6692",
+                                    "width": 223.70362916526136,
+                                    "height": 231.33354246552938,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 1,
+                                          "g": 1,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "I1:1583;171:7971;171:7442",
+                                "type": "GROUP",
+                                "name": "Group 632296",
+                                "width": 274.0720787176624,
+                                "height": 343.52676169918914,
+                                "fills": [],
+                                "strokes": [],
+                                "children": [
+                                  {
+                                    "id": "I1:1583;171:7971;171:7443",
+                                    "type": "GROUP",
+                                    "name": "Group 632306",
+                                    "width": 0,
+                                    "height": 0,
+                                    "fills": [],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7971;171:7446",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 246.0260236880913,
+                                    "height": 255.6136628446434,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7971;171:7447",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 32.81780681323704,
+                                    "height": 18.1738634798146,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7971;171:7448",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 12.732672870286137,
+                                    "height": 13.291226856543176,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7971;171:7449",
+                                    "type": "VECTOR",
+                                    "name": "Vector",
+                                    "width": 10.807373794351577,
+                                    "height": 12.49700681238778,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0,
+                                          "g": 0,
+                                          "b": 0,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7971;171:7450",
+                            "type": "GROUP",
+                            "name": "Group",
+                            "width": 98.26233673095703,
+                            "height": 97.61770629882812,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7971;171:7451",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 98.26233673095703,
+                                "height": 97.61770629882812,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7971;171:7452",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 52.73051452636719,
+                                "height": 45.15547561645508,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7971;171:7453",
+                            "type": "GROUP",
+                            "name": "Group 632309",
+                            "width": 143.21214294433594,
+                            "height": 139.2373809814453,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7971;171:7454",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 143.21214294433594,
+                                "height": 139.2373809814453,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7971;171:7455",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 63.10481643676758,
+                                "height": 63.52315139770508,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7971;171:7456",
+                            "type": "GROUP",
+                            "name": "Group",
+                            "width": 135.2073974609375,
+                            "height": 128.63389587402344,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7971;171:7457",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 135.2073974609375,
+                                "height": 128.63389587402344,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7971;171:7458",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 44.36886978149414,
+                                "height": 72.19478607177734,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          },
+                          {
+                            "id": "I1:1583;171:7971;171:7459",
+                            "type": "GROUP",
+                            "name": "Group",
+                            "width": 110.80648040771484,
+                            "height": 136.70193481445312,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7971;171:7460",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 110.80648040771484,
+                                "height": 136.70193481445312,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "I1:1583;171:7971;171:7461",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 13.963250160217285,
+                                "height": 7.519927501678467,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7971;171:7462",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 7.502491474151611,
+                                "height": 7.456363201141357,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7971;171:7463",
+                                "type": "VECTOR",
+                                "name": "Vector",
+                                "width": 6.424183368682861,
+                                "height": 6.066558361053467,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0,
+                                      "g": 0,
+                                      "b": 0,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "I1:1583;171:7971;171:7464",
+                        "type": "GROUP",
+                        "name": "Group 632327",
+                        "width": 117.9778823852539,
+                        "height": 118.35050201416016,
+                        "fills": [],
+                        "strokes": [],
+                        "children": [
+                          {
+                            "id": "I1:1583;171:7971;171:7465",
+                            "type": "GROUP",
+                            "name": "Group 632314",
+                            "width": 117.9778823852539,
+                            "height": 118.35050201416016,
+                            "fills": [],
+                            "strokes": [],
+                            "children": [
+                              {
+                                "id": "I1:1583;171:7971;171:7466",
+                                "type": "RECTANGLE",
+                                "name": "Rectangle 3241",
+                                "width": 117.9778823852539,
+                                "height": 118.35050201416016,
+                                "fills": [
+                                  {
+                                    "type": "SOLID",
+                                    "visible": true,
+                                    "color": {
+                                      "r": 0.8549019694328308,
+                                      "g": 0.615686297416687,
+                                      "b": 1,
+                                      "a": 1
+                                    }
+                                  }
+                                ],
+                                "strokes": []
+                              },
+                              {
+                                "id": "I1:1583;171:7971;171:7467",
+                                "type": "GROUP",
+                                "name": "Group 51074",
+                                "width": 117.9778823852539,
+                                "height": 118.35050201416016,
+                                "fills": [],
+                                "strokes": [],
+                                "children": [
+                                  {
+                                    "id": "I1:1583;171:7971;171:7468",
+                                    "type": "RECTANGLE",
+                                    "name": "Rectangle 3245",
+                                    "width": 117.9778823852539,
+                                    "height": 118.35050201416016,
+                                    "fills": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0.7176470756530762,
+                                          "g": 0.8705882430076599,
+                                          "b": 0.9450980424880981,
+                                          "a": 1
+                                        }
+                                      }
+                                    ],
+                                    "strokes": []
+                                  },
+                                  {
+                                    "id": "I1:1583;171:7971;171:7469",
+                                    "type": "VECTOR",
+                                    "name": "Vector 2298",
+                                    "width": 253.59027099609375,
+                                    "height": 167.98191833496094,
+                                    "fills": [],
+                                    "strokes": [
+                                      {
+                                        "type": "SOLID",
+                                        "visible": true,
+                                        "color": {
+                                          "r": 0.3333333432674408,
+                                          "g": 0.3176470696926117,
+                                          "b": 1,
+                                          "a": 1
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "I1:1583;1:1682",
+            "type": "FRAME",
+            "name": "Numbered list",
+            "width": 640,
+            "height": 72,
+            "layoutMode": "VERTICAL",
+            "fills": [],
+            "strokes": [],
+            "children": [
+              {
+                "id": "I1:1583;1:1683",
+                "type": "FRAME",
+                "name": "Icon with text",
+                "width": 640,
+                "height": 72,
+                "layoutMode": "HORIZONTAL",
+                "counterAxisAlignItems": "CENTER",
+                "fills": [],
+                "strokes": [],
+                "children": [
+                  {
+                    "id": "I1:1583;1:1684",
+                    "type": "INSTANCE",
+                    "name": "Numbers",
+                    "width": 72,
+                    "height": 70.69091033935547,
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": false,
+                        "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                        }
+                      }
+                    ],
+                    "strokes": [],
+                    "children": [
+                      {
+                        "id": "I1:1583;1:1684;705:1218",
+                        "type": "VECTOR",
+                        "name": "Vector",
+                        "width": 72,
+                        "height": 70.69091033935547,
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "color": {
+                              "r": 0,
+                              "g": 0,
+                              "b": 0,
+                              "a": 1
+                            }
+                          }
+                        ],
+                        "strokes": []
+                      },
+                      {
+                        "id": "I1:1583;1:1684;705:1219",
+                        "type": "TEXT",
+                        "name": "1",
+                        "width": 20,
+                        "height": 38,
+                        "characters": "5",
+                        "fills": [
+                          {
+                            "type": "SOLID",
+                            "visible": true,
+                            "color": {
+                              "r": 0,
+                              "g": 0,
+                              "b": 0,
+                              "a": 1
+                            }
+                          }
+                        ],
+                        "strokes": [],
+                        "style": {
+                          "fontFamily": "Figma Hand",
+                          "fontPostScriptName": "FigmaHand-Bold",
+                          "fontStyle": "Bold",
+                          "fontWeight": 700,
+                          "paragraphSpacing": 15.709091186523438,
+                          "listSpacing": 2.6181819438934326,
+                          "textAutoResize": "WIDTH_AND_HEIGHT",
+                          "fontSize": 26.181819915771484,
+                          "textAlignHorizontal": "CENTER",
+                          "textAlignVertical": "TOP",
+                          "letterSpacing": 0,
+                          "lineHeightPx": 37.96363830566406,
+                          "lineHeightPercent": 105.1486587524414,
+                          "lineHeightPercentFontSize": 145,
+                          "lineHeightUnit": "FONT_SIZE_%"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I1:1583;67:1189",
+                    "type": "TEXT",
+                    "name": "Description",
+                    "width": 536,
+                    "height": 72,
+                    "characters": "Get to know your teammates with a team building activity like two truths and a lie.",
+                    "fills": [
+                      {
+                        "type": "SOLID",
+                        "visible": true,
+                        "color": {
+                          "r": 0,
+                          "g": 0,
+                          "b": 0,
+                          "a": 1
+                        }
+                      }
+                    ],
+                    "strokes": [],
+                    "style": {
+                      "fontFamily": "Inter",
+                      "fontPostScriptName": "Inter-Medium",
+                      "fontStyle": "Medium",
+                      "fontWeight": 500,
+                      "textAutoResize": "HEIGHT",
+                      "fontSize": 24,
+                      "textAlignHorizontal": "LEFT",
+                      "textAlignVertical": "TOP",
+                      "letterSpacing": 0,
+                      "lineHeightPx": 36,
+                      "lineHeightPercent": 123.94366455078125,
+                      "lineHeightPercentFontSize": 150,
+                      "lineHeightUnit": "FONT_SIZE_%"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "markdown": "# Figma Design Context\n\n- File: Sam Sample\n- Node: Instructions (INSTANCE)\n- Size: 800x1907\n- Source: https://www.figma.com/design/UwUhO7dqEx5kytLPuVQPkj/Sam-Sample?node-id=1-1583&t=6M97C5s2y9gY5hhG-4\n\n## Tree\n- Instructions (INSTANCE) - 800x1907\n  - Title and description (FRAME) - 640x288\n    - Option eyebrow (TEXT) - 640x48\n    - Title (TEXT) - 640x192\n    - Description (TEXT) - 640x96\n  - Template (FRAME) - 640x483\n    - Template Thumbnails (INSTANCE) - 640x379\n      - Wayfinding artwork (FRAME) - 640x379\n        - YOU ARE HERE (TEXT) - 640x378\n    - Numbered list (FRAME) - 640x72\n      - Icon with text (FRAME) - 640x72\n        - Numbers (INSTANCE) - 72x71\n        - Description (TEXT) - 536x72\n  - Divider (VECTOR)\n  - Template (FRAME) - 640x108\n    - Template Thumbnails (INSTANCE) - 640x379\n      - Artwork (FRAME) - 640x379\n        - Group 632463 (GROUP) - 453x379\n    - Numbered list (FRAME) - 640x108\n      - Icon with text (FRAME) - 640x108\n        - Numbers (INSTANCE) - 72x71\n        - Description (TEXT) - 536x108\n  - Divider (VECTOR)\n  - Template (FRAME) - 640x108\n    - Template Thumbnails (INSTANCE) - 640x379\n      - Artwork (FRAME) - 640x379\n        - Group 632463 (GROUP) - 453x379\n    - Numbered list (FRAME) - 640x108\n      - Icon with text (FRAME) - 640x108\n        - Numbers (INSTANCE) - 72x71\n        - Description (TEXT) - 536x108\n  - Divider (VECTOR)\n  - Template (FRAME) - 640x72\n    - Template Thumbnails (INSTANCE) - 640x379\n      - Artwork (FRAME) - 640x379\n        - Group 632463 (GROUP) - 453x379\n    - Numbered list (FRAME) - 640x72\n      - Icon with text (FRAME) - 640x72\n        - Numbers (INSTANCE) - 72x71\n        - Description (TEXT) - 536x72\n  - Divider (VECTOR)\n  - Template (FRAME) - 640x72\n    - Template Thumbnails (INSTANCE) - 640x379\n      - Artwork (FRAME) - 640x379\n        - Group 632463 (GROUP) - 453x379\n    - Numbered list (FRAME) - 640x72\n      - Icon with text (FRAME) - 640x72\n        - Numbers (INSTANCE) - 72x71\n        - Description (TEXT) - 536x72"
+}
