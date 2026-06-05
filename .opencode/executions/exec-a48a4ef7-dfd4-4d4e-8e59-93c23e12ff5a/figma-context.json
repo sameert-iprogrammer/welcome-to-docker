@@ -1,0 +1,142 @@
+{
+  "source": {
+    "fileKey": "UwUhO7dqEx5kytLPuVQPkj",
+    "nodeId": "1:1645",
+    "url": "https://www.figma.com/design/UwUhO7dqEx5kytLPuVQPkj/Sam-Sample?node-id=1-1645&t=6M97C5s2y9gY5hhG-4",
+    "fetchedAt": "2026-06-05T06:51:17.626Z"
+  },
+  "metadata": {
+    "fileName": "Sam Sample",
+    "nodeName": null,
+    "nodeType": "SECTION",
+    "width": 1792,
+    "height": 816
+  },
+  "tree": {
+    "id": "1:1645",
+    "type": "SECTION",
+    "name": "",
+    "width": 1792,
+    "height": 816,
+    "fills": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "color": {
+          "r": 0.9841176271438599,
+          "g": 0.9700000286102295,
+          "b": 1,
+          "a": 1
+        }
+      }
+    ],
+    "strokes": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "color": {
+          "r": 0.8941176533699036,
+          "g": 0.800000011920929,
+          "b": 1,
+          "a": 1
+        }
+      }
+    ],
+    "children": [
+      {
+        "id": "1:1646",
+        "type": "TEXT",
+        "name": "Enter your team name",
+        "width": 1386,
+        "height": 180,
+        "characters": "Enter your team name",
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "color": {
+              "r": 0.11764705926179886,
+              "g": 0.11764705926179886,
+              "b": 0.11764705926179886,
+              "a": 1
+            }
+          }
+        ],
+        "strokes": [],
+        "style": {
+          "fontFamily": "Inter",
+          "fontPostScriptName": "Inter-Bold",
+          "fontStyle": "Bold",
+          "fontWeight": 700,
+          "textAutoResize": "HEIGHT",
+          "fontSize": 120,
+          "textAlignHorizontal": "LEFT",
+          "textAlignVertical": "TOP",
+          "letterSpacing": -2.759999942779541,
+          "lineHeightPx": 180,
+          "lineHeightPercent": 123.94366455078125,
+          "lineHeightPercentFontSize": 150,
+          "lineHeightUnit": "FONT_SIZE_%"
+        }
+      },
+      {
+        "id": "1:1647",
+        "type": "TEXT",
+        "name": "Roadmap review",
+        "width": 842,
+        "height": 60,
+        "characters": "Roadmap review",
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "color": {
+              "r": 0.11764705926179886,
+              "g": 0.11764705926179886,
+              "b": 0.11764705926179886,
+              "a": 1
+            }
+          }
+        ],
+        "strokes": [],
+        "style": {
+          "fontFamily": "Inter",
+          "fontPostScriptName": "Inter-Bold",
+          "fontStyle": "Bold",
+          "fontWeight": 700,
+          "textAutoResize": "HEIGHT",
+          "fontSize": 40,
+          "textAlignHorizontal": "LEFT",
+          "textAlignVertical": "TOP",
+          "letterSpacing": -0.8800000190734864,
+          "lineHeightPx": 60,
+          "lineHeightPercent": 123.94366455078125,
+          "lineHeightPercentFontSize": 150,
+          "lineHeightUnit": "FONT_SIZE_%"
+        }
+      },
+      {
+        "id": "1:1648",
+        "type": "SHAPE_WITH_TEXT",
+        "name": "NOT STARTED",
+        "width": 488,
+        "height": 100,
+        "characters": "NOT STARTED",
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "color": {
+              "r": 0.5921568870544434,
+              "g": 0.27843138575553894,
+              "b": 1,
+              "a": 1
+            }
+          }
+        ],
+        "strokes": []
+      }
+    ]
+  },
+  "markdown": "# Figma Design Context\n\n- File: Sam Sample\n- Node: Unknown (SECTION)\n- Size: 1792x816\n- Source: https://www.figma.com/design/UwUhO7dqEx5kytLPuVQPkj/Sam-Sample?node-id=1-1645&t=6M97C5s2y9gY5hhG-4\n\n## Tree\n- (unnamed) (SECTION) - 1792x816\n  - Enter your team name (TEXT) - 1386x180\n  - Roadmap review (TEXT) - 842x60\n  - NOT STARTED (SHAPE_WITH_TEXT) - 488x100"
+}
