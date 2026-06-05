@@ -1378,6 +1378,124 @@
   border-color: rgba(255, 255, 255, 0.4);
 }
 
+.masters-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.masters-modal {
+  background: #112240;
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  padding: 28px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  min-width: 360px;
+  max-width: 480px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.masters-modal-title {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+}
+
+.masters-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.masters-modal-form .form-group {
+  margin-bottom: 0;
+}
+
+.masters-modal-form label {
+  display: block;
+  color: #a8b2d1;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.masters-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.masters-modal-save-btn {
+  width: auto;
+  margin-top: 0;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.masters-modal-cancel-btn {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.masters-modal-cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.masters-edit-btn {
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.masters-edit-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.masters-delete-btn {
+  padding: 4px 10px;
+  background: #dc3545;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.masters-delete-btn:hover {
+  background: #c0392b;
+}
+
 /* Dashboard Metric Cards */
 .metrics-grid {
   display: grid;
