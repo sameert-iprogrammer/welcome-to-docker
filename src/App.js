@@ -16,6 +16,7 @@ import FAQ from "./FAQ";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsAndConditions from "./TermsAndConditions";
 import Approvals from "./Approvals";
+import Bookings from "./Bookings";
 import LoyaltyPoints from "./LoyaltyPoints";
 import Navbar from "./Navbar";
 
@@ -94,6 +95,12 @@ const App = () => {
           path="/approvals"
           element={
             isAuthenticated ? <Approvals /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/bookings"
+          element={
+            isAuthenticated ? <Bookings /> : <Navigate to="/login" />
           }
         />
         <Route
