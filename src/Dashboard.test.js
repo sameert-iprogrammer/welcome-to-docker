@@ -35,8 +35,8 @@ describe("Dashboard", () => {
       </MemoryRouter>
     );
     const rows = screen.getAllByRole("row");
-    // 1 header row + 5 data rows = 6 rows
-    expect(rows.length).toBe(6);
+    // 6 user rows (1 header + 5 data) + 6 order rows (1 header + 5 data) = 12 rows
+    expect(rows.length).toBe(12);
   });
 
   it("renders 5 View buttons", () => {
@@ -151,5 +151,53 @@ describe("Dashboard", () => {
     // Second user (bob_dev) should still be Active
     const statusBadges = screen.getAllByText("Active");
     expect(statusBadges.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it("renders Recent Orders heading", () => {
+    render(
+      <MemoryRouter>
+        <Dashboard />
+      </MemoryRouter>
+    );
+    expect(screen.getByText("Recent Orders")).toBeInTheDocument();
+  });
+
+  it("renders 5 order data rows (12 total rows including headers)", () => {
+    render(
+      <MemoryRouter>
+        <Dashboard />
+      </MemoryRouter>
+    );
+    const rows = screen.getAllByRole("row");
+    // 6 user rows (1 header + 5 data) + 6 order rows (1 header + 5 data) = 12
+    expect(rows.length).toBe(12);
+  });
+
+  it("shows modal with Order Details when order row is clicked", () => {
+    render(
+      <MemoryRouter>
+        <Dashboard />
+      </MemoryRouter>
+    );
+    const rows = screen.getAllByRole("row");
+    // rows[0..5] are user header+data, rows[6] is order header, rows[7] is 1st order data row
+    fireEvent.click(rows[7]);
+    expect(screen.getByText("Order Details")).toBeInTheDocument();
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+  });
+
+  it("dismisses order modal when Close is clicked", () => {
+    render(
+      <MemoryRouter>
+        <Dashboard />
+      </MemoryRouter>
+    );
+    const rows = screen.getAllByRole("row");
+    fireEvent.click(rows[7]);
+    expect(screen.getByText("Order Details")).toBeInTheDocument();
+
+    const closeButton = screen.getByText("Close");
+    fireEvent.click(closeButton);
+    expect(screen.queryByText("Order Details")).not.toBeInTheDocument();
   });
 });

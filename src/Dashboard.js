@@ -17,8 +17,17 @@ const recentUsersData = [
   { id: 5, username: "eve_eng", email: "eve@example.com", role: "Developer", status: "Inactive", joinedDate: "2024-11-18" },
 ];
 
+const recentOrdersData = [
+  { id: "ORD-001", customer: "Alice Johnson", product: "Docker Desktop", status: "Shipped", date: "2026-05-01" },
+  { id: "ORD-002", customer: "Bob Smith", product: "Docker Compose", status: "Processing", date: "2026-05-10" },
+  { id: "ORD-003", customer: "Carol White", product: "Docker Hub", status: "Delivered", date: "2026-04-28" },
+  { id: "ORD-004", customer: "Dave Brown", product: "Docker Engine", status: "Pending", date: "2026-05-15" },
+  { id: "ORD-005", customer: "Eve Davis", product: "Docker Swarm", status: "Shipped", date: "2026-05-12" },
+];
+
 const Dashboard = () => {
   const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedOrder, setSelectedOrder] = useState(null);
   const [users, setUsers] = useState(recentUsersData);
   const [confirmUser, setConfirmUser] = useState(null);
 
@@ -136,6 +145,80 @@ const Dashboard = () => {
                 <div className="confirm-dialog-actions">
                   <button className="confirm-dialog-cancel-btn" onClick={() => setConfirmUser(null)}>Cancel</button>
                   <button className="confirm-dialog-confirm-btn" onClick={() => handleToggleStatus(confirmUser)}>Confirm</button>
+                </div>
+              </div>
+            </div>
+          )}
+        </section>
+        <section className="recent-orders-section">
+          <h2 className="recent-orders-title">Recent Orders</h2>
+          <div className="recent-orders-table-wrapper">
+            <table className="recent-orders-table">
+              <thead>
+                <tr>
+                  <th className="recent-orders-table-th">Order ID</th>
+                  <th className="recent-orders-table-th">Customer</th>
+                  <th className="recent-orders-table-th">Product</th>
+                  <th className="recent-orders-table-th">Status</th>
+                  <th className="recent-orders-table-th">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recentOrdersData.map((o) => (
+                  <tr key={o.id} onClick={() => setSelectedOrder(o)} style={{cursor: 'pointer'}}>
+                    <td className="recent-orders-table-td">{o.id}</td>
+                    <td className="recent-orders-table-td">{o.customer}</td>
+                    <td className="recent-orders-table-td">{o.product}</td>
+                    <td className="recent-orders-table-td">
+                      <span className={`recent-orders-status recent-orders-status--${o.status.toLowerCase()}`}>
+                        {o.status}
+                      </span>
+                    </td>
+                    <td className="recent-orders-table-td">{o.date}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {selectedOrder && (
+            <div className="recent-orders-modal-overlay" role="dialog" aria-modal="true" onClick={() => setSelectedOrder(null)}>
+              <div className="recent-orders-modal" onClick={(e) => e.stopPropagation()}>
+                <div className="recent-orders-modal-header">
+                  <h3 className="recent-orders-modal-title">Order Details</h3>
+                  <button className="recent-orders-modal-close-btn" onClick={() => setSelectedOrder(null)} aria-label="Close">&times;</button>
+                </div>
+                <div className="recent-orders-modal-body">
+                  <div className="recent-orders-modal-row">
+                    <span className="recent-orders-modal-label">Order ID</span>
+                    <span className="recent-orders-modal-value">{selectedOrder.id}</span>
+                  </div>
+                  <div className="recent-orders-modal-row">
+                    <span className="recent-orders-modal-label">Customer</span>
+                    <span className="recent-orders-modal-value">{selectedOrder.customer}</span>
+                  </div>
+                  <div className="recent-orders-modal-row">
+                    <span className="recent-orders-modal-label">Product</span>
+                    <span className="recent-orders-modal-value">{selectedOrder.product}</span>
+                  </div>
+                  <div className="recent-orders-modal-row">
+                    <span className="recent-orders-modal-label">Status</span>
+                    <span className="recent-orders-modal-value">{selectedOrder.status}</span>
+                  </div>
+                  <div className="recent-orders-modal-row">
+                    <span className="recent-orders-modal-label">Date</span>
+                    <span className="recent-orders-modal-value">{selectedOrder.date}</span>
+                  </div>
+                  <div className="recent-orders-modal-row">
+                    <span className="recent-orders-modal-label">Amount</span>
+                    <span className="recent-orders-modal-value">$49.99</span>
+                  </div>
+                  <div className="recent-orders-modal-row">
+                    <span className="recent-orders-modal-label">Payment Method</span>
+                    <span className="recent-orders-modal-value">Credit Card</span>
+                  </div>
+                </div>
+                <div className="recent-orders-modal-actions">
+                  <button className="recent-orders-modal-close-action-btn" onClick={() => setSelectedOrder(null)}>Close</button>
                 </div>
               </div>
             </div>
