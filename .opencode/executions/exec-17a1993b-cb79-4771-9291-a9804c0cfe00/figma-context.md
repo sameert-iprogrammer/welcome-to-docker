@@ -1,0 +1,57 @@
+# Figma Design Context
+
+- File: Sam Sample
+- Node: Instructions (INSTANCE)
+- Size: 800x1907
+- Source: https://www.figma.com/design/UwUhO7dqEx5kytLPuVQPkj/Sam-Sample?node-id=1-1583&t=6M97C5s2y9gY5hhG-4
+
+## Tree
+- Instructions (INSTANCE) - 800x1907
+  - Title and description (FRAME) - 640x288
+    - Option eyebrow (TEXT) - 640x48
+    - Title (TEXT) - 640x192
+    - Description (TEXT) - 640x96
+  - Template (FRAME) - 640x483
+    - Template Thumbnails (INSTANCE) - 640x379
+      - Wayfinding artwork (FRAME) - 640x379
+        - YOU ARE HERE (TEXT) - 640x378
+    - Numbered list (FRAME) - 640x72
+      - Icon with text (FRAME) - 640x72
+        - Numbers (INSTANCE) - 72x71
+        - Description (TEXT) - 536x72
+  - Divider (VECTOR)
+  - Template (FRAME) - 640x108
+    - Template Thumbnails (INSTANCE) - 640x379
+      - Artwork (FRAME) - 640x379
+        - Group 632463 (GROUP) - 453x379
+    - Numbered list (FRAME) - 640x108
+      - Icon with text (FRAME) - 640x108
+        - Numbers (INSTANCE) - 72x71
+        - Description (TEXT) - 536x108
+  - Divider (VECTOR)
+  - Template (FRAME) - 640x108
+    - Template Thumbnails (INSTANCE) - 640x379
+      - Artwork (FRAME) - 640x379
+        - Group 632463 (GROUP) - 453x379
+    - Numbered list (FRAME) - 640x108
+      - Icon with text (FRAME) - 640x108
+        - Numbers (INSTANCE) - 72x71
+        - Description (TEXT) - 536x108
+  - Divider (VECTOR)
+  - Template (FRAME) - 640x72
+    - Template Thumbnails (INSTANCE) - 640x379
+      - Artwork (FRAME) - 640x379
+        - Group 632463 (GROUP) - 453x379
+    - Numbered list (FRAME) - 640x72
+      - Icon with text (FRAME) - 640x72
+        - Numbers (INSTANCE) - 72x71
+        - Description (TEXT) - 536x72
+  - Divider (VECTOR)
+  - Template (FRAME) - 640x72
+    - Template Thumbnails (INSTANCE) - 640x379
+      - Artwork (FRAME) - 640x379
+        - Group 632463 (GROUP) - 453x379
+    - Numbered list (FRAME) - 640x72
+      - Icon with text (FRAME) - 640x72
+        - Numbers (INSTANCE) - 72x71
+        - Description (TEXT) - 536x72

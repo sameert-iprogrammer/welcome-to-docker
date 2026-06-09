@@ -16,6 +16,8 @@ import FAQ from "./FAQ";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsAndConditions from "./TermsAndConditions";
 import Approvals from "./Approvals";
+import Bookings from "./Bookings";
+import LoyaltyPoints from "./LoyaltyPoints";
 import Navbar from "./Navbar";
 
 const App = () => {
@@ -96,9 +98,21 @@ const App = () => {
           }
         />
         <Route
+          path="/bookings"
+          element={
+            isAuthenticated ? <Bookings /> : <Navigate to="/login" />
+          }
+        />
+        <Route
           path="/faq"
           element={
             isAuthenticated ? <FAQ /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/loyalty-points"
+          element={
+            isAuthenticated ? <LoyaltyPoints /> : <Navigate to="/login" />
           }
         />
         <Route

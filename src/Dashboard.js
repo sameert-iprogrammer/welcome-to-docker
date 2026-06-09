@@ -1,5 +1,6 @@
 import React from "react";
 import Sidebar from "./Sidebar";
+import DashboardCard from "./DashboardCard";
 
 const metrics = [
   { id: 1, icon: "fa-cubes", value: "12", label: "Total Containers" },
@@ -13,6 +14,7 @@ const Dashboard = () => {
     <div className="App App--sidebar">
       <Sidebar />
       <div className="dashboard-content">
+        <DashboardCard />
         <div className="metrics-grid">
           {metrics.map((m) => (
             <div className="metric-card" key={m.id}>
