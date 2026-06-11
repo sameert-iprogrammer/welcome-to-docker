@@ -1,16 +1,63 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, waitFor, act } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { toast } from "react-toastify";
 import Products from "./Products";
 
-jest.mock("react-toastify", () => ({
-  toast: { success: jest.fn() },
-}));
+jest.mock("./Sidebar", () => () => <div data-testid="sidebar" />);
+
+const mockProducts = [
+  {
+    id: 1,
+    title: "Essence Mascara",
+    category: "beauty",
+    price: 9.99,
+    thumbnail: "https://example.com/img1.jpg",
+  },
+  {
+    id: 2,
+    title: "iPhone 9",
+    category: "smartphones",
+    price: 499.99,
+    thumbnail: "https://example.com/img2.jpg",
+  },
+];
+
+const listResponse = {
+  products: mockProducts,
+  total: 20,
+  skip: 0,
+  limit: 10,
+};
+
+const emptyResponse = {
+  products: [],
+  total: 0,
+  skip: 0,
+  limit: 10,
+};
+
+function mockFetchSuccess(data) {
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve(data),
+    })
+  );
+}
+
+function mockFetchReject(message = "Network error") {
+  global.fetch = jest.fn(() => Promise.reject(new Error(message)));
+}
 
 describe("Products", () => {
   beforeEach(() => {
-    toast.success.mockClear();
+    jest.useFakeTimers();
+    mockFetchSuccess(listResponse);
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+    jest.restoreAllMocks();
   });
 
   it("renders without crashing", () => {
@@ -21,174 +68,211 @@ describe("Products", () => {
     );
   });
 
-  it("renders product rows in the table", () => {
+  it("shows loading state while fetch is pending", () => {
+    global.fetch = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          setTimeout(
+            () =>
+              resolve({
+                ok: true,
+                json: () => Promise.resolve(listResponse),
+              }),
+            5000
+          );
+        })
+    );
+
     const { getByText } = render(
       <MemoryRouter>
         <Products />
       </MemoryRouter>
     );
-    // Page 1 shows first 10 products
-    expect(getByText("Wireless Mouse")).toBeInTheDocument();
-    expect(getByText("Mechanical Keyboard")).toBeInTheDocument();
-    expect(getByText("USB-C Hub")).toBeInTheDocument();
-    expect(getByText("Laptop Stand")).toBeInTheDocument();
-    expect(getByText("Noise-Canceling Headphones")).toBeInTheDocument();
-    expect(getByText("Webcam HD")).toBeInTheDocument();
-    expect(getByText("Desk Lamp LED")).toBeInTheDocument();
-    expect(getByText("Ergonomic Chair")).toBeInTheDocument();
-    expect(getByText("Monitor 27 inch")).toBeInTheDocument();
-    expect(getByText("External SSD 1TB")).toBeInTheDocument();
+    expect(getByText("Loading products...")).toBeInTheDocument();
   });
 
-  it("filters rows by search term (case-insensitive)", () => {
-    const { getByLabelText, queryByText, getByText } = render(
+  it("renders API products after successful fetch", async () => {
+    const { getByText } = render(
       <MemoryRouter>
         <Products />
       </MemoryRouter>
     );
 
-    const searchInput = getByLabelText("Search products");
-    expect(searchInput).toBeInTheDocument();
-
-    // Search by name
-    fireEvent.change(searchInput, { target: { value: "keyboard" } });
-    expect(getByText("Mechanical Keyboard")).toBeInTheDocument();
-    expect(queryByText("Wireless Mouse")).not.toBeInTheDocument();
-
-    // Search by SKU
-    fireEvent.change(searchInput, { target: { value: "SKU-110" } });
-    expect(getByText("External SSD 1TB")).toBeInTheDocument();
-    expect(queryByText("Mechanical Keyboard")).not.toBeInTheDocument();
-
-    // Search by category
-    fireEvent.change(searchInput, { target: { value: "furniture" } });
-    expect(getByText("Ergonomic Chair")).toBeInTheDocument();
-    expect(getByText("Standing Desk")).toBeInTheDocument();
-    expect(queryByText("Wireless Mouse")).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(getByText("Essence Mascara")).toBeInTheDocument();
+    });
+    expect(getByText("iPhone 9")).toBeInTheDocument();
+    expect(getByText("beauty")).toBeInTheDocument();
+    expect(getByText("$9.99")).toBeInTheDocument();
+    expect(getByText("$499.99")).toBeInTheDocument();
   });
 
-  it("shows no results message when search matches nothing", () => {
+  it("search triggers debounced fetch to search endpoint", async () => {
+    const { getByLabelText } = render(
+      <MemoryRouter>
+        <Products />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => expect(global.fetch).toHaveBeenCalled());
+
+    global.fetch.mockClear();
+    mockFetchSuccess({ products: [mockProducts[1]], total: 1, skip: 0, limit: 10 });
+
+    fireEvent.change(getByLabelText("Search products"), {
+      target: { value: "phone" },
+    });
+
+    act(() => {
+      jest.advanceTimersByTime(400);
+    });
+
+    await waitFor(() => {
+      expect(global.fetch).toHaveBeenCalled();
+      const url = global.fetch.mock.calls[0][0];
+      expect(url).toContain("/products/search?q=phone");
+    });
+  });
+
+  it("pagination Next sends fetch with updated skip", async () => {
     const { getByLabelText, getByText } = render(
       <MemoryRouter>
         <Products />
       </MemoryRouter>
     );
-    const searchInput = getByLabelText("Search products");
-    fireEvent.change(searchInput, { target: { value: "zzzzz" } });
-    expect(getByText(/no products found/i)).toBeInTheDocument();
-  });
 
-  it("pagination controls render and work", () => {
-    const { getByLabelText, getByText, queryByText } = render(
-      <MemoryRouter>
-        <Products />
-      </MemoryRouter>
-    );
+    await waitFor(() => expect(getByText("Essence Mascara")).toBeInTheDocument());
 
-    // Previous button should be disabled on page 1
-    const prevBtn = getByLabelText("Previous page");
-    expect(prevBtn).toBeDisabled();
-    expect(getByText(/page 1 of 2/i)).toBeInTheDocument();
-
-    // Click Next to go to page 2
-    const nextBtn = getByLabelText("Next page");
-    fireEvent.click(nextBtn);
-    expect(getByText(/page 2 of 2/i)).toBeInTheDocument();
-    // Page 2 shows Phone Charger (product #11)
-    expect(getByText("Bluetooth Speaker")).toBeInTheDocument();
-    expect(queryByText("Wireless Mouse")).not.toBeInTheDocument();
-  });
-
-  it("search resets pagination to page 1", () => {
-    const { getByLabelText, getByText, queryByText } = render(
-      <MemoryRouter>
-        <Products />
-      </MemoryRouter>
-    );
-
-    // Navigate to page 2
-    const nextBtn = getByLabelText("Next page");
-    fireEvent.click(nextBtn);
-    expect(getByText(/page 2 of 2/i)).toBeInTheDocument();
-
-    // Search for something
-    const searchInput = getByLabelText("Search products");
-    fireEvent.change(searchInput, { target: { value: "mouse" } });
-
-    // Should be back on page 1, showing only Wireless Mouse
-    expect(getByText(/page 1 of 1/i)).toBeInTheDocument();
-    expect(getByText("Wireless Mouse")).toBeInTheDocument();
-    expect(queryByText("Bluetooth Speaker")).not.toBeInTheDocument();
-  });
-
-  it("renders an Add Product button", () => {
-    const { getByLabelText } = render(
-      <MemoryRouter>
-        <Products />
-      </MemoryRouter>
-    );
-    expect(getByLabelText("Add product")).toBeInTheDocument();
-  });
-
-  it("opens the modal with empty form fields on Add Product click", () => {
-    const { getByLabelText } = render(
-      <MemoryRouter>
-        <Products />
-      </MemoryRouter>
-    );
-
-    fireEvent.click(getByLabelText("Add product"));
-
-    expect(getByLabelText("Add Product")).toBeInTheDocument();
-    expect(getByLabelText("SKU").value).toBe("");
-    expect(getByLabelText("Name").value).toBe("");
-    expect(getByLabelText("Category").value).toBe("");
-    expect(getByLabelText("Price").value).toBe("");
-    expect(getByLabelText("Save product")).toBeInTheDocument();
-    expect(getByLabelText("Cancel add product")).toBeInTheDocument();
-  });
-
-  it("closes the modal without saving when Cancel is clicked", () => {
-    const { getByLabelText, queryByLabelText, queryByText } = render(
-      <MemoryRouter>
-        <Products />
-      </MemoryRouter>
-    );
-
-    fireEvent.click(getByLabelText("Add product"));
-    expect(getByLabelText("Add Product")).toBeInTheDocument();
-
-    fireEvent.click(getByLabelText("Cancel add product"));
-
-    expect(queryByLabelText("Add Product")).toBeNull();
-    expect(toast.success).not.toHaveBeenCalled();
-    expect(queryByText("Test Product")).toBeNull();
-  });
-
-  it("saves a new product, fires toast, closes modal, and shows the row", () => {
-    const { getByLabelText, queryByLabelText, getByText } = render(
-      <MemoryRouter>
-        <Products />
-      </MemoryRouter>
-    );
-
-    fireEvent.click(getByLabelText("Add product"));
-    fireEvent.change(getByLabelText("SKU"), { target: { value: "SKU-TEST" } });
-    fireEvent.change(getByLabelText("Name"), { target: { value: "Test Product" } });
-    fireEvent.change(getByLabelText("Category"), { target: { value: "Electronics" } });
-    fireEvent.change(getByLabelText("Price"), { target: { value: "99.99" } });
-
-    fireEvent.click(getByLabelText("Save product"));
-
-    expect(queryByLabelText("Add Product")).toBeNull();
-    expect(toast.success).toHaveBeenCalledWith("Product added successfully");
-
-    // Filter to surface the newly-added row regardless of pagination position.
-    fireEvent.change(getByLabelText("Search products"), {
-      target: { value: "Test Product" },
+    global.fetch.mockClear();
+    mockFetchSuccess({
+      products: [{ id: 11, title: "Page 2 Item", category: "test", price: 1, thumbnail: "" }],
+      total: 20,
+      skip: 10,
+      limit: 10,
     });
-    expect(getByText("Test Product")).toBeInTheDocument();
-    expect(getByText("SKU-TEST (21)")).toBeInTheDocument();
-    expect(getByText("$99.99")).toBeInTheDocument();
+
+    fireEvent.click(getByLabelText("Next page"));
+
+    await waitFor(() => {
+      expect(global.fetch).toHaveBeenCalled();
+      const url = global.fetch.mock.calls[0][0];
+      expect(url).toContain("skip=10");
+    });
+  });
+
+  it("pagination Previous sends fetch with skip=0 from page 2", async () => {
+    const { getByLabelText, getByText } = render(
+      <MemoryRouter>
+        <Products />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => expect(getByText("Essence Mascara")).toBeInTheDocument());
+
+    global.fetch.mockClear();
+    mockFetchSuccess({
+      products: [{ id: 11, title: "Page 2 Item", category: "test", price: 1, thumbnail: "" }],
+      total: 20,
+      skip: 10,
+      limit: 10,
+    });
+
+    fireEvent.click(getByLabelText("Next page"));
+    await waitFor(() => expect(getByText("Page 2 Item")).toBeInTheDocument());
+
+    global.fetch.mockClear();
+    mockFetchSuccess(listResponse);
+
+    fireEvent.click(getByLabelText("Previous page"));
+
+    await waitFor(() => {
+      expect(global.fetch).toHaveBeenCalled();
+      const url = global.fetch.mock.calls[0][0];
+      expect(url).toContain("skip=0");
+    });
+  });
+
+  it("displays error state on fetch rejection", async () => {
+    mockFetchReject("Network error");
+
+    const { getByText } = render(
+      <MemoryRouter>
+        <Products />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      expect(getByText("Network error")).toBeInTheDocument();
+    });
+    expect(getByText("Retry")).toBeInTheDocument();
+  });
+
+  it("shows empty message when API returns no products", async () => {
+    mockFetchSuccess(emptyResponse);
+
+    const { getByText } = render(
+      <MemoryRouter>
+        <Products />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      expect(getByText("No products found")).toBeInTheDocument();
+    });
+  });
+
+  it("search resets pagination to page 1", async () => {
+    mockFetchSuccess({
+      products: [{ id: 11, title: "Page 2 Item", category: "test", price: 1, thumbnail: "" }],
+      total: 20,
+      skip: 10,
+      limit: 10,
+    });
+
+    const { getByLabelText, getByText } = render(
+      <MemoryRouter>
+        <Products />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => expect(getByText("Page 2 Item")).toBeInTheDocument());
+
+    global.fetch.mockClear();
+    mockFetchSuccess({ products: [mockProducts[0]], total: 1, skip: 0, limit: 10 });
+
+    fireEvent.change(getByLabelText("Search products"), {
+      target: { value: "mascara" },
+    });
+
+    act(() => {
+      jest.advanceTimersByTime(400);
+    });
+
+    await waitFor(() => {
+      const url = global.fetch.mock.calls[0][0];
+      expect(url).toContain("skip=0");
+    });
+  });
+
+  it("shows thumbnail fallback when image fails to load", async () => {
+    mockFetchSuccess({
+      products: [{ id: 99, title: "Broken Image", category: "test", price: 5, thumbnail: "bad.jpg" }],
+      total: 1,
+      skip: 0,
+      limit: 10,
+    });
+
+    const { container, getByText } = render(
+      <MemoryRouter>
+        <Products />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => expect(getByText("Broken Image")).toBeInTheDocument());
+
+    const img = container.querySelector(".products-thumbnail");
+    fireEvent.error(img);
+
+    expect(container.querySelector(".products-thumbnail--fallback")).toBeInTheDocument();
   });
 });

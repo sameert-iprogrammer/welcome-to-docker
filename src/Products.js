@@ -1,180 +1,171 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { toast } from "react-toastify";
+import React, { useState, useEffect, useCallback } from "react";
 import Sidebar from "./Sidebar";
-import { mockProducts } from "./productsMock";
 
 const PAGE_SIZE = 10;
-
-const emptyForm = { sku: "", name: "", category: "", price: "" };
+const DEBOUNCE_MS = 400;
 
 const Products = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [products, setProducts] = useState(mockProducts);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [form, setForm] = useState(emptyForm);
-
-  const filteredProducts = useMemo(() => {
-    const term = searchTerm.toLowerCase();
-    if (!term) return products;
-    return products.filter((p) => {
-      const str =
-        String(p.id) +
-        p.sku +
-        p.name +
-        (p.category || "") +
-        String(p.price);
-      return str.toLowerCase().includes(term);
-    });
-  }, [searchTerm, products]);
-
-  const handleOpenModal = () => {
-    setForm(emptyForm);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleFormChange = (field) => (e) =>
-    setForm((prev) => ({ ...prev, [field]: e.target.value }));
-
-  const handleSave = (e) => {
-    e.preventDefault();
-    const nextId = products.length
-      ? Math.max(...products.map((p) => p.id)) + 1
-      : 1;
-    const newProduct = { id: nextId, ...form, price: Number(form.price) };
-    setProducts((prev) => [...prev, newProduct]);
-    setIsModalOpen(false);
-    toast.success("Product added successfully");
-  };
+  const [products, setProducts] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [skip, setSkip] = useState(0);
+  const [pageSize] = useState(PAGE_SIZE);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [fetchKey, setFetchKey] = useState(0);
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [searchTerm]);
+    const timer = setTimeout(() => setDebouncedSearch(searchQuery), DEBOUNCE_MS);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
-  const totalPages = Math.ceil(filteredProducts.length / PAGE_SIZE);
-  const start = (currentPage - 1) * PAGE_SIZE;
-  const paginatedProducts = filteredProducts.slice(start, start + PAGE_SIZE);
-  const displayTotal = totalPages || 1;
+  useEffect(() => {
+    setSkip(0);
+  }, [debouncedSearch]);
+
+  const fetchProducts = useCallback(async (signal) => {
+    const params = new URLSearchParams({
+      limit: String(pageSize),
+      skip: String(skip),
+    });
+    const baseUrl = debouncedSearch.trim()
+      ? `https://dummyjson.com/products/search?q=${encodeURIComponent(debouncedSearch.trim())}&${params}`
+      : `https://dummyjson.com/products?${params}`;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch(baseUrl, { signal });
+      if (!res.ok) throw new Error(`Failed to load products (${res.status})`);
+      const data = await res.json();
+      setProducts(data.products || []);
+      setTotal(data.total ?? 0);
+    } catch (err) {
+      if (err.name === "AbortError") return;
+      setError(err.message || "Failed to load products");
+      setProducts([]);
+      setTotal(0);
+    } finally {
+      if (!signal.aborted) setLoading(false);
+    }
+  }, [debouncedSearch, skip, pageSize, fetchKey]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    fetchProducts(controller.signal);
+    return () => controller.abort();
+  }, [fetchProducts]);
+
+  const currentPage = Math.floor(skip / pageSize) + 1;
+  const totalPages = total > 0 ? Math.ceil(total / pageSize) : 1;
+  const rangeStart = total === 0 ? 0 : skip + 1;
+  const rangeEnd = Math.min(skip + pageSize, total);
 
   const formatPrice = (price) => `$${Number(price).toFixed(2)}`;
+
+  const handleRetry = () => setFetchKey((k) => k + 1);
 
   return (
     <div className="App App--sidebar">
       <Sidebar />
-      <div className="customers-container">
-        <div className="customers-header">
-          <h2 className="customers-title">Products</h2>
-          <button type="button" className="customers-add-btn" onClick={handleOpenModal} aria-label="Add product">
-            Add Product
-          </button>
+      <div className="products-container">
+        <div className="products-header">
+          <h2 className="products-title">Products</h2>
         </div>
         <input
           type="text"
-          className="orders-search login-input"
+          className="products-search login-input"
           placeholder="Search products..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           aria-label="Search products"
         />
-        <div className="orders-table-wrapper">
-          <table className="orders-table">
-            <thead>
-              <tr>
-                <th className="orders-table-th">SKU/ID</th>
-                <th className="orders-table-th">Name</th>
-                <th className="orders-table-th">Category</th>
-                <th className="orders-table-th">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              {paginatedProducts.map((product) => (
-                <tr key={product.sku}>
-                  <td className="orders-table-td">
-                    {product.sku} ({product.id})
-                  </td>
-                  <td className="orders-table-td">{product.name}</td>
-                  <td className="orders-table-td">{product.category}</td>
-                  <td className="orders-table-td">{formatPrice(product.price)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        {filteredProducts.length === 0 && (
-          <p className="orders-no-results">
-            No products found matching "{searchTerm}"
-          </p>
-        )}
-        {filteredProducts.length > 0 && (
-          <div className="customers-pagination">
-            <button
-              className={`customers-page-btn${
-                currentPage === 1 ? " customers-page-btn--disabled" : ""
-              }`}
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              disabled={currentPage === 1}
-              aria-label="Previous page"
-            >
-              Previous
-            </button>
-            <span className="customers-page-info">
-              Page {currentPage} of {displayTotal}
-            </span>
-            <button
-              className={`customers-page-btn${
-                currentPage === totalPages ? " customers-page-btn--disabled" : ""
-              }`}
-              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-              disabled={currentPage === totalPages}
-              aria-label="Next page"
-            >
-              Next
+        {loading && <p className="products-loading">Loading products...</p>}
+        {error && !loading && (
+          <div className="products-error">
+            <p>{error}</p>
+            <button type="button" className="products-page-btn" onClick={handleRetry}>
+              Retry
             </button>
           </div>
         )}
-        {isModalOpen && (
-          <div className="product-modal-overlay" role="dialog" aria-modal="true" aria-label="Add Product">
-            <div className="product-modal">
-              <h3 className="product-modal-title">Add Product</h3>
-              <form className="product-modal-form" onSubmit={handleSave}>
-                <div className="form-group">
-                  <label htmlFor="product-sku">SKU</label>
-                  <input id="product-sku" type="text" className="login-input" value={form.sku} onChange={handleFormChange("sku")} aria-label="SKU" required />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="product-name">Name</label>
-                  <input id="product-name" type="text" className="login-input" value={form.name} onChange={handleFormChange("name")} aria-label="Name" required />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="product-category">Category</label>
-                  <select id="product-category" className="login-input" value={form.category} onChange={handleFormChange("category")} aria-label="Category" required>
-                    <option value="">Select category</option>
-                    <option value="Electronics">Electronics</option>
-                    <option value="Accessories">Accessories</option>
-                    <option value="Office">Office</option>
-                    <option value="Furniture">Furniture</option>
-                    <option value="Storage">Storage</option>
-                    <option value="Wearables">Wearables</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="product-price">Price</label>
-                  <input id="product-price" type="number" step="0.01" min="0" className="login-input" value={form.price} onChange={handleFormChange("price")} aria-label="Price" required />
-                </div>
-                <div className="product-modal-actions">
-                  <button type="button" className="product-modal-cancel-btn" onClick={handleCloseModal} aria-label="Cancel add product">Cancel</button>
-                  <button type="submit" className="login-submit-btn product-modal-save-btn" aria-label="Save product">Save</button>
-                </div>
-              </form>
+        {!loading && !error && products.length === 0 && (
+          <p className="products-empty">No products found</p>
+        )}
+        {!loading && !error && products.length > 0 && (
+          <>
+            <div className="products-table-wrapper">
+              <table className="products-table">
+                <thead>
+                  <tr>
+                    <th className="products-table-th">Thumbnail</th>
+                    <th className="products-table-th">Title</th>
+                    <th className="products-table-th">Category</th>
+                    <th className="products-table-th">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {products.map((product) => (
+                    <ProductRow key={product.id} product={product} formatPrice={formatPrice} />
+                  ))}
+                </tbody>
+              </table>
             </div>
-          </div>
+            <div className="products-pagination">
+              <button
+                className={`products-page-btn${
+                  currentPage === 1 ? " products-page-btn--disabled" : ""
+                }`}
+                onClick={() => setSkip((s) => Math.max(0, s - pageSize))}
+                disabled={currentPage === 1}
+                aria-label="Previous page"
+              >
+                Previous
+              </button>
+              <span className="products-page-info">
+                Page {currentPage} of {totalPages} — Showing {rangeStart}–{rangeEnd} of {total}
+              </span>
+              <button
+                className={`products-page-btn${
+                  currentPage >= totalPages ? " products-page-btn--disabled" : ""
+                }`}
+                onClick={() => setSkip((s) => s + pageSize)}
+                disabled={currentPage >= totalPages}
+                aria-label="Next page"
+              >
+                Next
+              </button>
+            </div>
+          </>
         )}
       </div>
     </div>
+  );
+};
+
+const ProductRow = ({ product, formatPrice }) => {
+  const [imgFailed, setImgFailed] = useState(false);
+
+  return (
+    <tr>
+      <td className="products-table-td">
+        {product.thumbnail && !imgFailed ? (
+          <img
+            src={product.thumbnail}
+            alt=""
+            className="products-thumbnail"
+            onError={() => setImgFailed(true)}
+          />
+        ) : (
+          <div className="products-thumbnail products-thumbnail--fallback" aria-hidden="true" />
+        )}
+      </td>
+      <td className="products-table-td">{product.title}</td>
+      <td className="products-table-td">{product.category}</td>
+      <td className="products-table-td">{formatPrice(product.price)}</td>
+    </tr>
   );
 };
 
