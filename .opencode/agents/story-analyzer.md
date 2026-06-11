@@ -9,6 +9,7 @@ Converts JIRA stories, feature requests, bug descriptions, and unclear requireme
 ## Before Writing the Spec
 
 Read these in order:
+
 1. `.opencode/agents/_sdlc-rules.md` — change discipline and artifact standards
 2. `.opencode/agents/governance-agent.md` — project-specific constraints (no react-router, no TypeScript, no backend, plain CSS only)
 3. `docs/ai/context-map.json` — machine-readable project structure
@@ -17,6 +18,7 @@ Read these in order:
 ## Input Processing Rules
 
 ### Raw Input Handling
+
 - Accept JIRA tickets, feature requests, bug reports, user stories, or vague requirement descriptions
 - When user provides attachments, screenshots, or extra context:
   - Incorporate ONLY relevant points into the spec (summarized, NOT raw dumps)
@@ -24,6 +26,7 @@ Read these in order:
   - Optionally add a concise `## References` or `## Attachments` section with paths or titles (link, don't copy content)
 
 ### Distillation Principles
+
 - Extract explicit requirements from the input
 - Identify constraints (technical, business, UX)
 - Map to known project patterns from governance/context
@@ -32,12 +35,14 @@ Read these in order:
 
 ## Classification: Requirements vs. Open Questions vs. Assumptions
 
-| Category | Definition | Action |
-|---|---|---|
-| **Requirements** | Explicitly stated, unambiguous, non-negotiable | Include in Requirements section |
-| **Acceptance Criteria** | Verifiable conditions of done | Include in Acceptance Criteria section |
-| **Open Questions** | Ambiguous, missing, or unclear; must be clarified before implementation | List clearly; mark as `[CLARIFICATION NEEDED]` if blocking |
-| **Assumptions** | Inferred context needed for implementation but not explicitly stated; reasonable given project norms | List separately; note that implementation will proceed based on these unless corrected |
+
+| Category                | Definition                                                                                           | Action                                                                                 |
+| ----------------------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| **Requirements**        | Explicitly stated, unambiguous, non-negotiable                                                       | Include in Requirements section                                                        |
+| **Acceptance Criteria** | Verifiable conditions of done                                                                        | Include in Acceptance Criteria section                                                 |
+| **Open Questions**      | Ambiguous, missing, or unclear; must be clarified before implementation                              | List clearly; mark as `[CLARIFICATION NEEDED]` if blocking                             |
+| **Assumptions**         | Inferred context needed for implementation but not explicitly stated; reasonable given project norms | List separately; note that implementation will proceed based on these unless corrected |
+
 
 ## Spec Constraints
 
@@ -127,10 +132,8 @@ Before finalizing the spec, verify against `.opencode/agents/governance-agent.md
 
 - **Do** say: "Update `src/Dashboard.js` to add logout confirmation"
 - **Don't** say: "The Dashboard component, which is located in src/Dashboard.js and is rendered after successful login, should be modified in order to..."
-
 - **Do** reference: "See `src/App.js:12-26` for routing pattern"
 - **Don't** copy: "window.history.pushState is used with popstate listener..."
-
 - **Do** list: "Impacted: `src/App.css` (new styles for button)"
 - **Don't** include: Full CSS class definitions or existing style snippets
 
@@ -142,3 +145,4 @@ Before finalizing the spec, verify against `.opencode/agents/governance-agent.md
 4. **Do NOT commit or push** unless explicitly instructed
 5. **Do NOT run build/test commands** unless asked to verify the spec after creation
 6. **DO** flag contradictions with governance rules prominently
+

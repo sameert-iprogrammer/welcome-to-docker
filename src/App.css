@@ -1057,6 +1057,19 @@
   box-sizing: border-box;
 }
 
+.orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.orders-header .orders-title {
+  margin-bottom: 0;
+}
+
 .orders-title {
   color: #ffffff;
   font-size: 28px;
@@ -1113,6 +1126,91 @@
   text-align: center;
   padding: 40px 20px;
   font-size: 15px;
+}
+
+.orders-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.orders-modal {
+  background: #112240;
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  padding: 28px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  min-width: 360px;
+  max-width: 480px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.orders-modal-title {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+}
+
+.orders-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.orders-modal-form .form-group {
+  margin-bottom: 0;
+}
+
+.orders-modal-form label {
+  display: block;
+  color: #a8b2d1;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.orders-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.orders-modal-save-btn {
+  width: auto;
+  margin-top: 0;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.orders-modal-cancel-btn {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.orders-modal-cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Customers Page */
