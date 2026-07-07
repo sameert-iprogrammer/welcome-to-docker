@@ -629,6 +629,13 @@
   min-height: 100vh;
 }
 
+.dashboard-sessions {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 40px 40px;
+  box-sizing: border-box;
+}
+
 /* Orders Page */
 .orders-container {
   flex: 1;
