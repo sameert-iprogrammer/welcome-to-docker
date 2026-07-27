@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import ConfirmDialog from "./ConfirmDialog";
+import FAQModal from "./FAQModal";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const [showFAQModal, setShowFAQModal] = useState(false);
 
   const handleLogoutClick = () => {
     setShowLogoutConfirm(true);
@@ -21,6 +23,14 @@ const Navbar = () => {
     setShowLogoutConfirm(false);
   };
 
+  const handleOpenFAQ = () => {
+    setShowFAQModal(true);
+  };
+
+  const handleCloseFAQ = () => {
+    setShowFAQModal(false);
+  };
+
   return (
     <div className="dashboard-nav">
       <button
@@ -32,6 +42,9 @@ const Navbar = () => {
       </button>
       <button className="settings-btn" onClick={() => navigate("/settings")} aria-label="Settings">
         <i className="fa-solid fa-gear"></i>
+      </button>
+      <button className="faq-btn" onClick={handleOpenFAQ} aria-label="FAQ">
+        <i className="fa-solid fa-circle-question"></i>
       </button>
       <button className="logout-btn" onClick={handleLogoutClick} aria-label="Log Out">
         Log Out
@@ -45,6 +58,7 @@ const Navbar = () => {
         onConfirm={handleConfirmLogout}
         onCancel={handleCancelLogout}
       />
+      <FAQModal isOpen={showFAQModal} onClose={handleCloseFAQ} />
     </div>
   );
 };
