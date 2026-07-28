@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
+import FAQModal from "./FAQModal";
 
 const faqItems = [
   {
@@ -42,9 +43,18 @@ const faqItems = [
 
 const FAQ = () => {
   const [openId, setOpenId] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   const handleToggle = (id) => {
     setOpenId(openId === id ? null : id);
+  };
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -52,6 +62,13 @@ const FAQ = () => {
       <Sidebar />
       <div className="faq-container">
         <h2 className="faq-title">FAQ</h2>
+        <button 
+          className="faq-open-modal-btn"
+          onClick={handleOpenModal}
+          aria-label="View all FAQs in modal"
+        >
+          View All FAQs in Modal
+        </button>
         <div className="faq-list">
           {faqItems.map((item) => {
             const isOpen = openId === item.id;
@@ -88,6 +105,7 @@ const FAQ = () => {
           })}
         </div>
       </div>
+      <FAQModal isOpen={showModal} onClose={handleCloseModal} />
     </div>
   );
 };
