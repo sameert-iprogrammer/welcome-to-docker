@@ -1,0 +1,143 @@
+{
+  "profile_version": 1,
+  "_note": "Mined by iFlow at index time. `exemplars`, `idioms`, `lint_config` and `source` are regenerated on every re-index \u2014 edit `overrides` (merged over the mined values) or `disabled_rules` (idiom ids to ignore) instead; both are preserved verbatim.",
+  "generated_at": "2026-08-03T09:31:16Z",
+  "source": {
+    "commit_sha": "8d18ee6",
+    "branch": "feature/MIS-24-add-promotions-functionality",
+    "files_indexed": 52,
+    "files_scanned": 37,
+    "files_digest": "04a569454c693cefbae3507ea972a22e5ac5ee86af8da8f4e5240eeb02d02a2a",
+    "churn_window_commits": 500
+  },
+  "languages": [
+    "javascript"
+  ],
+  "exemplars": {
+    "component": [
+      {
+        "file": "src/FAQ.js",
+        "lines": 96,
+        "churn": 1,
+        "score": 0.997,
+        "symbol": "",
+        "reasons": [
+          "96 lines (target 40\u2013250 for component)",
+          "no lint suppressions or TODO markers",
+          "1 commit in the recent history window"
+        ]
+      },
+      {
+        "file": "src/Masters.js",
+        "lines": 108,
+        "churn": 1,
+        "score": 0.995,
+        "symbol": "",
+        "reasons": [
+          "108 lines (target 40\u2013250 for component)",
+          "no lint suppressions or TODO markers",
+          "1 commit in the recent history window"
+        ]
+      }
+    ],
+    "test": [
+      {
+        "file": "src/Masters.test.js",
+        "lines": 108,
+        "churn": 1,
+        "score": 0.993,
+        "symbol": "",
+        "reasons": [
+          "108 lines (target 30\u2013300 for test)",
+          "no lint suppressions or TODO markers",
+          "1 commit in the recent history window"
+        ]
+      },
+      {
+        "file": "src/ConfirmDialog.test.js",
+        "lines": 79,
+        "churn": 1,
+        "score": 0.99,
+        "symbol": "",
+        "reasons": [
+          "79 lines (target 30\u2013300 for test)",
+          "no lint suppressions or TODO markers",
+          "1 commit in the recent history window"
+        ]
+      }
+    ]
+  },
+  "idioms": [
+    {
+      "id": "error_handling",
+      "title": "Error-handling style",
+      "dominant": "",
+      "confidence": "none",
+      "counts": {},
+      "evidence": [],
+      "rule": {}
+    },
+    {
+      "id": "http_client",
+      "title": "HTTP client usage",
+      "dominant": "",
+      "confidence": "none",
+      "counts": {},
+      "evidence": [],
+      "rule": {}
+    },
+    {
+      "id": "logging",
+      "title": "Logging style",
+      "dominant": "console",
+      "confidence": "low",
+      "counts": {
+        "console": 1
+      },
+      "evidence": [
+        "src/Confetti.js:8"
+      ],
+      "rule": {
+        "prefer": "console",
+        "avoid": []
+      }
+    },
+    {
+      "id": "dependency_injection",
+      "title": "Dependency-wiring style",
+      "dominant": "",
+      "confidence": "none",
+      "counts": {},
+      "evidence": [],
+      "rule": {}
+    },
+    {
+      "id": "naming",
+      "title": "File names are PascalCase",
+      "dominant": "PascalCase",
+      "confidence": "high",
+      "counts": {
+        "PascalCase": 30,
+        "lowercase": 1,
+        "camelCase": 6
+      },
+      "evidence": [],
+      "rule": {
+        "file_case": "PascalCase",
+        "file_case_by_language": {
+          "ts/js": "PascalCase"
+        },
+        "component_file_case": "PascalCase",
+        "test_file_naming": ".test."
+      }
+    }
+  ],
+  "lint_config": {
+    "configs": [],
+    "linters": [],
+    "formatters": [],
+    "settings": {}
+  },
+  "overrides": {},
+  "disabled_rules": []
+}

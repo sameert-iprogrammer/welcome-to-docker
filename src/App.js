@@ -16,6 +16,7 @@ import FAQ from "./FAQ";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsAndConditions from "./TermsAndConditions";
 import Approvals from "./Approvals";
+import Promotions from "./Promotions";
 import Navbar from "./Navbar";
 
 const App = () => {
@@ -75,6 +76,12 @@ const App = () => {
           path="/products"
           element={
             isAuthenticated ? <Products /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/promotions"
+          element={
+            isAuthenticated ? <Promotions /> : <Navigate to="/login" />
           }
         />
         <Route

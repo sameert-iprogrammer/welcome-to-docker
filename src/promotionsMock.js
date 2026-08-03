@@ -1,0 +1,17 @@
+export const mockPromotions = [
+  { id: 1, code: "SUMMER24", name: "Summer Sale", discount: "20%", startDate: "2024-06-01", endDate: "2024-08-31", status: "Active" },
+  { id: 2, code: "WINTER25", name: "Winter Clearance", discount: "Buy 1 Get 1", startDate: "2025-01-15", endDate: "2025-03-15", status: "Active" },
+  { id: 3, code: "SPRING24", name: "Spring Special", discount: "$10 Off", startDate: "2024-03-20", endDate: "2024-05-20", status: "Expired" },
+  { id: 4, code: "BLACKFRIDAY", name: "Black Friday Deal", discount: "30%", startDate: "2024-11-25", endDate: "2024-11-30", status: "Expired" },
+  { id: 5, code: "NEWYEAR25", name: "New Year Offer", discount: "15%", startDate: "2025-01-01", endDate: "2025-01-31", status: "Active" },
+  { id: 6, code: "VALENTINE24", name: "Valentine Special", discount: "$15 Off", startDate: "2024-02-10", endDate: "2024-02-14", status: "Expired" },
+  { id: 7, code: "FLASH24", name: "Flash Sale", discount: "50%", startDate: "2024-07-04", endDate: "2024-07-04", status: "Inactive" },
+  { id: 8, code: "SUMMER25", name: "Early Summer Promo", discount: "25%", startDate: "2025-05-25", endDate: "2025-06-30", status: "Active" },
+  { id: 9, code: "BACKTOSCHOOL", name: "Back to School", discount: "10%", startDate: "2024-08-15", endDate: "2024-09-15", status: "Inactive" },
+  { id: 10, code: "HOLIDAY24", name: "Holiday Bundles", discount: "Buy 2 Get 1", startDate: "2024-12-15", endDate: "2024-12-25", status: "Expired" },
+  { id: 11, code: "CYPHER24", name: "Cyber Monday", discount: "35%", startDate: "2024-12-02", endDate: "2024-12-02", status: "Inactive" },
+  { id: 12, code: "MOTHERSDAY", name: "Mother's Day Gift", discount: "20%", startDate: "2025-05-08", endDate: "2025-05-11", status: "Active" },
+  { id: 13, code: "FALL24", name: "Fall Collection", discount: "$5 Off", startDate: "2024-09-22", endDate: "2024-11-21", status: "Inactive" },
+  { id: 14, code: "MEMORIAL25", name: "Memorial Day Sale", discount: "22%", startDate: "2025-05-24", endDate: "2025-05-26", status: "Active" },
+  { id: 15, code: "LABORDAY24", name: "Labor Day Weekend", discount: "18%", startDate: "2024-09-01", endDate: "2024-09-03", status: "Inactive" },
+];
