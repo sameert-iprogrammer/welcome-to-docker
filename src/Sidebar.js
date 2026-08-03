@@ -11,6 +11,7 @@ const Sidebar = () => {
     { label: "Orders", path: "/orders", icon: "fa-solid fa-truck" },
     { label: "Customers", path: "/customers", icon: "fa-solid fa-users" },
     { label: "Products", path: "/products", icon: "fa-solid fa-box" },
+    { label: "Promotions", path: "/promotions", icon: "fa-solid fa-tag" },
     { label: "Masters", path: "/masters", icon: "fa-solid fa-database" },
     { label: "Approvals", path: "/approvals", icon: "fa-solid fa-check-circle" },
     { label: "FAQ", path: "/faq", icon: "fa-solid fa-circle-question" },

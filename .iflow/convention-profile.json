@@ -1,10 +1,10 @@
 {
   "profile_version": 1,
   "_note": "Mined by iFlow at index time. `exemplars`, `idioms`, `lint_config` and `source` are regenerated on every re-index \u2014 edit `overrides` (merged over the mined values) or `disabled_rules` (idiom ids to ignore) instead; both are preserved verbatim.",
-  "generated_at": "2026-08-03T12:09:30Z",
+  "generated_at": "2026-08-03T14:15:11Z",
   "source": {
-    "commit_sha": "00647d9",
-    "branch": "main",
+    "commit_sha": "da224ad",
+    "branch": "feature/MIS-25-add-promotions-functionality",
     "files_indexed": 53,
     "files_scanned": 37,
     "files_digest": "dcfd875229cd74b850794642599448c6af5cfa5fec69b0fde40cad8404c88f3e",

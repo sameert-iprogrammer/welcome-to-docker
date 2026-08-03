@@ -9,6 +9,7 @@ import Dashboard from "./Dashboard";
 import Orders from "./Orders";
 import Customers from "./Customers";
 import Products from "./Products";
+import Promotions from "./Promotions";
 import Masters from "./Masters";
 import Settings from "./Settings";
 import Profile from "./Profile";
@@ -75,6 +76,12 @@ const App = () => {
           path="/products"
           element={
             isAuthenticated ? <Products /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/promotions"
+          element={
+            isAuthenticated ? <Promotions /> : <Navigate to="/login" />
           }
         />
         <Route
