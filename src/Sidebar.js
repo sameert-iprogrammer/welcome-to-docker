@@ -9,6 +9,7 @@ const Sidebar = () => {
   const navItems = [
     { label: "Dashboard", path: "/dashboard", icon: "fa-solid fa-gauge-high" },
     { label: "Orders", path: "/orders", icon: "fa-solid fa-truck" },
+    { label: "Sessions", path: "/sessions", icon: "fa-solid fa-calendar-day" },
     { label: "Customers", path: "/customers", icon: "fa-solid fa-users" },
     { label: "Products", path: "/products", icon: "fa-solid fa-box" },
     { label: "Masters", path: "/masters", icon: "fa-solid fa-database" },
