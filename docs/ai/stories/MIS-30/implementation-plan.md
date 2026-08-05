@@ -1,130 +1,105 @@
-# MIS-30: Implement Sessions Page — Implementation Plan
+# MIS-30: Products API Implementation Plan
 
-## 1. Story Overview
+## Resolved Decisions
+- **Remove mock data**: `mockProducts` import will be removed entirely, and the `src/productsMock.js` file will be deleted.
+- **Disable Add Product**: The "Add Product" button will be visually disabled with a tooltip explaining the limitation, deferring the feature.
+- **Update tests**: Existing `Products.test.js` tests will be updated to mock `window.fetch` and assert against a deterministic, locally-defined API response structure.
 
-**JIRA Key**: MIS-30
-**Title**: Implement Sessions Page
-**Priority**: To be assigned
-**Assignee**: To be assigned
+## Files to Touch
+- `src/Products.js` (Modify) - Replace mock state with API fetch logic, add loading/error states, update search mapping, map table columns to API fields, and disable the Add Product button.
+- `src/Products.test.js` (Modify) - Mock `window.fetch` and update assertions to reflect the new API data structure.
+- `src/productsMock.js` (Delete) - Remove unused mock data source.
 
-## 2. Context Budget
+## Context Budget
+This implementation is strictly scoped to the `src/Products` component files. No changes to `App.js`, `Sidebar.js`, or global styles are required. The `productsMock.js` file will be deleted.
 
-This plan is scoped to 5 files: 3 new (`Sessions.js`, `Sessions.test.js`, `sessionsMock.js`), 3 modified (`App.js`, `Sidebar.js`, `App.css`). The implementer should read the existing `Customers.js` (full) and `Masters.test.js` (full) to reuse patterns; no repo-wide reads are needed.
+## Implementation Phases
 
-## 3. Files to Touch
+### Phase 1: API Integration and UI Adjustments
+**Goal**: Replace local mock data with live API fetch, add loading/error states, map API fields to table columns, and disable the Add Product button.
 
-| File | Action |
-|---|---|
-| `src/Sessions.js` | Create — main Sessions page component (read-only table with search + pagination) |
-| `src/Sessions.test.js` | Create — Jest + RTL tests following `Masters.test.js` pattern |
-| `src/sessionsMock.js` | Create — mock session data export (≥12 items to test pagination across ≥3 pages) |
-| `src/App.js` | Modify — add `<Route path="/sessions" element={<Sessions />} />` in auth-protected route group |
-| `src/Sidebar.js` | Modify — add Sessions navigation link after existing items |
-| `src/App.css` | Modify — add Sessions-specific styles |
+**Acceptance Criteria**:
+- [ ] Products page loads and displays products from the DummyJSON API
+- [ ] Table columns show correct mapped data (SKU/ID, Name, Category, Price)
+- [ ] At least 30 products are visible (API returns 30 per default request)
+- [ ] Search filters products by name, SKU, category, description, brand, or tags
+- [ ] Pagination controls work correctly with API data (10 per page)
+- [ ] Page indicator shows correct totals (e.g., "Page 1 of 2")
+- [ ] Search resets to page 1 when typed
+- [ ] Loading state is shown during API fetch
+- [ ] Error state is shown if API request fails
+- [ ] "Add Product" button is present but indicates limitation (disabled or tooltip)
 
-## 4. Implementation Steps
+**Implementation Steps**:
+1. **Remove mock data dependency**: Remove `import { mockProducts } from "./productsMock";` from `src/Products.js`.
+2. **Update state initialization**:
+   - Change `const [products, setProducts] = useState(mockProducts)` to `const [products, setProducts] = useState([])`.
+   - Add `const [loading, setLoading] = useState(true)`.
+   - Add `const [error, setError] = useState(null)`.
+3. **Implement fetch logic**: Add a `useEffect` that calls the DummyJSON API on component mount:
+   ```javascript
+   useEffect(() => {
+     const fetchProducts = async () => {
+       try {
+         setLoading(true);
+         const res = await fetch("https://dummyjson.com/products");
+         const data = await res.json();
+         setProducts(data.products);
+       } catch (err) {
+         setError(err.message);
+       } finally {
+         setLoading(false);
+       }
+     };
+     fetchProducts();
+   }, []);
+   ```
+4. **Expand search fields**: Update the `filteredProducts` `useMemo` to include `title`, `description`, `brand`, and `tags` alongside the existing `id`, `sku`, `category`, and `price` fields.
+5. **Map table columns**: Update the `<tbody>` mapping to use the new API fields:
+   - SKU/ID: `{product.sku} ({product.id})`
+   - Name: `{product.title}`
+   - Category: `{product.category}`
+   - Price: `{formatPrice(product.price)}`
+6. **Disable Add Product**: Add the `disabled` attribute and a descriptive `title` to the "Add Product" button:
+   ```jsx
+   <button
+     type="button"
+     className="customers-add-btn"
+     disabled
+     title="Add product feature is currently unavailable with live API data."
+     onClick={handleOpenModal}
+     aria-label="Add product"
+   >
+     Add Product
+   </button>
+   ```
+7. **Render loading and error states**: Early-return loading and error messages if `loading` or `error` states are active:
+   ```jsx
+   if (loading) return <div className="loading-message">Loading products...</div>;
+   if (error) return <div className="error-message">Failed to load products: {error}</div>;
+   ```
 
-### Step 1 — Create `src/sessionsMock.js`
+**Test Strategy**:
+- No test changes in this phase. The component will now rely on a live external API, which is expected to function correctly in a browser environment.
 
-- Export a `mockSessions` array of objects.
-- Shape per item: `{ id, user, loginTime, logoutTime (string or null for active), device }`.
-- Include ≥12 items so pagination spans at least 3 pages (with page size of 5).
-- Make some `logoutTime` values `null` to test the "Active" display.
-- Pattern: follows `src/mastersMock.js` / `src/productsMock.js`.
+### Phase 2: Test Updates
+**Goal**: Update `Products.test.js` to mock `fetch` and assert against deterministic API response data.
 
-### Step 2 — Create `src/Sessions.js`
+**Acceptance Criteria**:
+- [ ] Existing tests pass (verify search and pagination tests with new data structure)
+- [ ] No console errors or warnings
 
-- Functional component, default export, `useState` / `useMemo` / `useEffect` hooks.
-- **No CRUD modals** — read-only table, per spec assumption #3.
-- Imports: `React`, `useState`, `useMemo`, `useEffect`, `useNavigate` from `react-router-dom`; `Sidebar` from `./Sidebar`; `mockSessions` from `./sessionsMock`.
-- **State**:
-  - `searchTerm` (string)
-  - `currentPage` (number)
-  - `pageSize` = `5` (const, consistent with `Customers.js` and `Masters.js`)
-- **Filtered data** via `useMemo`: filter `mockSessions` by `searchTerm` against all columns (case-insensitive `includes()`).
-- **Pagination**:
-  - `useEffect` to reset `currentPage` to 1 whenever `searchTerm` changes.
-  - `start` / `end` index calculation based on `currentPage` and `pageSize`.
-  - `pageItems` = slice of filtered array.
-  - `totalPages` = `Math.ceil(filtered.length / pageSize)` or 0 if filtered is empty.
-- **JSX structure** follows the layout pattern from `Masters.js` / `Customers.js`:
-  - Wrapper `<div className="App App--sidebar">`
-  - `<Sidebar />`
-  - `<div className="sessions-container">`
-    - `<h2 className="sessions-header">Sessions</h2>`
-    - `<input>` with placeholder `"Search sessions..."`, `onChange` handler updating `searchTerm`
-    - `<table>` with headers: `Session ID`, `User`, `Login Time`, `Logout Time`, `Device`
-    - Table rows from `pageItems`, with `logoutTime` displayed as `"Active"` when `null`
-    - Pagination controls: "Previous" button (disabled if `currentPage === 1`), "Next" button (disabled if `currentPage === totalPages`), text showing `"Page X of Y"` (or `"No sessions found"` if filtered length is 0)
-- Class names use BEM-ish convention: `.sessions-container`, `.sessions-header`, `.sessions-search`, `.sessions-table`, `.sessions-paginator`, `.sessions-prev-btn`, `.sessions-next-btn`.
-- If the project has a `toast` import (used in `Profile.js`), do **not** add toast calls here — sessions is read-only; no modifications are made.
+**Implementation Steps**:
+1. **Mock `window.fetch`**: In `src/Products.test.js`, define a deterministic mock API response object containing 3 products with distinct names and categories. Assign `global.fetch = jest.fn().mockResolvedValue({ json: () => Promise.resolve(mockApiData) })` in `beforeEach`.
+2. **Update search assertions**: Change search assertions to look for the deterministic mock product names (e.g., searching for "A" should find "Test Product A", searching for "furniture" should find "Test Product B").
+3. **Update pagination assertions**: Adjust pagination checks to account for the new product count (3 products will fit on a single page with `PAGE_SIZE = 10`, resulting in "Page 1 of 1").
+4. **Verify disabled button**: Assert that the "Add product" button is disabled and contains the expected tooltip text.
 
-### Step 3 — Create `src/Sessions.test.js`
+**Dependencies**: Phase 1.
 
-- Follow the exact test structure from `src/Masters.test.js`:
-  - **Smoke test**: render with `MemoryRouter`, expect no crash.
-  - **Renders table rows**: expect first `pageSize` items appear in DOM (e.g., `"User 1"`, `"User 2"`, etc. — use actual mock data values).
-  - **Filters by search term**: use `getByLabelText("Search sessions")`, fire `change` event, verify expected rows present and others removed.
-  - **No results message**: search for a term that matches nothing, expect `/(no sessions found|no results found|0 sessions found)/i` in DOM.
-  - **Pagination controls**: verify "Previous" is disabled on first page, click "Next" and verify page text updates to `"Page 2 of X"`.
-- Use `MemoryRouter` from `react-router-dom` for all renders.
+## Assumptions
+- `PAGE_SIZE` is a constant defined at the top of `src/Products.js` (likely `10`). If it is imported or missing, the implementer will add it locally.
+- Navigating pages via "Next" and "Previous" buttons does not clear the search input text; only typing in the search input resets the page to 1, preserving existing user experience.
+- `global.fetch` is available and can be mocked in the Jest test environment used by `react-scripts`.
 
-### Step 4 — Modify `src/App.js`
-
-- Import `Sessions` from `./Sessions`.
-- Add `<Route path="/sessions" element={<Sessions />} />` inside the existing `<Routes>` block, within the authenticated route group (after the existing `<Navigate>` fallback and alongside other protected routes like `/orders`, `/customers`, `/masters`).
-
-### Step 5 — Modify `src/Sidebar.js`
-
-- Add a navigation item for "Sessions" in the sidebar menu list.
-- Use the same `<li>` / `<a>` or `<NavLink>` structure as existing items.
-- Path: `/sessions`.
-- Icon: use a Font Awesome icon consistent with existing sidebar icons (e.g., `fa-clock` or `fa-right-to-bracket`), or reuse an existing icon style.
-- Place after "Masters" (alphabetically or at the end of the list).
-
-### Step 6 — Modify `src/App.css`
-
-- Add BEM-ish classes for the Sessions page (`.sessions-container`, `.sessions-header`, `.sessions-search`, `.sessions-table`, `.sessions-table-header`, `.sessions-table-row`, `.sessions-paginator`, `.sessions-prev-btn`, `.sessions-next-btn`, `.sessions-prev-btn-disabled`, `.sessions-next-btn-disabled`).
-- Follow the same CSS property values and conventions as the existing `.customers-table`, `.orders-table`, `.masters-table` styles already in the file.
-- No new `.css` files.
-
-## 5. Risk Assessment
-
-| Risk | Mitigation |
-|---|---|
-| Sidebar navigation structure is not obvious (raw `<a>` vs `<NavLink>`) | Read `src/Sidebar.js` to copy the exact pattern used for existing items |
-| App.css class names conflict with existing names | Use the `.sessions-*` prefix, which is unique to this component |
-| Pagination logic off-by-one errors | Mirror the exact `pageSize`/`Math.ceil` logic from `Customers.js` / `Masters.js` |
-| Mock data not diverse enough to test edge cases | Ensure ≥12 items with varied `user`, `loginTime`, `logoutTime` values and some `null` logout times |
-
-## 6. Acceptance-Criterion Mapping
-
-| AC | Implementation |
-|---|---|
-| `/sessions` route exists | Step 4 |
-| Route protected (auth check) | Step 4 — placed in auth-protected `<Route>` group |
-| Unauthenticated access redirects to `/login` | Already handled by the auth guard in `App.js` (existing pattern) |
-| Navigation link in sidebar | Step 5 |
-| Layout: `App App--sidebar` with Sidebar | Step 2 |
-| Header "Sessions" | Step 2 |
-| Search input with placeholder "Search sessions..." | Step 2 |
-| Table with Session ID, User, Login Time, Logout Time, Device | Step 2 |
-| Mock data from `sessionsMock.js` | Step 1 |
-| Page size 5 | Step 2 |
-| Pagination "Page X of Y" | Step 2 |
-| Search filters all columns, case-insensitive | Step 2 |
-| Search resets to page 1 | Step 2 (`useEffect` on `searchTerm`) |
-| "No sessions found" message | Step 2 |
-| Pagination controls (prev/next, disabled states) | Step 2 |
-| CSS in App.css, BEM-ish naming | Step 6 |
-| Tests: smoke, rows, filter, no results, pagination | Step 3 |
-
-## 7. Open Questions / Assumptions
-
-1. **Read-only assumption**: The spec assumes no CRUD for Sessions. If edit/delete is required, Steps 2 and 3 would need modal handlers and additional state — this would be a material change.
-2. **Sidebar structure**: The exact DOM structure of `Sidebar.js` is assumed to use the same `<li>`/`<a>` pattern as existing items. The implementer should read `src/Sidebar.js` to confirm before modifying.
-3. **Mock data volume**: 12+ items are assumed sufficient to test pagination across ≥3 pages with a page size of 5.
-4. **Device column**: Listed as "optional" in the spec; included in the table for completeness since the mock data structure includes it.
-5. **Font Awesome icon for Sessions**: An appropriate icon (e.g., `fa-clock`) is assumed acceptable. No change to `public/index.html` is needed since the CDN link already loads Font Awesome 6.4.2.
-
-{"clarification":{"needed":true,"questions":[{"id":"q1","question":"Should the Sessions page include CRUD modals (add/edit/delete sessions) or remain read-only only?","whyItMatters":"This determines whether we need modal components, form handlers, and additional state management in Sessions.js, changing the component significantly.","impactIfWrong":"If CRUD is needed and we implement read-only, the feature will not meet acceptance criteria. If we implement CRUD but only need read-only, the extra code is wasted but not harmful.","options":[{"key":"opt_a","label":"Read-only only (no modals)","consequence":"Simpler component, smaller implementation, fewer test cases needed"},{"key":"opt_b","label":"Full CRUD with modals","consequence":"Component needs handleOpenModal, handleCloseModal, handleFormChange, handleSave like Customers.js; more CSS and test cases; mock data needs to support add/edit/delete scenarios"}],"default":"opt_a","allowFreeText":true,"blocking":true}],"assumptions":[{"statement":"Sessions is read-only with no add/edit/delete functionality, following the pattern for a view-only data display page.","risk":"low"}]}}
+{"phases": [{"id": "phase-1", "title": "API Integration and UI Adjustments", "goal": "Replace local mock data with live API fetch, add loading/error states, map API fields to table columns, and disable the Add Product button.", "files": ["src/Products.js"], "acceptanceCriteria": ["Products page loads and displays products from the DummyJSON API", "Table columns show correct mapped data (SKU/ID, Name, Category, Price)", "At least 30 products are visible (API returns 30 per default request)", "Search filters products by name, SKU, category, description, brand, or tags", "Pagination controls work correctly with API data (10 per page)", "Page indicator shows correct totals (e.g., \"Page 1 of 2\")", "Search resets to page 1 when typed", "Loading state is shown during API fetch", "Error state is shown if API request fails", "\"Add Product\" button is present but indicates limitation (disabled or tooltip)"], "testStrategy": "No test changes in this phase. The component will now rely on a live external API, which is expected to function correctly in a browser environment.", "dependsOn": [], "estimatedComplexity": "medium"}, {"id": "phase-2", "title": "Test Updates", "goal": "Update Products.test.js to mock fetch and assert against deterministic API response data.", "files": ["src/Products.test.js"], "acceptanceCriteria": ["Existing tests pass (verify search and pagination tests with new data structure)", "No console errors or warnings"], "testStrategy": "Mock window.fetch in beforeEach to return a deterministic set of 3 products. Update assertions to check for deterministic product names, verify pagination totals match the new count (1 page), and assert the Add Product button is disabled.", "dependsOn": ["phase-1"], "estimatedComplexity": "low"}]}

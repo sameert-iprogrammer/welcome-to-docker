@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { toast } from "react-toastify";
 import Sidebar from "./Sidebar";
-import { mockProducts } from "./productsMock";
 
 const PAGE_SIZE = 10;
 
@@ -10,9 +8,27 @@ const emptyForm = { sku: "", name: "", category: "", price: "" };
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [products, setProducts] = useState(mockProducts);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form, setForm] = useState(emptyForm);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch("https://dummyjson.com/products");
+        const data = await res.json();
+        setProducts(data.products);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   const filteredProducts = useMemo(() => {
     const term = searchTerm.toLowerCase();
@@ -20,10 +36,13 @@ const Products = () => {
     return products.filter((p) => {
       const str =
         String(p.id) +
-        p.sku +
-        p.name +
+        (p.sku || "") +
+        (p.title || "") +
+        (p.description || "") +
         (p.category || "") +
-        String(p.price);
+        String(p.price) +
+        (p.brand || "") +
+        (p.tags ? p.tags.join(" ") : "");
       return str.toLowerCase().includes(term);
     });
   }, [searchTerm, products]);
@@ -48,7 +67,6 @@ const Products = () => {
     const newProduct = { id: nextId, ...form, price: Number(form.price) };
     setProducts((prev) => [...prev, newProduct]);
     setIsModalOpen(false);
-    toast.success("Product added successfully");
   };
 
   useEffect(() => {
@@ -62,13 +80,42 @@ const Products = () => {
 
   const formatPrice = (price) => `$${Number(price).toFixed(2)}`;
 
+  if (loading) {
+    return (
+      <div className="App App--sidebar">
+        <Sidebar />
+        <div className="customers-container">
+          <p className="orders-no-results">Loading products...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="App App--sidebar">
+        <Sidebar />
+        <div className="customers-container">
+          <p className="orders-no-results">Failed to load products: {error}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="App App--sidebar">
       <Sidebar />
       <div className="customers-container">
         <div className="customers-header">
           <h2 className="customers-title">Products</h2>
-          <button type="button" className="customers-add-btn" onClick={handleOpenModal} aria-label="Add product">
+          <button
+            type="button"
+            className="customers-add-btn"
+            disabled
+            title="Add product feature is currently unavailable with live API data."
+            onClick={handleOpenModal}
+            aria-label="Add product"
+          >
             Add Product
           </button>
         </div>
@@ -92,11 +139,11 @@ const Products = () => {
             </thead>
             <tbody>
               {paginatedProducts.map((product) => (
-                <tr key={product.sku}>
+                <tr key={product.id}>
                   <td className="orders-table-td">
-                    {product.sku} ({product.id})
+                    {product.sku || "N/A"} ({product.id})
                   </td>
-                  <td className="orders-table-td">{product.name}</td>
+                  <td className="orders-table-td">{product.title}</td>
                   <td className="orders-table-td">{product.category}</td>
                   <td className="orders-table-td">{formatPrice(product.price)}</td>
                 </tr>
