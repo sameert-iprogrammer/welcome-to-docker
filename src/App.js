@@ -16,6 +16,7 @@ import FAQ from "./FAQ";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsAndConditions from "./TermsAndConditions";
 import Approvals from "./Approvals";
+import Sessions from "./Sessions";
 import Navbar from "./Navbar";
 
 const App = () => {
@@ -99,6 +100,12 @@ const App = () => {
           path="/faq"
           element={
             isAuthenticated ? <FAQ /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/sessions"
+          element={
+            isAuthenticated ? <Sessions /> : <Navigate to="/login" />
           }
         />
         <Route

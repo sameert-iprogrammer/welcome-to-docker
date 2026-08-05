@@ -1,0 +1,16 @@
+export const mockSessions = [
+  { id: 1, user: "alice@example.com", loginTime: "2025-03-10 08:15:00", logoutTime: "2025-03-10 09:30:00", device: "Windows / Chrome" },
+  { id: 2, user: "bob@example.com", loginTime: "2025-03-10 09:00:00", logoutTime: null, device: "Mac / Safari" },
+  { id: 3, user: "carol@example.com", loginTime: "2025-03-10 09:45:00", logoutTime: "2025-03-10 11:20:00", device: "Linux / Firefox" },
+  { id: 4, user: "dave@example.com", loginTime: "2025-03-10 10:30:00", logoutTime: "2025-03-10 12:00:00", device: "Windows / Edge" },
+  { id: 5, user: "eve@example.com", loginTime: "2025-03-10 11:00:00", logoutTime: null, device: "Android / Chrome" },
+  { id: 6, user: "frank@example.com", loginTime: "2025-03-10 11:45:00", logoutTime: "2025-03-10 14:30:00", device: "Mac / Chrome" },
+  { id: 7, user: "grace@example.com", loginTime: "2025-03-10 13:00:00", logoutTime: "2025-03-10 15:00:00", device: "iPhone / Safari" },
+  { id: 8, user: "henry@example.com", loginTime: "2025-03-10 14:15:00", logoutTime: null, device: "Windows / Firefox" },
+  { id: 9, user: "iris@example.com", loginTime: "2025-03-10 15:30:00", logoutTime: "2025-03-10 16:45:00", device: "Linux / Chrome" },
+  { id: 10, user: "jack@example.com", loginTime: "2025-03-10 16:00:00", logoutTime: "2025-03-10 17:30:00", device: "Mac / Firefox" },
+  { id: 11, user: "karen@example.com", loginTime: "2025-03-10 17:00:00", logoutTime: null, device: "Android / Firefox" },
+  { id: 12, user: "leo@example.com", loginTime: "2025-03-10 18:00:00", logoutTime: "2025-03-10 19:15:00", device: "Windows / Safari" },
+  { id: 13, user: "mia@example.com", loginTime: "2025-03-10 19:30:00", logoutTime: null, device: "iPad / Safari" },
+  { id: 14, user: "nate@example.com", loginTime: "2025-03-10 20:00:00", logoutTime: "2025-03-10 21:00:00", device: "Linux / Edge" },
+];
