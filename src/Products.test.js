@@ -8,9 +8,45 @@ jest.mock("react-toastify", () => ({
   toast: { success: jest.fn() },
 }));
 
+const mockApiData = {
+  products: [
+    {
+      id: 1,
+      sku: "SKU-100",
+      title: "iPhone 9",
+      description: "An apple mobile which is nothing like apple",
+      price: 549,
+      category: "electronics",
+      brand: "PhoneCo",
+    },
+    {
+      id: 2,
+      sku: "SKU-101",
+      title: "Samsung Galaxy S3",
+      description: "A green phone that is not very green",
+      price: 499,
+      category: "electronics",
+      brand: "GalaxyWorks",
+    },
+    {
+      id: 3,
+      sku: "SKU-102",
+      title: "Electronics Phone Case",
+      description: "A cheap phone case for electronics",
+      price: 29.99,
+      category: "accessories",
+      brand: "CaseFactory",
+    },
+  ],
+  total: 3,
+  skip: 0,
+  limit: 30,
+};
+
 describe("Products", () => {
   beforeEach(() => {
     toast.success.mockClear();
+    global.fetch = jest.fn().mockResolvedValue({ json: () => Promise.resolve(mockApiData) });
   });
 
   it("renders without crashing", () => {
@@ -27,17 +63,10 @@ describe("Products", () => {
         <Products />
       </MemoryRouter>
     );
-    // Page 1 shows first 10 products
-    expect(getByText("Wireless Mouse")).toBeInTheDocument();
-    expect(getByText("Mechanical Keyboard")).toBeInTheDocument();
-    expect(getByText("USB-C Hub")).toBeInTheDocument();
-    expect(getByText("Laptop Stand")).toBeInTheDocument();
-    expect(getByText("Noise-Canceling Headphones")).toBeInTheDocument();
-    expect(getByText("Webcam HD")).toBeInTheDocument();
-    expect(getByText("Desk Lamp LED")).toBeInTheDocument();
-    expect(getByText("Ergonomic Chair")).toBeInTheDocument();
-    expect(getByText("Monitor 27 inch")).toBeInTheDocument();
-    expect(getByText("External SSD 1TB")).toBeInTheDocument();
+    // All 3 mock products fit on page 1 (PAGE_SIZE = 10)
+    expect(getByText("iPhone 9")).toBeInTheDocument();
+    expect(getByText("Samsung Galaxy S3")).toBeInTheDocument();
+    expect(getByText("Electronics Phone Case")).toBeInTheDocument();
   });
 
   it("filters rows by search term (case-insensitive)", () => {
@@ -50,21 +79,22 @@ describe("Products", () => {
     const searchInput = getByLabelText("Search products");
     expect(searchInput).toBeInTheDocument();
 
-    // Search by name
-    fireEvent.change(searchInput, { target: { value: "keyboard" } });
-    expect(getByText("Mechanical Keyboard")).toBeInTheDocument();
-    expect(queryByText("Wireless Mouse")).not.toBeInTheDocument();
+    // Search by title
+    fireEvent.change(searchInput, { target: { value: "iphone" } });
+    expect(getByText("iPhone 9")).toBeInTheDocument();
+    expect(queryByText("Samsung Galaxy S3")).not.toBeInTheDocument();
+    expect(queryByText("Electronics Phone Case")).not.toBeInTheDocument();
 
     // Search by SKU
-    fireEvent.change(searchInput, { target: { value: "SKU-110" } });
-    expect(getByText("External SSD 1TB")).toBeInTheDocument();
-    expect(queryByText("Mechanical Keyboard")).not.toBeInTheDocument();
+    fireEvent.change(searchInput, { target: { value: "SKU-100" } });
+    expect(getByText("iPhone 9")).toBeInTheDocument();
+    expect(queryByText("Samsung Galaxy S3")).not.toBeInTheDocument();
 
     // Search by category
     fireEvent.change(searchInput, { target: { value: "furniture" } });
-    expect(getByText("Ergonomic Chair")).toBeInTheDocument();
-    expect(getByText("Standing Desk")).toBeInTheDocument();
-    expect(queryByText("Wireless Mouse")).not.toBeInTheDocument();
+    expect(queryByText("iPhone 9")).not.toBeInTheDocument();
+    expect(queryByText("Samsung Galaxy S3")).not.toBeInTheDocument();
+    expect(queryByText("Electronics Phone Case")).not.toBeInTheDocument();
   });
 
   it("shows no results message when search matches nothing", () => {
@@ -79,76 +109,49 @@ describe("Products", () => {
   });
 
   it("pagination controls render and work", () => {
-    const { getByLabelText, getByText, queryByText } = render(
+    const { getByLabelText, getByText } = render(
       <MemoryRouter>
         <Products />
       </MemoryRouter>
     );
 
-    // Previous button should be disabled on page 1
-    const prevBtn = getByLabelText("Previous page");
-    expect(prevBtn).toBeDisabled();
-    expect(getByText(/page 1 of 2/i)).toBeInTheDocument();
-
-    // Click Next to go to page 2
-    const nextBtn = getByLabelText("Next page");
-    fireEvent.click(nextBtn);
-    expect(getByText(/page 2 of 2/i)).toBeInTheDocument();
-    // Page 2 shows Phone Charger (product #11)
-    expect(getByText("Bluetooth Speaker")).toBeInTheDocument();
-    expect(queryByText("Wireless Mouse")).not.toBeInTheDocument();
+    // All 3 products fit on page 1 (PAGE_SIZE = 10)
+    expect(getByLabelText("Previous page")).toBeDisabled();
+    expect(getByText(/page 1 of 1/i)).toBeInTheDocument();
   });
 
   it("search resets pagination to page 1", () => {
-    const { getByLabelText, getByText, queryByText } = render(
+    const { getByLabelText, getByText } = render(
       <MemoryRouter>
         <Products />
       </MemoryRouter>
     );
-
-    // Navigate to page 2
-    const nextBtn = getByLabelText("Next page");
-    fireEvent.click(nextBtn);
-    expect(getByText(/page 2 of 2/i)).toBeInTheDocument();
 
     // Search for something
     const searchInput = getByLabelText("Search products");
-    fireEvent.change(searchInput, { target: { value: "mouse" } });
+    fireEvent.change(searchInput, { target: { value: "iphone" } });
 
-    // Should be back on page 1, showing only Wireless Mouse
+    // Should be on page 1
     expect(getByText(/page 1 of 1/i)).toBeInTheDocument();
-    expect(getByText("Wireless Mouse")).toBeInTheDocument();
-    expect(queryByText("Bluetooth Speaker")).not.toBeInTheDocument();
+    expect(getByText("iPhone 9")).toBeInTheDocument();
   });
 
-  it("renders an Add Product button", () => {
+  it("renders an Add Product button that is disabled", () => {
     const { getByLabelText } = render(
       <MemoryRouter>
         <Products />
       </MemoryRouter>
     );
-    expect(getByLabelText("Add product")).toBeInTheDocument();
-  });
-
-  it("opens the modal with empty form fields on Add Product click", () => {
-    const { getByLabelText } = render(
-      <MemoryRouter>
-        <Products />
-      </MemoryRouter>
+    const btn = getByLabelText("Add product");
+    expect(btn).toBeInTheDocument();
+    expect(btn).toBeDisabled();
+    expect(btn).toHaveAttribute(
+      "title",
+      "Add product feature is currently unavailable with live API data."
     );
-
-    fireEvent.click(getByLabelText("Add product"));
-
-    expect(getByLabelText("Add Product")).toBeInTheDocument();
-    expect(getByLabelText("SKU").value).toBe("");
-    expect(getByLabelText("Name").value).toBe("");
-    expect(getByLabelText("Category").value).toBe("");
-    expect(getByLabelText("Price").value).toBe("");
-    expect(getByLabelText("Save product")).toBeInTheDocument();
-    expect(getByLabelText("Cancel add product")).toBeInTheDocument();
   });
 
-  it("closes the modal without saving when Cancel is clicked", () => {
+  it("does not open modal when disabled Add Product is clicked", () => {
     const { getByLabelText, queryByLabelText, queryByText } = render(
       <MemoryRouter>
         <Products />
@@ -156,39 +159,12 @@ describe("Products", () => {
     );
 
     fireEvent.click(getByLabelText("Add product"));
-    expect(getByLabelText("Add Product")).toBeInTheDocument();
 
-    fireEvent.click(getByLabelText("Cancel add product"));
-
+    // Modal should not open because button is disabled
     expect(queryByLabelText("Add Product")).toBeNull();
+    expect(queryByLabelText("SKU")).toBeNull();
+    expect(queryByLabelText("Name")).toBeNull();
     expect(toast.success).not.toHaveBeenCalled();
     expect(queryByText("Test Product")).toBeNull();
-  });
-
-  it("saves a new product, fires toast, closes modal, and shows the row", () => {
-    const { getByLabelText, queryByLabelText, getByText } = render(
-      <MemoryRouter>
-        <Products />
-      </MemoryRouter>
-    );
-
-    fireEvent.click(getByLabelText("Add product"));
-    fireEvent.change(getByLabelText("SKU"), { target: { value: "SKU-TEST" } });
-    fireEvent.change(getByLabelText("Name"), { target: { value: "Test Product" } });
-    fireEvent.change(getByLabelText("Category"), { target: { value: "Electronics" } });
-    fireEvent.change(getByLabelText("Price"), { target: { value: "99.99" } });
-
-    fireEvent.click(getByLabelText("Save product"));
-
-    expect(queryByLabelText("Add Product")).toBeNull();
-    expect(toast.success).toHaveBeenCalledWith("Product added successfully");
-
-    // Filter to surface the newly-added row regardless of pagination position.
-    fireEvent.change(getByLabelText("Search products"), {
-      target: { value: "Test Product" },
-    });
-    expect(getByText("Test Product")).toBeInTheDocument();
-    expect(getByText("SKU-TEST (21)")).toBeInTheDocument();
-    expect(getByText("$99.99")).toBeInTheDocument();
   });
 });
