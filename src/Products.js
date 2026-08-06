@@ -13,6 +13,7 @@ const Products = () => {
   const [products, setProducts] = useState(mockProducts);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form, setForm] = useState(emptyForm);
+  const [isSaving, setIsSaving] = useState(false);
 
   const filteredProducts = useMemo(() => {
     const term = searchTerm.toLowerCase();
@@ -40,15 +41,39 @@ const Products = () => {
   const handleFormChange = (field) => (e) =>
     setForm((prev) => ({ ...prev, [field]: e.target.value }));
 
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
-    const nextId = products.length
-      ? Math.max(...products.map((p) => p.id)) + 1
-      : 1;
-    const newProduct = { id: nextId, ...form, price: Number(form.price) };
-    setProducts((prev) => [...prev, newProduct]);
-    setIsModalOpen(false);
-    toast.success("Product added successfully");
+    setIsSaving(true);
+    try {
+      const res = await fetch("https://dummyjson.com/products/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: form.name,
+          sku: form.sku,
+          category: form.category,
+          price: Number(form.price),
+        }),
+      });
+      if (!res.ok) throw new Error("Failed");
+      const data = await res.json();
+      const newProduct = {
+        ...data,
+        name: data.title,
+        id:
+          data.id ||
+          (products.length
+            ? Math.max(...products.map((p) => p.id)) + 1
+            : 1),
+      };
+      setProducts((prev) => [...prev, newProduct]);
+      setIsModalOpen(false);
+      toast.success("Product added successfully");
+    } catch {
+      toast.error("Failed to add product. Please try again.");
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   useEffect(() => {
@@ -167,7 +192,14 @@ const Products = () => {
                 </div>
                 <div className="product-modal-actions">
                   <button type="button" className="product-modal-cancel-btn" onClick={handleCloseModal} aria-label="Cancel add product">Cancel</button>
-                  <button type="submit" className="login-submit-btn product-modal-save-btn" aria-label="Save product">Save</button>
+                  <button
+                    type="submit"
+                    className="login-submit-btn product-modal-save-btn"
+                    disabled={isSaving}
+                    aria-label="Save product"
+                  >
+                    {isSaving ? "Saving..." : "Save"}
+                  </button>
                 </div>
               </form>
             </div>

@@ -1,16 +1,17 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { toast } from "react-toastify";
 import Products from "./Products";
 
 jest.mock("react-toastify", () => ({
-  toast: { success: jest.fn() },
+  toast: { success: jest.fn(), error: jest.fn() },
 }));
 
 describe("Products", () => {
   beforeEach(() => {
     toast.success.mockClear();
+    toast.error.mockClear();
   });
 
   it("renders without crashing", () => {
@@ -165,12 +166,24 @@ describe("Products", () => {
     expect(queryByText("Test Product")).toBeNull();
   });
 
-  it("saves a new product, fires toast, closes modal, and shows the row", () => {
+  it("saves a new product, fires toast, closes modal, and shows the row", async () => {
     const { getByLabelText, queryByLabelText, getByText } = render(
       <MemoryRouter>
         <Products />
       </MemoryRouter>
     );
+
+    jest.spyOn(global, "fetch").mockResolvedValueOnce({
+      ok: true,
+      json: () =>
+        Promise.resolve({
+          id: 21,
+          title: "Test Product",
+          sku: "SKU-TEST",
+          category: "Electronics",
+          price: 99.99,
+        }),
+    });
 
     fireEvent.click(getByLabelText("Add product"));
     fireEvent.change(getByLabelText("SKU"), { target: { value: "SKU-TEST" } });
@@ -180,7 +193,9 @@ describe("Products", () => {
 
     fireEvent.click(getByLabelText("Save product"));
 
-    expect(queryByLabelText("Add Product")).toBeNull();
+    await waitFor(() => {
+      expect(queryByLabelText("Add Product")).toBeNull();
+    });
     expect(toast.success).toHaveBeenCalledWith("Product added successfully");
 
     // Filter to surface the newly-added row regardless of pagination position.
@@ -190,5 +205,57 @@ describe("Products", () => {
     expect(getByText("Test Product")).toBeInTheDocument();
     expect(getByText("SKU-TEST (21)")).toBeInTheDocument();
     expect(getByText("$99.99")).toBeInTheDocument();
+  });
+
+  it("displays an error toast and keeps the modal open when the API fails", async () => {
+    const { getByLabelText, queryByLabelText } = render(
+      <MemoryRouter>
+        <Products />
+      </MemoryRouter>
+    );
+
+    jest.spyOn(global, "fetch").mockResolvedValueOnce({
+      ok: false,
+      status: 500,
+    });
+
+    fireEvent.click(getByLabelText("Add product"));
+    fireEvent.change(getByLabelText("SKU"), { target: { value: "SKU-FAIL" } });
+    fireEvent.change(getByLabelText("Name"), { target: { value: "Fail Product" } });
+    fireEvent.change(getByLabelText("Category"), { target: { value: "Electronics" } });
+    fireEvent.change(getByLabelText("Price"), { target: { value: "10.00" } });
+
+    fireEvent.click(getByLabelText("Save product"));
+
+    await waitFor(() => {
+      expect(queryByLabelText("Add Product")).toBeInTheDocument();
+    });
+    expect(toast.error).toHaveBeenCalledWith(
+      "Failed to add product. Please try again."
+    );
+  });
+
+  it("disables the Save button and shows Saving... while the request is in flight", async () => {
+    const { getByLabelText } = render(
+      <MemoryRouter>
+        <Products />
+      </MemoryRouter>
+    );
+
+    jest
+      .spyOn(global, "fetch")
+      .mockImplementationOnce(() => new Promise(() => {}));
+
+    fireEvent.click(getByLabelText("Add product"));
+    fireEvent.change(getByLabelText("SKU"), { target: { value: "SKU-TEST" } });
+    fireEvent.change(getByLabelText("Name"), { target: { value: "Test" } });
+    fireEvent.change(getByLabelText("Category"), { target: { value: "Electronics" } });
+    fireEvent.change(getByLabelText("Price"), { target: { value: "5.00" } });
+
+    fireEvent.click(getByLabelText("Save product"));
+
+    const saveBtn = getByLabelText("Save product");
+    expect(saveBtn).toBeDisabled();
+    expect(saveBtn).toHaveTextContent("Saving...");
   });
 });
