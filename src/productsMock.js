@@ -19,4 +19,9 @@ export const mockProducts = [
   { id: 18, sku: "SKU-118", name: "Smart Watch Band", price: 15.99, category: "Wearables" },
   { id: 19, sku: "SKU-119", name: "Portable Power Bank", price: 39.99, category: "Electronics" },
   { id: 20, sku: "SKU-120", name: "Document Scanner", price: 129.0, category: "Office" },
+  { id: 21, sku: "SKU-121", name: "Phone Charger", price: 19.99, category: "Accessories" },
+  { id: 22, sku: "SKU-122", name: "Bluetooth Speaker", price: 49.99, category: "Electronics" },
+  { id: 23, sku: "SKU-123", name: "Notebook Pack", price: 12.5, category: "Office" },
+  { id: 24, sku: "SKU-124", name: "Standing Desk", price: 499.0, category: "Furniture" },
+  { id: 25, sku: "SKU-125", name: "Tablet Case", price: 22.99, category: "Accessories" },
 ];

@@ -65,10 +65,10 @@ const Products = () => {
   return (
     <div className="App App--sidebar">
       <Sidebar />
-      <div className="customers-container">
-        <div className="customers-header">
-          <h2 className="customers-title">Products</h2>
-          <button type="button" className="customers-add-btn" onClick={handleOpenModal} aria-label="Add product">
+      <div className="products-container">
+        <div className="products-header">
+          <h2 className="products-title">Products</h2>
+          <button type="button" className="products-add-btn" onClick={handleOpenModal} aria-label="Add product">
             Add Product
           </button>
         </div>
@@ -80,40 +80,40 @@ const Products = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           aria-label="Search products"
         />
-        <div className="orders-table-wrapper">
-          <table className="orders-table">
+        <div className="products-table-wrapper">
+          <table className="products-table">
             <thead>
               <tr>
-                <th className="orders-table-th">SKU/ID</th>
-                <th className="orders-table-th">Name</th>
-                <th className="orders-table-th">Category</th>
-                <th className="orders-table-th">Price</th>
+                <th className="products-table-th">SKU/ID</th>
+                <th className="products-table-th">Name</th>
+                <th className="products-table-th">Category</th>
+                <th className="products-table-th">Price</th>
               </tr>
             </thead>
             <tbody>
               {paginatedProducts.map((product) => (
                 <tr key={product.sku}>
-                  <td className="orders-table-td">
+                  <td className="products-table-td">
                     {product.sku} ({product.id})
                   </td>
-                  <td className="orders-table-td">{product.name}</td>
-                  <td className="orders-table-td">{product.category}</td>
-                  <td className="orders-table-td">{formatPrice(product.price)}</td>
+                  <td className="products-table-td">{product.name}</td>
+                  <td className="products-table-td">{product.category}</td>
+                  <td className="products-table-td">{formatPrice(product.price)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
         {filteredProducts.length === 0 && (
-          <p className="orders-no-results">
+          <p className="products-no-results">
             No products found matching "{searchTerm}"
           </p>
         )}
         {filteredProducts.length > 0 && (
-          <div className="customers-pagination">
+          <div className="products-pagination">
             <button
-              className={`customers-page-btn${
-                currentPage === 1 ? " customers-page-btn--disabled" : ""
+              className={`products-page-btn${
+                currentPage === 1 ? " products-page-btn--disabled" : ""
               }`}
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={currentPage === 1}
@@ -121,12 +121,12 @@ const Products = () => {
             >
               Previous
             </button>
-            <span className="customers-page-info">
+            <span className="products-page-info">
               Page {currentPage} of {displayTotal}
             </span>
             <button
-              className={`customers-page-btn${
-                currentPage === totalPages ? " customers-page-btn--disabled" : ""
+              className={`products-page-btn${
+                currentPage === totalPages ? " products-page-btn--disabled" : ""
               }`}
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
