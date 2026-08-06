@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Sidebar from "./Sidebar";
 import { mockProducts } from "./productsMock";
@@ -96,7 +97,11 @@ const Products = () => {
                   <td className="orders-table-td">
                     {product.sku} ({product.id})
                   </td>
-                  <td className="orders-table-td">{product.name}</td>
+                  <td className="orders-table-td">
+                    <Link to={`/products/${product.id}`}>
+                      {product.name}
+                    </Link>
+                  </td>
                   <td className="orders-table-td">{product.category}</td>
                   <td className="orders-table-td">{formatPrice(product.price)}</td>
                 </tr>

@@ -18,6 +18,7 @@ import TermsAndConditions from "./TermsAndConditions";
 import Approvals from "./Approvals";
 import Sessions from "./Sessions";
 import Navbar from "./Navbar";
+import ProductDetail from "./ProductDetail";
 
 const App = () => {
   // Subscribe to location changes so isAuthenticated is re-evaluated on navigation
@@ -76,6 +77,12 @@ const App = () => {
           path="/products"
           element={
             isAuthenticated ? <Products /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/products/:id"
+          element={
+            isAuthenticated ? <ProductDetail /> : <Navigate to="/login" />
           }
         />
         <Route
