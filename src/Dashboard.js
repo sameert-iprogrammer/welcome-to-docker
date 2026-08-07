@@ -1,5 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
+
+const decodeJwtPayload = (token) => {
+  try {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+      window
+        .atob(base64)
+        .split("")
+        .map((c) => {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+    return JSON.parse(jsonPayload);
+  } catch {
+    return null;
+  }
+};
 
 const metrics = [
   { id: 1, icon: "fa-cubes", value: "12", label: "Total Containers" },
@@ -9,10 +29,30 @@ const metrics = [
 ];
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+    const payload = decodeJwtPayload(token);
+    if (payload) {
+      setUserName(`${payload.firstName || ""} ${payload.lastName || ""}`.trim());
+    } else {
+      navigate("/login");
+    }
+  }, [navigate]);
+
   return (
     <div className="App App--sidebar">
       <Sidebar />
       <div className="dashboard-content">
+        <h2 className="dashboard-welcome">
+          Welcome{userName ? `, ${userName}` : ""}!
+        </h2>
         <div className="metrics-grid">
           {metrics.map((m) => (
             <div className="metric-card" key={m.id}>

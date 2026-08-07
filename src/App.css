@@ -1155,3 +1155,23 @@
   margin-bottom: 24px;
 }
 
+/* Login Error Banner */
+.login-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Dashboard Welcome */
+.dashboard-welcome {
+  color: #ffffff;
+  font-size: 28px;
+  margin: 100px 0 24px 0;
+  font-weight: 700;
+  text-align: center;
+}
+

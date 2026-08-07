@@ -6,13 +6,31 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email && password) {
-      localStorage.setItem("isAuthenticated", "true");
-      toast.success("Signed in successfully");
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("https://dummyjson.com/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: email, password }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Login failed");
+
+      localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("refreshToken", data.refreshToken);
+
+      toast.success(`Welcome, ${data.firstName}!`);
       navigate("/dashboard");
+    } catch (err) {
+      setError(err.message || "An error occurred during login.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,8 +69,18 @@ const Login = () => {
               className="login-input"
             />
           </div>
-          <button type="submit" className="login-submit-btn" aria-label="Sign In">
-            Sign In
+          {error && (
+            <div className="login-error" role="alert">
+              {error}
+            </div>
+          )}
+          <button
+            type="submit"
+            className="login-submit-btn"
+            aria-label="Sign In"
+            disabled={loading}
+          >
+            {loading ? "Signing in..." : "Sign In"}
           </button>
           <div className="register-link">
             Don't have an account?{" "}

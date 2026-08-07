@@ -22,7 +22,7 @@ import Navbar from "./Navbar";
 const App = () => {
   // Subscribe to location changes so isAuthenticated is re-evaluated on navigation
   useLocation();
-  const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+  const isAuthenticated = !!localStorage.getItem("accessToken");
 
   return (
     <div className="App">
