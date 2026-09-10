@@ -104,4 +104,8 @@ dist
 # TernJS port file
 .tern-port
 
-.npm-cache-test
+.npm-cache-test.implement/
+CLAUDE.md
+.claude.md
+.claude/
+.opencode/
